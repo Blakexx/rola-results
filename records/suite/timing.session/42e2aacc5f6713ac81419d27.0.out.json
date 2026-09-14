@@ -1,0 +1,81 @@
+{
+ "arms": [
+  {
+   "bench": "intra_forward",
+   "binary": "k31-pool",
+   "cell": "nl64k-alt-k4",
+   "clock_held": true,
+   "clock_locked": true,
+   "device_name": "NVIDIA GeForce RTX 3080 Ti",
+   "device_uuid": "2c48d680-1492-9fcd-4161-d9ef15b0f7bc",
+   "driver_cuda": "12.4",
+   "family_stamp": 66255175023320,
+   "git_sha": "dd6a16647264030dfe1e2b8e82f199f564823e80",
+   "label": "k31-pool",
+   "manifest_sha256": "900f2da23c24c3fadfb5cc40c84fe5ae6259a74b1b491076eab0573771208544",
+   "median_of_round_medians_ms": 0.8366079926490784,
+   "n_rounds": 3,
+   "ptxas": "ptxas: NVIDIA (R) Ptx optimizing assembler Copyright (c) 2005-2024 NVIDIA Corporation Built on Tue_Feb_27_16:15:50_PST_2024 Cuda compilation tools, release 12.4, V12.4.99 Build cuda_12.4.r12.4/compiler.33961263_0",
+   "reps": 5,
+   "rola_file": "rola/__init__.py",
+   "role": "subject",
+   "round_medians_ms": [
+    0.834559977054596,
+    0.8366079926490784,
+    0.8386560082435608
+   ],
+   "round_sm_ghz": [
+    1.665069866261722,
+    1.664928428149774,
+    1.6650700327685422
+   ],
+   "schedule": "first",
+   "session": "fbde37eb1a1e47b9",
+   "sm": "sm_86",
+   "state_arm": "fresh",
+   "torch": "2.6.0+cu124",
+   "tree_sha256": "",
+   "warmup": 2
+  },
+  {
+   "bench": "intra_forward",
+   "binary": "master",
+   "cell": "nl64k-alt-k4",
+   "clock_held": true,
+   "clock_locked": true,
+   "device_name": "NVIDIA GeForce RTX 3080 Ti",
+   "device_uuid": "2c48d680-1492-9fcd-4161-d9ef15b0f7bc",
+   "driver_cuda": "12.4",
+   "family_stamp": 66255175023320,
+   "git_sha": "d652e771a25e37ea74ecb596a179a49de482db7c",
+   "label": "master",
+   "manifest_sha256": "aa679f2efc9e8a0134f36a138263f4a927faac581fb3c7bf0a6b60f6e9ed0be5",
+   "median_of_round_medians_ms": 0.834559977054596,
+   "n_rounds": 3,
+   "ptxas": "ptxas: NVIDIA (R) Ptx optimizing assembler Copyright (c) 2005-2024 NVIDIA Corporation Built on Tue_Feb_27_16:15:50_PST_2024 Cuda compilation tools, release 12.4, V12.4.99 Build cuda_12.4.r12.4/compiler.33961263_0",
+   "reps": 5,
+   "rola_file": "rola/__init__.py",
+   "role": "reference",
+   "round_medians_ms": [
+    0.834559977054596,
+    0.8355839848518372,
+    0.834559977054596
+   ],
+   "round_sm_ghz": [
+    1.6650699495151322,
+    1.6649281784108345,
+    1.664927928671895
+   ],
+   "schedule": "box",
+   "session": "fbde37eb1a1e47b9",
+   "sm": "sm_86",
+   "state_arm": "fresh",
+   "torch": "2.6.0+cu124",
+   "tree_sha256": "",
+   "warmup": 2
+  }
+ ],
+ "cell": "nl64k-alt-k4",
+ "session": "fbde37eb1a1e47b9",
+ "subject": "intra_forward"
+}

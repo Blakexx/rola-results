@@ -1,0 +1,35 @@
+{
+ "format": 1,
+ "key": "2780c720f86e5110feaede0a",
+ "location": "suite/carry.phases",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "2780c720f86e5110feaede0a.0.out.json",
+   "provenance": {
+    "dirty": false,
+    "git_sha": "b729e70d8ff6dec0f8e6f572f60786e7074cb71e",
+    "label": "k31-pool",
+    "worktree": "k31-pool"
+   },
+   "utc": "2026-09-13T04:07:28Z",
+   "wall_s": 1.36
+  }
+ ],
+ "semantics": {
+  "deps": {},
+  "identity": {
+   "binary": "02038ccb8ee73e6eb98b059719bb7d2f9083babe0403f2f83c045a8ca7e627b4",
+   "environment": "256a34786ee90ef47f04c6cbbe5f03d321d555016ef0923d3e9033a1f56f3ba9",
+   "instrument": {
+    "tools/phase_ledger.py": "c1af8c023887a21a6a55f87ece3fc73fba5f8bdf76f930a0da277c666a3689f9"
+   },
+   "params": {
+    "launches": 1
+   }
+  },
+  "module": "carry.phases",
+  "unit": "flagship-dense"
+ }
+}

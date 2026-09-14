@@ -1,0 +1,7 @@
+{
+  "public": "Blakexx/rola-results",
+  "ships": [".github", ".githooks", ".gitignore", ".pre-commit-config.yaml", "README.md", "pyproject.toml", "records",
+            "rola_results", "views"],
+  "private": [".github/workflows/mirror.yml"],
+  "allow": {}
+}

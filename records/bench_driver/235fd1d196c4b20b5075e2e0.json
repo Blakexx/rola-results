@@ -1,0 +1,44 @@
+{
+ "format": 1,
+ "key": "235fd1d196c4b20b5075e2e0",
+ "location": "bench_driver",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "235fd1d196c4b20b5075e2e0.0.out.json",
+   "provenance": {
+    "branch": null,
+    "checkout": "k31-pool",
+    "clocks": {
+     "elapsed_s": 1.084,
+     "max_mhz": 2100.0,
+     "plateau_mhz": 15.0,
+     "settled": true,
+     "sm_mhz": 1875.0
+    },
+    "diff_sha256": "509443e896317ae709d4c75a4facccb0f37e81fdbbdbe333658d982a2ba390e8",
+    "git_sha": "b729e70d8ff6dec0f8e6f572f60786e7074cb71e",
+    "host": "DESKTOP-MKIUJID",
+    "run_id": "5c4aad7123834b2c",
+    "stage": "rola-results-landing"
+   },
+   "utc": "2026-09-13T04:50:28Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "device": "NVIDIA GeForce RTX 3080 Ti",
+  "diff_sha256": "509443e896317ae709d4c75a4facccb0f37e81fdbbdbe333658d982a2ba390e8",
+  "git_sha": "b729e70d8ff6dec0f8e6f572f60786e7074cb71e",
+  "instrument": "cuda_events",
+  "manifest_sha256": "900f2da23c24c3fadfb5cc40c84fe5ae6259a74b1b491076eab0573771208544",
+  "probe_version": 2,
+  "reps_per_round": 11,
+  "rounds": 3,
+  "specs": [
+   "carry_forward@flagship-dense"
+  ],
+  "tier": "light"
+ }
+}

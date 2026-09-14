@@ -1,0 +1,5 @@
+*.lock
+*.tmp
+__pycache__/
+.ruff_cache/
+index.sqlite

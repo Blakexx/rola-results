@@ -1,0 +1,35 @@
+{
+ "format": 1,
+ "key": "d04d07491a867066d0c8ca1a",
+ "location": "suite/carry.census",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "d04d07491a867066d0c8ca1a.0.out.json",
+   "provenance": {
+    "dirty": false,
+    "git_sha": "dd6a16647264030dfe1e2b8e82f199f564823e80",
+    "label": "k31-pool",
+    "worktree": "k31-pool"
+   },
+   "utc": "2026-09-13T03:30:43Z",
+   "wall_s": 6.53
+  }
+ ],
+ "semantics": {
+  "deps": {},
+  "identity": {
+   "binary": "02038ccb8ee73e6eb98b059719bb7d2f9083babe0403f2f83c045a8ca7e627b4",
+   "environment": "256a34786ee90ef47f04c6cbbe5f03d321d555016ef0923d3e9033a1f56f3ba9",
+   "instrument": {
+    "tools/stall_census.py": "9ee1b953bc58b9f68d797825a086f780e47c02d0c80e4039531c515aca5c5f8b"
+   },
+   "params": {
+    "schedule": "first"
+   }
+  },
+  "module": "carry.census",
+  "unit": "flagship-dense"
+ }
+}

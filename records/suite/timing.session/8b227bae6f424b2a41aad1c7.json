@@ -1,0 +1,118 @@
+{
+ "format": 1,
+ "key": "8b227bae6f424b2a41aad1c7",
+ "location": "suite/timing.session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "8b227bae6f424b2a41aad1c7.0.out.json",
+   "provenance": {
+    "arms": [
+     {
+      "dirty": true,
+      "git_sha": "3361cf65e9facfc866a2561cc9d4a8e503f55773",
+      "label": "cu134",
+      "role": "subject",
+      "worktree": "p82-toolchain"
+     },
+     {
+      "dirty": true,
+      "git_sha": "3361cf65e9facfc866a2561cc9d4a8e503f55773",
+      "label": "cu130",
+      "role": "reference",
+      "worktree": "p82-cu130"
+     },
+     {
+      "dirty": false,
+      "git_sha": "3361cf65e9facfc866a2561cc9d4a8e503f55773",
+      "label": "cu124",
+      "role": "reference",
+      "worktree": "k31-pool"
+     }
+    ],
+    "host": "DESKTOP-MKIUJID"
+   },
+   "utc": "2026-09-13T21:39:53Z",
+   "wall_s": 13.329
+  },
+  {
+   "n": 1,
+   "ok": true,
+   "output": "8b227bae6f424b2a41aad1c7.1.out.json",
+   "provenance": {
+    "arms": [
+     {
+      "dirty": true,
+      "git_sha": "3361cf65e9facfc866a2561cc9d4a8e503f55773",
+      "label": "cu134",
+      "role": "subject",
+      "worktree": "p82-toolchain"
+     },
+     {
+      "dirty": true,
+      "git_sha": "3361cf65e9facfc866a2561cc9d4a8e503f55773",
+      "label": "cu130",
+      "role": "reference",
+      "worktree": "p82-cu130"
+     },
+     {
+      "dirty": false,
+      "git_sha": "3361cf65e9facfc866a2561cc9d4a8e503f55773",
+      "label": "cu124",
+      "role": "reference",
+      "worktree": "k31-pool"
+     }
+    ],
+    "host": "DESKTOP-MKIUJID"
+   },
+   "utc": "2026-09-13T21:48:06Z",
+   "wall_s": 13.589
+  }
+ ],
+ "semantics": {
+  "deps": {},
+  "identity": {
+   "arms": [
+    {
+     "binary": "be9bf97a8b98fddcd253ca31823c904b575d067c1bbc0c3f8008db0f8ee1e649",
+     "instrument": "65c5307f369dffac0ec6bd0759aca6c4b71ef45a01e01d70a34f5240603334dd",
+     "lane": [
+      "liveness_pass",
+      1
+     ],
+     "role": "subject",
+     "schedule": null
+    },
+    {
+     "binary": "ab92301d6e6bae56e138c3af03e4c72f29fae8ae96d5178b5697816b0a1e754f",
+     "instrument": "c2dfa276866564b936efc97b4f51e295a2a541ff9676c664af90eaf2118e652d",
+     "lane": [
+      "liveness_pass",
+      1
+     ],
+     "role": "reference",
+     "schedule": null
+    },
+    {
+     "binary": "02038ccb8ee73e6eb98b059719bb7d2f9083babe0403f2f83c045a8ca7e627b4",
+     "instrument": "1e975020a74781311e3bd1381a3c988744b11ef346a6cfff8185eaa4cf4670b7",
+     "lane": [
+      "liveness_pass",
+      1
+     ],
+     "role": "reference",
+     "schedule": null
+    }
+   ],
+   "environment": "67b0d81a83e323107adbe7911b10485ad692527eb7112998416d2ba5fdba73f2",
+   "params": {
+    "reps": 5,
+    "rounds": 3,
+    "warmup": 2
+   }
+  },
+  "module": "timing.session",
+  "unit": "liveness_pass@flagship-cohort-k4"
+ }
+}

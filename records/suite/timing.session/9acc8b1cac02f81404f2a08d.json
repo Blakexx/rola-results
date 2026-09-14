@@ -1,0 +1,120 @@
+{
+ "format": 1,
+ "key": "9acc8b1cac02f81404f2a08d",
+ "location": "suite/timing.session",
+ "samples": [
+  {
+   "error": "RuntimeError: arm(s) ['cu134', 'cu130'] measured nothing: ['RuntimeError: attention_reference needs flash-attn (`pip install rola[bench]`; the release wheel matching torch, CUDA, ABI and python)', 'RuntimeError: attention_reference needs flash-attn (`pip install rola[bench]`; the release wheel matching torch, CUDA, ABI and python)', None]",
+   "n": 0,
+   "ok": false,
+   "provenance": {
+    "arms": [
+     {
+      "dirty": true,
+      "git_sha": "3361cf65e9facfc866a2561cc9d4a8e503f55773",
+      "label": "cu134",
+      "role": "subject",
+      "worktree": "p82-toolchain"
+     },
+     {
+      "dirty": true,
+      "git_sha": "3361cf65e9facfc866a2561cc9d4a8e503f55773",
+      "label": "cu130",
+      "role": "reference",
+      "worktree": "p82-cu130"
+     },
+     {
+      "dirty": false,
+      "git_sha": "3361cf65e9facfc866a2561cc9d4a8e503f55773",
+      "label": "cu124",
+      "role": "reference",
+      "worktree": "k31-pool"
+     }
+    ],
+    "host": "DESKTOP-MKIUJID"
+   },
+   "trace": "Traceback (most recent call last):\n  File \"rola_bench/measure/engine.py\", line 133, in run\n    node.run({d: outputs[d] for d in node.deps}, dest)\n  File \"rola_bench/measure/modules.py\", line 166, in _session\n    raise RuntimeError(f\"arm(s) {errors} measured nothing: {[a.get('error') for a in doc['arms']]}\")\nRuntimeError: arm(s) ['cu134', 'cu130'] measured nothing: ['RuntimeError: attention_reference needs flash-attn (`pip install rola[bench]`; the release wheel matching torch, CUDA, ABI and python)', 'RuntimeError: attention_reference needs flash-attn (`pip install rola[bench]`; the release wheel matching torch, CUDA, ABI and python)', None]\n",
+   "utc": "2026-09-13T21:34:04Z",
+   "wall_s": 15.048
+  },
+  {
+   "error": "RuntimeError: arm(s) ['cu134', 'cu130'] measured nothing: ['RuntimeError: attention_reference needs flash-attn (`pip install rola[bench]`; the release wheel matching torch, CUDA, ABI and python)', 'RuntimeError: attention_reference needs flash-attn (`pip install rola[bench]`; the release wheel matching torch, CUDA, ABI and python)', None]",
+   "n": 1,
+   "ok": false,
+   "provenance": {
+    "arms": [
+     {
+      "dirty": true,
+      "git_sha": "3361cf65e9facfc866a2561cc9d4a8e503f55773",
+      "label": "cu134",
+      "role": "subject",
+      "worktree": "p82-toolchain"
+     },
+     {
+      "dirty": true,
+      "git_sha": "3361cf65e9facfc866a2561cc9d4a8e503f55773",
+      "label": "cu130",
+      "role": "reference",
+      "worktree": "p82-cu130"
+     },
+     {
+      "dirty": false,
+      "git_sha": "3361cf65e9facfc866a2561cc9d4a8e503f55773",
+      "label": "cu124",
+      "role": "reference",
+      "worktree": "k31-pool"
+     }
+    ],
+    "host": "DESKTOP-MKIUJID"
+   },
+   "trace": "Traceback (most recent call last):\n  File \"rola_bench/measure/engine.py\", line 133, in run\n    node.run({d: outputs[d] for d in node.deps}, dest)\n  File \"rola_bench/measure/modules.py\", line 166, in _session\n    raise RuntimeError(f\"arm(s) {errors} measured nothing: {[a.get('error') for a in doc['arms']]}\")\nRuntimeError: arm(s) ['cu134', 'cu130'] measured nothing: ['RuntimeError: attention_reference needs flash-attn (`pip install rola[bench]`; the release wheel matching torch, CUDA, ABI and python)', 'RuntimeError: attention_reference needs flash-attn (`pip install rola[bench]`; the release wheel matching torch, CUDA, ABI and python)', None]\n",
+   "utc": "2026-09-13T21:42:09Z",
+   "wall_s": 14.555
+  }
+ ],
+ "semantics": {
+  "deps": {},
+  "identity": {
+   "arms": [
+    {
+     "binary": "be9bf97a8b98fddcd253ca31823c904b575d067c1bbc0c3f8008db0f8ee1e649",
+     "instrument": "65c5307f369dffac0ec6bd0759aca6c4b71ef45a01e01d70a34f5240603334dd",
+     "lane": [
+      "attention_reference",
+      1
+     ],
+     "role": "subject",
+     "schedule": null
+    },
+    {
+     "binary": "ab92301d6e6bae56e138c3af03e4c72f29fae8ae96d5178b5697816b0a1e754f",
+     "instrument": "c2dfa276866564b936efc97b4f51e295a2a541ff9676c664af90eaf2118e652d",
+     "lane": [
+      "attention_reference",
+      1
+     ],
+     "role": "reference",
+     "schedule": null
+    },
+    {
+     "binary": "02038ccb8ee73e6eb98b059719bb7d2f9083babe0403f2f83c045a8ca7e627b4",
+     "instrument": "1e975020a74781311e3bd1381a3c988744b11ef346a6cfff8185eaa4cf4670b7",
+     "lane": [
+      "attention_reference",
+      1
+     ],
+     "role": "reference",
+     "schedule": null
+    }
+   ],
+   "environment": "67b0d81a83e323107adbe7911b10485ad692527eb7112998416d2ba5fdba73f2",
+   "params": {
+    "reps": 5,
+    "rounds": 3,
+    "warmup": 2
+   }
+  },
+  "module": "timing.session",
+  "unit": "attention_reference@flagship-cohort-k4"
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "format": 1,
+ "key": "f3d57b17f73a08c32181b4a5",
+ "location": "suite/carry.sass",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "f3d57b17f73a08c32181b4a5.0.out.json",
+   "provenance": {
+    "dirty": false,
+    "git_sha": "b729e70d8ff6dec0f8e6f572f60786e7074cb71e",
+    "label": "k31-pool",
+    "worktree": "k31-pool"
+   },
+   "utc": "2026-09-13T04:07:07Z",
+   "wall_s": 0.85
+  }
+ ],
+ "semantics": {
+  "deps": {},
+  "identity": {
+   "binary": "02038ccb8ee73e6eb98b059719bb7d2f9083babe0403f2f83c045a8ca7e627b4",
+   "environment": "256a34786ee90ef47f04c6cbbe5f03d321d555016ef0923d3e9033a1f56f3ba9",
+   "instrument": {
+    "tools/sass_gate.py": "6ecf2883b76ff2b7d51b7314dff00321a921bec817549bf02320e8b91ba0d1f7"
+   },
+   "params": {}
+  },
+  "module": "carry.sass",
+  "unit": ""
+ }
+}

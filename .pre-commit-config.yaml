@@ -1,0 +1,28 @@
+# rola-results' commit gate: the library to rola's Python rules and its contract tests, and every stored record
+# consistent (its key recomputes from its semantics, its location is its directory, its outputs exist).
+repos:
+  - repo: local
+    hooks:
+      - id: library-ruff
+        name: ruff (rola_results)
+        language: system
+        entry: ruff check --select E,F,UP,B,SIM,I,C4 --line-length 127 --target-version py310
+        files: ^rola_results/.*\.py$
+      - id: library-contract
+        name: store and index contract (python -m unittest rola_results.test_store rola_results.test_index)
+        language: system
+        entry: python3 -m unittest rola_results.test_store rola_results.test_index
+        pass_filenames: false
+        files: ^(rola_results|views)/
+      - id: records-check
+        name: records consistent (python -m rola_results check)
+        language: system
+        entry: python3 -m rola_results check
+        pass_filenames: false
+        always_run: true
+      - id: mirror-declarations
+        name: every tracked path is declared for the public mirror (.github/mirror/declarations.json)
+        language: system
+        entry: python3 .github/mirror/mirror.py --check
+        pass_filenames: false
+        always_run: true
