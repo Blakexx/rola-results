@@ -29,7 +29,20 @@ def main() -> int:
         p.add_argument("location")
         p.add_argument("--where", action="append", default=[], metavar="PATH=VALUE",
                        help="a dotted path into the semantics and the value it holds (repeatable)")
+    verdict = sub.add_parser("verdict", help="each suite timing unit's newest session judged against its baseline")
+    verdict.add_argument("--cell")
+    verdict.add_argument("--subject")
+    verdict.add_argument("--baseline", help="the reference label to judge against (default: a session's first reference)")
+    verdict.add_argument("--window", type=int, default=10, help="baseline sessions the threshold is read from")
+    verdict.add_argument("--json", action="store_true", help="one JSON object per unit")
     a = ap.parse_args()
+
+    if a.cmd == "verdict":
+        from .verdict import table, verdicts
+
+        rows = verdicts(a.root, cell=a.cell, subject=a.subject, baseline=a.baseline, window=a.window)
+        print("\n".join(json.dumps(r) for r in rows) if a.json else table(rows))
+        return 0
 
     if a.cmd == "index":
         print(json.dumps(index.build(a.root)))

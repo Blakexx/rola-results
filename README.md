@@ -31,6 +31,7 @@ Nothing derived from two records (a ratio, a baseline) is stored: that is the re
     python -m rola_results sql "SELECT ..."       # any query; the index is brought up to date first
     python -m rola_results history LOCATION [--where PATH=VALUE]   # every sample of the matching records
     python -m rola_results latest LOCATION [--where PATH=VALUE]    # each matching record's newest good output
+    python -m rola_results verdict [--cell C] [--subject S] [--baseline LABEL]   # each suite timing unit judged
 
 The tables know no tool: `records(location, key, format, semantics)` and `samples(location, key, n, ok, utc, wall_s,
 provenance, error, output_path, output, extra)`, the JSON fields read with SQLite's JSON functions. A tool's shape is a
@@ -38,7 +39,8 @@ view in `views/`, run after every index:
 
 | view | from | one row per |
 |---|---|---|
-| `timing_rows` | `probe_cells`, `suite/timing.session` | timed arm of a session at a cell: label, branch, commit, tree digest, unit, lane, ms, clock |
+| `session_arms` | `compare`, `suite/timing.session` (through `tools/compare.py`) | arm of an interleaved session: cell, subject, calls, label, role, arm name, samples and round medians, device, torch, commit, clock held |
+| `timing_rows` | `probe_cells`, `suite/timing.session` (before `tools/compare.py`) | timed arm of a session at a cell: label, branch, commit, tree digest, unit, lane, ms, clock |
 | `timing_pairs` | `timing_rows` | pair of arms of one session, cell and unit, with the ratio |
 | `driver_rows` | `bench_driver` | driver result: subject, cell, median and IQR, or an A/B's paired ratio and verdict |
 | `cells` | fleet and local grids | stored grid cell: bench, config, cell, image or local checkouts, row |
@@ -58,6 +60,13 @@ SELECT * FROM timing_rows WHERE stage = 'rola-results-landing';
 SELECT utc, cell, subject, label, base_label, ratio FROM timing_pairs WHERE stage = ? AND ratio > 1.10;
 ```
 
+**The verdict** is a query, never a stored row. `verdict` reads `session_arms`: for the newest suite session of each unit
+(cell, subject, call count, arm names) and candidate commit, the baseline is the reference arm's samples over the newest
+ten sessions of that unit on the same device and torch, the runs are the candidate's sessions at its commit, and the
+paired differences are the last session's round medians, candidate minus reference. rola-devtools'
+`rola_devtools.verdict.classify` judges them: a regression needs the effect over the baseline's derived threshold, a
+significant paired test and a second run over the line; anything less says what it is.
+
 The rola tree names this checkout as `store.root` in its dev config, and `tools/dev.py init` makes the package importable
 from every interpreter it provisions.
 
@@ -65,8 +74,8 @@ from every interpreter it provisions.
     python -m rola_results show [LOCATION]
     python -m rola_results commit -m MESSAGE  commits records/ only; the library goes through its gated commits
 
-The commit gate (`.githooks/pre-commit`, `core.hooksPath`): ruff and the contract tests on the library, `check` on the
-records. Pushing is the owner's act.
+The commit gate (`.githooks/pre-commit`, `core.hooksPath`): ruff and the contract tests on the library (the verdict's
+needs rola-devtools, which `tools/dev.py init` links beside this package), `check` on the records.
 
 ## Publishing
 

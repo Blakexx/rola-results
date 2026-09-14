@@ -9,9 +9,9 @@ repos:
         entry: ruff check --select E,F,UP,B,SIM,I,C4 --line-length 127 --target-version py310
         files: ^rola_results/.*\.py$
       - id: library-contract
-        name: store and index contract (python -m unittest rola_results.test_store rola_results.test_index)
+        name: store, index and verdict contract (python -m unittest rola_results.test_store rola_results.test_index rola_results.test_verdict)
         language: system
-        entry: python3 -m unittest rola_results.test_store rola_results.test_index
+        entry: python3 -m unittest rola_results.test_store rola_results.test_index rola_results.test_verdict
         pass_filenames: false
         files: ^(rola_results|views)/
       - id: records-check
