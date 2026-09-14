@@ -1,0 +1,42 @@
+{
+ "image": "rola-dev:8b0f16562333",
+ "image_id": "sha256:3512c9665bc2e9a44a8e15cd9e2c51aa4bfffb0592c3cba4a08eaa306c520f69",
+ "proofs": [
+  {
+   "ok": true,
+   "proof": "dev check",
+   "tail": [
+    "ok   store.root is a rola-results checkout: /workspace/store",
+    "ok   rola_results imports from store.root in /opt/venv/bin/python",
+    "dev check: green"
+   ]
+  },
+  {
+   "ok": true,
+   "proof": "GPU, torch and its flash backend",
+   "tail": [
+    "A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.",
+    "",
+    "NVIDIA GeForce RTX 3080 Ti 2.14.0+cu130"
+   ]
+  },
+  {
+   "ok": true,
+   "proof": "a host-held lock is held here",
+   "tail": [
+    "A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.",
+    "",
+    "held by the host: one lock governs both"
+   ]
+  },
+  {
+   "ok": true,
+   "proof": "the extension builds and imports",
+   "tail": [
+    "A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.",
+    "",
+    "built ['sm_86']"
+   ]
+  }
+ ]
+}
