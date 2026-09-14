@@ -1,0 +1,37 @@
+{
+ "format": 1,
+ "key": "ad9472718e85be6d4b2ffca8",
+ "location": "suite/carry.phases",
+ "samples": [
+  {
+   "error": "RuntimeError: tools/phase_ledger.py exited -15 without output:\n",
+   "n": 0,
+   "ok": false,
+   "provenance": {
+    "dirty": false,
+    "git_sha": "0104fa0e3d63ed0e462468b01a744014597dc5be",
+    "host": "DESKTOP-MKIUJID",
+    "label": "master",
+    "worktree": "k31-mainline"
+   },
+   "trace": "Traceback (most recent call last):\n  File \"rola_bench/measure/engine.py\", line 136, in run\n    node.run({d: outputs[d] for d in node.deps}, dest)\n  File \"rola_bench/measure/modules.py\", line 74, in <lambda>\n    nodes.append(Node(module, unit, identity, lambda _deps, dest, a=args: instrument(t, a, dest, timeout),\n                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"rola_bench/measure/target.py\", line 153, in instrument\n    raise RuntimeError(f\"{args[0]} exited {rc} without output:\\n{text[-1500:]}\")\nRuntimeError: tools/phase_ledger.py exited -15 without output:\n\n",
+   "utc": "2026-09-14T05:36:16Z",
+   "wall_s": 823.139
+  }
+ ],
+ "semantics": {
+  "deps": {},
+  "identity": {
+   "binary": "3fab453863350a3cee3d1fc90910a2d74d9ad25619b13e5dc52ca9d2e3b2bd19",
+   "environment": "9785a0a14d05f2f90782bf3c9a1c5ec481dfe8cbf97f70115bb70f91ab8247a4",
+   "instrument": {
+    "tools/phase_ledger.py": "f99476ec82d2f65a19ae87f43625aeeb69d9939fbf56c03735a670e59a5d3eea"
+   },
+   "params": {
+    "launches": 1
+   }
+  },
+  "module": "carry.phases",
+  "unit": "nl64k-dense"
+ }
+}
