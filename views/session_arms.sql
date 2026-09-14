@@ -1,5 +1,7 @@
 -- Every arm of every interleaved comparison session, one row per (session, arm): rola's tools/compare.py results stored at
 -- `compare`, and the suite's timing sessions that ran through it (`suite/timing.session` outputs carrying `result`).
+-- A row is one arm on one cell: a point's session runs every arm on each cell its runner receives (`cell` is the row's own
+-- cell; a session from before points names one cell for the whole point, `point.cell`). `point` is the point's name.
 -- `samples` and `blocks` are JSON arrays: the arm's raw samples in the order taken and its per-round medians. `role` is
 -- the suite's (subject, reference, attention) and NULL for a bare comparison; `subject` is NULL for a foreign arm.
 -- `git_sha` is the arm's checkout (the suite's provenance, a comparison's semantics). A ratio or a verdict is only
@@ -13,9 +15,11 @@ WITH sessions AS (
   WHERE s.ok AND (s.location = 'compare'
                   OR (s.location = 'suite/timing.session' AND json_extract(s.output, '$.result') IS NOT NULL)))
 SELECT x.location, x.key, x.n, x.utc,
-       json_extract(x.result, '$.point.cell') AS cell,
-       json_extract(a.value, '$.cell.subject') AS subject,
-       COALESCE(json_extract(a.value, '$.cell.calls'), 1) AS calls,
+       COALESCE(json_extract(x.result, '$.point.name'), json_extract(x.result, '$.point.cell')) AS point,
+       CASE json_type(a.value, '$.cell') WHEN 'text' THEN json_extract(a.value, '$.cell')
+            ELSE json_extract(x.result, '$.point.cell') END AS cell,
+       COALESCE(json_extract(a.value, '$.built.subject'), json_extract(a.value, '$.cell.subject')) AS subject,
+       COALESCE(json_extract(a.value, '$.built.calls'), json_extract(a.value, '$.cell.calls'), 1) AS calls,
        json_extract(a.value, '$.label') AS label,
        json_extract(x.roles, '$."' || json_extract(a.value, '$.label') || '"') AS role,
        json_extract(a.value, '$.arm') AS arm,
@@ -25,9 +29,9 @@ SELECT x.location, x.key, x.n, x.utc,
        json_extract(a.value, '$.median_ms') AS median_ms,
        json_extract(a.value, '$.ms') AS samples,
        json_extract(a.value, '$.blocks_ms') AS blocks,
-       json_extract(a.value, '$.cell.device') AS device,
-       json_extract(a.value, '$.cell.torch') AS torch,
-       json_extract(a.value, '$.cell.manifest_sha256') AS manifest_sha256,
+       COALESCE(json_extract(a.value, '$.built.device'), json_extract(a.value, '$.cell.device')) AS device,
+       COALESCE(json_extract(a.value, '$.built.torch'), json_extract(a.value, '$.cell.torch')) AS torch,
+       COALESCE(json_extract(a.value, '$.built.manifest_sha256'), json_extract(a.value, '$.cell.manifest_sha256')) AS manifest_sha256,
        COALESCE((SELECT json_extract(p.value, '$.git_sha') FROM json_each(x.provenance, '$.arms') p
                   WHERE json_extract(p.value, '$.label') = json_extract(a.value, '$.label')),
                 (SELECT json_extract(q.value, '$.git_sha') FROM json_each(x.semantics, '$.arms') q

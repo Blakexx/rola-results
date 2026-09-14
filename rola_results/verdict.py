@@ -2,8 +2,8 @@
 
     python -m rola_results verdict [--cell C] [--subject S] [--baseline LABEL] [--window N] [--json]
 
-A suite timing session (`session_arms`, role `subject` against role `reference`) is judged per unit: a cell, a subject,
-a call count and the arms' names. For the newest session of each (unit, candidate commit):
+A suite timing session (`session_arms`, role `subject` against role `reference` on the same cell) is judged per unit: a
+cell, a subject, a call count and the arms' names. For the newest session of each (unit, candidate commit):
 
 - the BASELINE is the reference arm's samples over the newest `window` sessions of that unit whose reference ran the same
   arm on the same device and torch, up to and including this one: the threshold is its own median and spread;
@@ -25,7 +25,7 @@ from .store import ROOT
 #: the baseline sessions a threshold is read from, newest first
 WINDOW = 10
 
-_ARMS = """SELECT key, n, utc, cell, subject, calls, label, role, arm, samples, blocks, device, torch, git_sha, rounds
+_ARMS = """SELECT key, n, utc, point, cell, subject, calls, label, role, arm, samples, blocks, device, torch, git_sha, rounds
            FROM session_arms WHERE location = 'suite/timing.session' AND role IN ('subject', 'reference')
            ORDER BY utc, key, n"""
 
@@ -38,7 +38,8 @@ def verdicts(root: Path | str = ROOT, *, cell: str | None = None, subject: str |
     arms = [dict(zip(columns, row, strict=True)) for row in rows]
     sessions: dict[tuple, dict] = {}
     for arm in arms:
-        session = sessions.setdefault((arm["key"], arm["n"]), {"utc": arm["utc"], "subject": None, "references": []})
+        session = sessions.setdefault((arm["key"], arm["n"], arm["cell"]),
+                                      {"utc": arm["utc"], "subject": None, "references": []})
         if arm["role"] == "subject":
             session["subject"] = arm
         else:
@@ -66,7 +67,8 @@ def verdicts(root: Path | str = ROOT, *, cell: str | None = None, subject: str |
         runs = [json.loads(p[1]["samples"]) for p in same if p[1]["git_sha"] == candidate["git_sha"]]
         diffs = [c - r for c, r in zip(json.loads(candidate["blocks"]), json.loads(reference["blocks"]), strict=True)]
         judged = classify(base, runs, paired_diffs=diffs)
-        out.append({"cell": candidate["cell"], "subject": candidate["subject"], "calls": candidate["calls"],
+        out.append({"point": candidate["point"], "cell": candidate["cell"], "subject": candidate["subject"],
+                    "calls": candidate["calls"],
                     "candidate": candidate["label"], "arm": candidate["arm"], "git_sha": candidate["git_sha"],
                     "baseline": reference["label"], "baseline_arm": reference["arm"],
                     "baseline_git_sha": reference["git_sha"], "utc": candidate["utc"], **judged})
