@@ -1,0 +1,36 @@
+{
+ "format": 1,
+ "key": "cffb375ce21a31e74e9cce26",
+ "location": "suite/carry.census",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "cffb375ce21a31e74e9cce26.0.out.json",
+   "provenance": {
+    "dirty": false,
+    "git_sha": "be3b8f9dda99592a38eee568b9678448c56545d3",
+    "host": "DESKTOP-MKIUJID",
+    "label": "master",
+    "worktree": "k31-mainline"
+   },
+   "utc": "2026-09-14T20:06:32Z",
+   "wall_s": 7.005
+  }
+ ],
+ "semantics": {
+  "deps": {},
+  "identity": {
+   "binary": "3fab453863350a3cee3d1fc90910a2d74d9ad25619b13e5dc52ca9d2e3b2bd19",
+   "environment": "9785a0a14d05f2f90782bf3c9a1c5ec481dfe8cbf97f70115bb70f91ab8247a4",
+   "instrument": {
+    "tools/stall_census.py": "a51122158d3df9c79def6efd2825b821112bd95f99215e0cbb683e9e4be8d197"
+   },
+   "params": {
+    "schedule": "first"
+   }
+  },
+  "module": "carry.census",
+  "unit": "one-box-tiny"
+ }
+}

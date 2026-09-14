@@ -1,0 +1,34 @@
+{
+ "format": 1,
+ "key": "b14beb17ccdee489916ae60a",
+ "location": "suite/carry.timeline",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "b14beb17ccdee489916ae60a.0.out.json",
+   "provenance": {
+    "dirty": false,
+    "git_sha": "be3b8f9dda99592a38eee568b9678448c56545d3",
+    "host": "DESKTOP-MKIUJID",
+    "label": "master",
+    "worktree": "k31-mainline"
+   },
+   "utc": "2026-09-14T20:10:10Z",
+   "wall_s": 3.701
+  }
+ ],
+ "semantics": {
+  "deps": {},
+  "identity": {
+   "binary": "3fab453863350a3cee3d1fc90910a2d74d9ad25619b13e5dc52ca9d2e3b2bd19",
+   "environment": "9785a0a14d05f2f90782bf3c9a1c5ec481dfe8cbf97f70115bb70f91ab8247a4",
+   "instrument": {
+    "tools/pipe_timeline.py": "e26a0ea65c4b0382955bebf7952431173172edb85265f9dc3d8c170e1d90a219"
+   },
+   "params": {}
+  },
+  "module": "carry.timeline",
+  "unit": "flagship-partial-window"
+ }
+}
