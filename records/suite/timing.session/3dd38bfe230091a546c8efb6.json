@@ -1,0 +1,78 @@
+{
+ "format": 1,
+ "key": "3dd38bfe230091a546c8efb6",
+ "location": "suite/timing.session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "3dd38bfe230091a546c8efb6.0.out.json",
+   "provenance": {
+    "arms": [
+     {
+      "dirty": false,
+      "git_sha": "d1e36c770b0574e13f2fb6c9c65ce648c2b3ba9c",
+      "label": "master",
+      "role": "subject",
+      "worktree": "k31-mainline"
+     }
+    ],
+    "host": "DESKTOP-MKIUJID"
+   },
+   "utc": "2026-09-14T22:18:16Z",
+   "wall_s": 4.516
+  }
+ ],
+ "semantics": {
+  "deps": {},
+  "identity": {
+   "arms": [
+    {
+     "arm": "entmax_solve",
+     "binary": "3fab453863350a3cee3d1fc90910a2d74d9ad25619b13e5dc52ca9d2e3b2bd19",
+     "instrument": "e7c51182833330f342724c7a58b7fb09064882681fcf50a405760f06bcc69699",
+     "role": "subject"
+    }
+   ],
+   "attention": null,
+   "environment": "9785a0a14d05f2f90782bf3c9a1c5ec481dfe8cbf97f70115bb70f91ab8247a4",
+   "params": {
+    "reps": 11,
+    "rounds": 8,
+    "warmup": 10
+   },
+   "point": {
+    "equal": [],
+    "holds": "the layer cell chunk-deadblocks-T64",
+    "name": "layer-chunk-deadblocks-T64",
+    "runners": {
+     "rola": [
+      {
+       "data": "benchmarks.cells.layer:layer_cell",
+       "name": "chunk-deadblocks-T64",
+       "params": {
+        "B": 2,
+        "H": 8,
+        "alpha": 1.5,
+        "decode_steps": 0,
+        "dtype": "bf16",
+        "dv": 64,
+        "hidden": 512,
+        "logit_gain": 16.0,
+        "note": "~52% live atoms: the arm with dead blocks for the plan to skip",
+        "seed": 5,
+        "tokens": 64,
+        "widths": [
+         64,
+         64
+        ]
+       }
+      }
+     ]
+    }
+   }
+  },
+  "module": "timing.session",
+  "unit": "entmax_solve@layer-chunk-deadblocks-T64"
+ }
+}
