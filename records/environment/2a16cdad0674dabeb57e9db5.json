@@ -1,0 +1,24 @@
+{
+ "format": 1,
+ "key": "2a16cdad0674dabeb57e9db5",
+ "location": "environment",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "2a16cdad0674dabeb57e9db5.0.out.json",
+   "provenance": {
+    "branch": "master",
+    "checkout": "k31-mainline",
+    "diff_sha256": "612d642b50b6d2eabc65cbc264b5bf931877c8fd3901bc53c9da2fe3272bf939",
+    "git_sha": "1a610340f458082078cfc274c856fde273f80c1b",
+    "host": "DESKTOP-MKIUJID"
+   },
+   "utc": "2026-09-14T03:10:33Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "env_key": "252d2c3041ae1aa673cbf60d6b113627bccc71bdde5b868cbdf67797b39cd9e2"
+ }
+}
