@@ -1,0 +1,121 @@
+{
+ "format": 1,
+ "key": "41cbfa0ea94fabb256566397",
+ "location": "suite/timing.session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "41cbfa0ea94fabb256566397.0.out.json",
+   "provenance": {
+    "arms": [
+     {
+      "dirty": false,
+      "git_sha": "f0d97f822a0cd0f9811f3cb95d753741ef11632d",
+      "label": "tip",
+      "role": "subject",
+      "worktree": "k31-mainline"
+     },
+     {
+      "dirty": false,
+      "git_sha": "f0d97f822a0cd0f9811f3cb95d753741ef11632d",
+      "label": "master",
+      "role": "reference",
+      "worktree": "k31-mainline"
+     }
+    ],
+    "host": "DESKTOP-MKIUJID"
+   },
+   "utc": "2026-09-14T04:56:26Z",
+   "wall_s": 3.223
+  },
+  {
+   "n": 1,
+   "ok": true,
+   "output": "41cbfa0ea94fabb256566397.1.out.json",
+   "provenance": {
+    "arms": [
+     {
+      "dirty": false,
+      "git_sha": "f0d97f822a0cd0f9811f3cb95d753741ef11632d",
+      "label": "tip",
+      "role": "subject",
+      "worktree": "k31-mainline"
+     },
+     {
+      "dirty": false,
+      "git_sha": "f0d97f822a0cd0f9811f3cb95d753741ef11632d",
+      "label": "master",
+      "role": "reference",
+      "worktree": "k31-mainline"
+     }
+    ],
+    "host": "DESKTOP-MKIUJID"
+   },
+   "utc": "2026-09-14T04:56:39Z",
+   "wall_s": 3.1
+  },
+  {
+   "n": 2,
+   "ok": true,
+   "output": "41cbfa0ea94fabb256566397.2.out.json",
+   "provenance": {
+    "arms": [
+     {
+      "dirty": false,
+      "git_sha": "f0d97f822a0cd0f9811f3cb95d753741ef11632d",
+      "label": "tip",
+      "role": "subject",
+      "worktree": "k31-mainline"
+     },
+     {
+      "dirty": false,
+      "git_sha": "f0d97f822a0cd0f9811f3cb95d753741ef11632d",
+      "label": "master",
+      "role": "reference",
+      "worktree": "k31-mainline"
+     }
+    ],
+    "host": "DESKTOP-MKIUJID"
+   },
+   "utc": "2026-09-14T04:56:52Z",
+   "wall_s": 3.077
+  }
+ ],
+ "semantics": {
+  "deps": {},
+  "identity": {
+   "arms": [
+    {
+     "arm": "liveness_pass",
+     "binary": "3fab453863350a3cee3d1fc90910a2d74d9ad25619b13e5dc52ca9d2e3b2bd19",
+     "instrument": "acd2e559cf5808cc6d4b88bef9f97a14d4c607561f48068d5e1a92c0ac2725f8",
+     "lane": [
+      "liveness_pass",
+      1
+     ],
+     "role": "subject"
+    },
+    {
+     "arm": "liveness_pass",
+     "binary": "3fab453863350a3cee3d1fc90910a2d74d9ad25619b13e5dc52ca9d2e3b2bd19",
+     "instrument": "acd2e559cf5808cc6d4b88bef9f97a14d4c607561f48068d5e1a92c0ac2725f8",
+     "lane": [
+      "liveness_pass",
+      1
+     ],
+     "role": "reference"
+    }
+   ],
+   "attention": null,
+   "environment": "9785a0a14d05f2f90782bf3c9a1c5ec481dfe8cbf97f70115bb70f91ab8247a4",
+   "params": {
+    "reps": 11,
+    "rounds": 8,
+    "warmup": 10
+   }
+  },
+  "module": "timing.session",
+  "unit": "liveness_pass@flat-small-alt-k16"
+ }
+}
