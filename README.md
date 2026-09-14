@@ -72,5 +72,5 @@ records. Pushing is the owner's act.
 
 This repository is developed in the private `rola-results-dev` and published to the public `rola-results`: a push
 to `master` runs `.github/workflows/mirror.yml`, which publishes the declared files as one snapshot commit
-([`.github/mirror/README.md`](.github/mirror/README.md)). A record carries no machine path, so every record ships as
+(`.github/mirror/declarations.json`; the export is [rola-devtools](https://github.com/Blakexx/rola-devtools)'). A record carries no machine path, so every record ships as
 stored.
