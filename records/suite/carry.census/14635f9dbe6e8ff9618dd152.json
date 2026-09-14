@@ -1,0 +1,36 @@
+{
+ "format": 1,
+ "key": "14635f9dbe6e8ff9618dd152",
+ "location": "suite/carry.census",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "14635f9dbe6e8ff9618dd152.0.out.json",
+   "provenance": {
+    "dirty": false,
+    "git_sha": "33233f97acb4ca17eae9880763d9eb95358135c7",
+    "host": "DESKTOP-MKIUJID",
+    "label": "master",
+    "worktree": "k31-mainline"
+   },
+   "utc": "2026-09-14T06:55:06Z",
+   "wall_s": 7.254
+  }
+ ],
+ "semantics": {
+  "deps": {},
+  "identity": {
+   "binary": "3fab453863350a3cee3d1fc90910a2d74d9ad25619b13e5dc52ca9d2e3b2bd19",
+   "environment": "9785a0a14d05f2f90782bf3c9a1c5ec481dfe8cbf97f70115bb70f91ab8247a4",
+   "instrument": {
+    "tools/stall_census.py": "910495da673b8d85fd2b19f97c2c2de35e69a9525a8a6ed49caa8357d137316e"
+   },
+   "params": {
+    "schedule": "first"
+   }
+  },
+  "module": "carry.census",
+  "unit": "flagship-partial-window"
+ }
+}

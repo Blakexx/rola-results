@@ -1,0 +1,53 @@
+{
+ "format": 1,
+ "key": "bb072e03d90f11acfe9cb642",
+ "location": "suite/timing.session",
+ "samples": [
+  {
+   "error": "RuntimeError: compare exited 1 without a result:\nCLOCK: lock to 1.665 GHz not proven; the device reads 1.36506060311539 GHz. Refusing to measure.\n",
+   "n": 0,
+   "ok": false,
+   "provenance": {
+    "arms": [
+     {
+      "dirty": false,
+      "git_sha": "33233f97acb4ca17eae9880763d9eb95358135c7",
+      "label": "master",
+      "role": "subject",
+      "worktree": "k31-mainline"
+     }
+    ],
+    "host": "DESKTOP-MKIUJID"
+   },
+   "trace": "Traceback (most recent call last):\n  File \"rola_bench/measure/engine.py\", line 136, in run\n    node.run({d: outputs[d] for d in node.deps}, dest)\n  File \"rola_bench/measure/modules.py\", line 174, in _session\n    raise RuntimeError(f\"compare exited {rc} without a result:\\n{text[-1500:]}\")\nRuntimeError: compare exited 1 without a result:\nCLOCK: lock to 1.665 GHz not proven; the device reads 1.36506060311539 GHz. Refusing to measure.\n\n",
+   "utc": "2026-09-14T06:58:52Z",
+   "wall_s": 1.447
+  }
+ ],
+ "semantics": {
+  "deps": {},
+  "identity": {
+   "arms": [
+    {
+     "arm": "carry_forward",
+     "binary": "3fab453863350a3cee3d1fc90910a2d74d9ad25619b13e5dc52ca9d2e3b2bd19",
+     "instrument": "a5e9942a6ea05ef9696060e2e6e59b8862b4ea1f6622abecd48967bd437c55d1",
+     "lane": [
+      "carry_forward",
+      1
+     ],
+     "role": "subject"
+    }
+   ],
+   "attention": "7ff002999333a0854633f1bf266dc83ab1fd105130406720670174087a8fe656",
+   "environment": "9785a0a14d05f2f90782bf3c9a1c5ec481dfe8cbf97f70115bb70f91ab8247a4",
+   "params": {
+    "reps": 11,
+    "rounds": 8,
+    "warmup": 10
+   }
+  },
+  "module": "timing.session",
+  "unit": "carry_forward@flat-small-multiwindow"
+ }
+}
