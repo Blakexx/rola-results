@@ -30,27 +30,29 @@ def main() -> int:
         p.add_argument("location")
         p.add_argument("--where", action="append", default=[], metavar="PATH=VALUE",
                        help="a dotted path into the semantics and the value it holds (repeatable)")
-    dashboard = sub.add_parser("dashboard", help="the newest composed sessions and memory rows as a standalone page")
+    dashboard = sub.add_parser("dashboard", help="one run's timing sessions and memory rows as a standalone page")
     dashboard.add_argument("--out", type=Path, required=True)
-    dashboard.add_argument("--group", help="one group's sessions only")
-    verdict = sub.add_parser("verdict", help="each suite timing unit's newest session judged against its baseline")
+    dashboard.add_argument("--reference", help="the label each member's paired ratio is taken to")
+    dashboard.add_argument("--run", help="the run to show (default: the newest)")
+    dashboard.add_argument("--session", help="one session only")
+    verdict = sub.add_parser("verdict", help="each candidate judged against a reference timed in the same sessions")
+    verdict.add_argument("--reference", required=True, help="the label every other label is judged against")
+    verdict.add_argument("--candidate", help="one candidate label only")
     verdict.add_argument("--cell")
-    verdict.add_argument("--subject")
-    verdict.add_argument("--baseline", help="the reference label to judge against (default: a session's first reference)")
-    verdict.add_argument("--window", type=int, default=10, help="baseline sessions the threshold is read from")
+    verdict.add_argument("--arm")
     verdict.add_argument("--json", action="store_true", help="one JSON object per unit")
     a = ap.parse_args()
 
     if a.cmd == "dashboard":
         from .dashboard import write
 
-        print(json.dumps(write(a.out, a.root, a.group)))
+        print(json.dumps(write(a.out, a.root, reference=a.reference, run=a.run, session=a.session)))
         return 0
 
     if a.cmd == "verdict":
         from .verdict import table, verdicts
 
-        rows = verdicts(a.root, cell=a.cell, subject=a.subject, baseline=a.baseline, window=a.window)
+        rows = verdicts(a.root, reference=a.reference, candidate=a.candidate, cell=a.cell, arm=a.arm)
         print("\n".join(json.dumps(r) for r in rows) if a.json else table(rows))
         return 0
 

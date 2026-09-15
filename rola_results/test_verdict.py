@@ -1,5 +1,6 @@
-"""The verdict query, on a temporary backend of planted suite sessions: the reference's sessions are the baseline, the
-candidate commit's sessions are its runs, and the newest session's paired rounds decide significance."""
+"""The verdict query, on a temporary backend of planted timing sessions: the reference is a label chosen when reading,
+each other label's member of the same arm on the same cell is judged within its session, host drift both arms share
+cancels, a unit is the code both members ran, and a member that failed or has no reference is not judged."""
 from __future__ import annotations
 
 import itertools
@@ -9,127 +10,84 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
+from . import index
 from . import store as store_module
 from .store import Store
 from .verdict import verdicts
 
 VIEWS = Path(__file__).resolve().parents[1] / "views"
 ROUNDS = 8
+REPS = 3
 
 
-def _arm(label: str, ms: float) -> dict:
-    samples = [ms] * (ROUNDS * 3)
-    return {"label": label, "arm": "carry_forward", "ms": samples, "blocks_ms": [ms] * ROUNDS, "median_ms": ms,
-            "cell": {"subject": "carry_forward", "calls": 1, "device": "gpu", "torch": "2.14"}}
+def plant(root: Path, *, tip_ms: float, master_ms: float = 1.0, tip_sha: str = "a", drift: float = 1.0,
+          tip_owner: str = "tip/carry_forward") -> None:
+    """One stored session: tip and master timing `carry_forward` on `dense` with a host drift both share and a per-round
+    swing, the attention reference on its own cell, and a tip registration that could not run."""
+    members = [{"id": "m0", "owner": tip_owner, "cell": "dense", "status": "ok", "built": {"device": "gpu"}},
+               {"id": "m1", "owner": "master/carry_forward", "cell": "dense", "status": "ok", "built": {"device": "gpu"}},
+               {"id": "m2", "owner": "bench/flash", "cell": "q", "status": "ok", "built": {"device": "gpu"}},
+               {"id": "m3", "owner": "tip/prefill_op", "cell": "dense", "status": "failed", "error": "no prefill arm"}]
+    samples, position = [], itertools.count()
+    for rnd, rep in itertools.product(range(ROUNDS), range(REPS)):
+        swing = drift * (1 + 0.05 * (rnd % 3)) * (1 + 0.01 * rep)
+        for member, ms in (("m0", tip_ms), ("m1", master_ms), ("m2", 0.1)):
+            samples.append({"member": member, "round": rnd, "rep": rep, "position": next(position) % 3, "ms": ms * swing})
+    output = {"session": "session/G/carry_forward+flash", "run": "r", "instrument": "cuda_events", "rounds": ROUNDS,
+              "reps": REPS, "clock": {"before": 1.665, "after": 1.665}, "members": members, "samples": samples}
+    checkouts = {tip_owner: {"checkout": "tip", "git_sha": tip_sha, "diff_sha256": None},
+                 "master/carry_forward": {"checkout": "master", "git_sha": "base", "diff_sha256": None},
+                 "bench/flash": {"checkout": "rola-bench", "git_sha": "bench", "diff_sha256": None}}
+    Store("timing/session", root).put({"executor": "measure", "cells": ["dense", "q"]}, output=output,
+                                      provenance={"run": "r", "checkouts": checkouts}, run="r")
 
 
 class VerdictQuery(unittest.TestCase):
     def setUp(self) -> None:
         self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name) / "records"
-        (Path(self.tmp.name) / "views").mkdir()
-        for view in ("session_arms.sql", "session_members.sql"):
-            shutil.copy(VIEWS / view, Path(self.tmp.name) / "views" / view)
-        self.store = Store("suite/timing.session", self.root)
-        clock = (f"2026-09-14T00:{m:02d}:00Z" for m in itertools.count())
+        shutil.copytree(VIEWS, Path(self.tmp.name) / "views")
+        clock = (f"2026-09-15T00:{m:02d}:00Z" for m in itertools.count())
         patcher = mock.patch.object(store_module, "utc", lambda: next(clock))
         patcher.start()
         self.addCleanup(patcher.stop)
 
-    def tearDown(self) -> None:
-        self.tmp.cleanup()
-
-    def session(self, candidate_sha: str, candidate_ms: float, reference_ms: float = 1.0) -> None:
-        output = {"subject": "carry_forward", "calls": 1, "cell": "c", "roles": {"tip": "subject", "master": "reference"},
-                  "result": {"point": {"cell": "c"}, "instrument": "cuda_events", "rounds": ROUNDS, "clock": {"held": True},
-                             "arms": [_arm("tip", candidate_ms), _arm("master", reference_ms)]}}
-        provenance = {"arms": [{"role": "subject", "label": "tip", "git_sha": candidate_sha},
-                               {"role": "reference", "label": "master", "git_sha": "base"}]}
-        self.store.put({"unit": "carry_forward@c", "candidate": candidate_sha}, output=output, provenance=provenance)
-
-    def test_an_unchanged_candidate_is_no_regression(self):
-        for sha in ("a", "b", "c", "d"):
-            self.session(sha, 1.0)
-        rows = verdicts(self.root)
-        self.assertEqual([r["verdict"] for r in rows], ["insufficient_data", "insufficient_data", "no_regression",
-                                                        "no_regression"])
-
-    def test_one_slow_session_is_flagged_and_a_second_confirms(self):
-        for sha in ("a", "b", "c"):
-            self.session(sha, 1.0)
-        self.session("slow", 1.6)
-        self.assertEqual(verdicts(self.root)[-1]["verdict"], "flagged_not_confirmed")
-        self.session("slow", 1.6)
-        got = verdicts(self.root)[-1]
-        self.assertEqual((got["verdict"], got["git_sha"], got["n_runs"]), ("regression", "slow", 2))
+    def test_one_slow_session_is_flagged_and_a_second_at_the_same_code_confirms(self):
+        plant(self.root, tip_ms=1.0)
+        plant(self.root, tip_ms=1.0)
+        self.assertEqual([r["verdict"] for r in verdicts(self.root, reference="master")], ["no_regression"])
+        plant(self.root, tip_ms=1.6, tip_sha="slow")
+        slow = [r for r in verdicts(self.root, reference="master") if r["git_sha"] == "slow"]
+        self.assertEqual([(r["verdict"], r["n_sessions"]) for r in slow], [("flagged_not_confirmed", 1)])
+        plant(self.root, tip_ms=1.6, tip_sha="slow")
+        (got,) = [r for r in verdicts(self.root, reference="master") if r["git_sha"] == "slow"]
+        self.assertEqual((got["verdict"], got["n_sessions"], got["arm"], got["cell"], got["candidate"]),
+                         ("regression", 2, "carry_forward", "dense", "tip"))
+        self.assertAlmostEqual(got["ratio"], 1.6)
         self.assertEqual(got["significance"]["verdict"], "b_slower")
 
-    def point_session(self, candidate_sha: str, ms: dict[str, tuple[float, float]]) -> None:
-        """A session on a point: tip and master on every cell, and an attention row on a cell of its own."""
-        arms = []
-        for label, which in (("tip", 0), ("master", 1)):
-            for cell, pair in ms.items():
-                arm = _arm(label, pair[which])
-                arms.append({**{k: v for k, v in arm.items() if k != "cell"}, "row": f"{label}|{cell}", "cell": cell,
-                             "built": arm["cell"]})
-        arms.append({**{k: v for k, v in _arm("attention", 0.1).items() if k != "cell"}, "row": "attention|q",
-                     "cell": "q", "arm": "flash", "built": {"device": "gpu", "torch": "2.14"}})
-        output = {"point": "P", "subject": "carry_forward", "calls": 1,
-                  "roles": {"tip": "subject", "master": "reference", "attention": "attention"},
-                  "result": {"point": {"name": "P"}, "instrument": "cuda_events", "rounds": ROUNDS,
-                             "clock": {"held": True}, "arms": arms}}
-        provenance = {"arms": [{"role": "subject", "label": "tip", "git_sha": candidate_sha},
-                               {"role": "reference", "label": "master", "git_sha": "base"}]}
-        self.store.put({"unit": "carry_forward@P", "candidate": candidate_sha}, output=output, provenance=provenance)
+    def test_host_drift_both_arms_share_is_no_regression(self):
+        plant(self.root, tip_ms=1.0)
+        plant(self.root, tip_ms=1.0, drift=1.3)
+        (got,) = verdicts(self.root, reference="master")
+        self.assertEqual((got["verdict"], got["ratio"], got["n_sessions"]), ("no_regression", 1.0, 2))
 
-    def composed(self, candidate_sha: str, ms: dict[str, tuple[float, float]]) -> None:
-        """A service session (rola_devtools.measure): tip and master members on every cell, and the attention member."""
-        members = []
-        for label, which in (("tip", 0), ("master", 1)):
-            for cell, pair in ms.items():
-                members.append({"member": f"{label}:carry_forward@{cell}", "label": label,
-                                "role": "subject" if label == "tip" else "reference", "arm": "carry_forward",
-                                "cell": cell, "unit": "benchmarks.registry:Subject",
-                                "built": {"cell": cell, "subject": "carry_forward", "calls": 1, "device": "gpu",
-                                          "torch": "2.14"},
-                                "ms": [pair[which]] * (ROUNDS * 3), "blocks_ms": [pair[which]] * ROUNDS,
-                                "median_ms": pair[which], "iqr_ms": 0.0, "post": {}, "paired": []})
-        members.append({"member": "bench:flash@q", "label": "bench", "role": "library", "arm": "flash", "cell": "q",
-                        "unit": "rola_bench.measure.registry:Flash",
-                        "built": {"cell": "q", "backend": "flash", "device": "gpu", "torch": "2.14"},
-                        "ms": [0.1] * (ROUNDS * 3), "blocks_ms": [0.1] * ROUNDS, "median_ms": 0.1, "iqr_ms": 0.0,
-                        "post": {}, "paired": []})
-        output = {"session": "carry_forward@G", "instrument": "cuda_events", "rounds": ROUNDS, "members": members,
-                  "refusals": {}, "relation": {"group": "G", "roles": {"tip": "subject", "master": "reference",
-                                                                       "bench": "library"}}}
-        provenance = {"members": [{"label": "tip", "git_sha": candidate_sha}, {"label": "master", "git_sha": "base"},
-                                  {"label": "bench", "git_sha": "bench"}]}
-        Store("bench/session", self.root).put({"members": [candidate_sha]}, output=output, provenance=provenance)
+    def test_the_reference_is_the_readers_and_only_paired_members_are_judged(self):
+        plant(self.root, tip_ms=1.6)
+        (inverse,) = verdicts(self.root, reference="tip")
+        self.assertEqual((inverse["candidate"], inverse["verdict"]), ("master", "no_regression"))
+        self.assertAlmostEqual(inverse["ratio"], 1 / 1.6)
+        self.assertEqual(verdicts(self.root, reference="someone-else"), [])
+        self.assertEqual(verdicts(self.root, reference="master", arm="prefill_op"), [])
 
-    def test_a_composed_session_judges_each_cell_against_the_reference_on_that_cell(self):
-        for sha in ("a", "b", "c"):
-            self.composed(sha, {"dense": (1.0, 1.0), "sparse": (0.2, 0.2)})
-        self.composed("slow", {"dense": (1.0, 1.0), "sparse": (0.4, 0.2)})
-        self.composed("slow", {"dense": (1.0, 1.0), "sparse": (0.4, 0.2)})
-        newest = {r["cell"]: r for r in verdicts(self.root) if r["git_sha"] == "slow"}
-        self.assertEqual({cell: r["verdict"] for cell, r in newest.items()}, {"dense": "no_regression",
-                                                                               "sparse": "regression"})
-        self.assertEqual(newest["sparse"]["arm"], "carry_forward")
-
-    def test_a_points_session_judges_each_cell_against_the_reference_on_that_cell(self):
-        for sha in ("a", "b", "c"):
-            self.point_session(sha, {"dense": (1.0, 1.0), "sparse": (0.2, 0.2)})
-        self.point_session("slow", {"dense": (1.0, 1.0), "sparse": (0.4, 0.2)})
-        self.point_session("slow", {"dense": (1.0, 1.0), "sparse": (0.4, 0.2)})
-        newest = {r["cell"]: r for r in verdicts(self.root) if r["git_sha"] == "slow"}
-        self.assertEqual({cell: r["verdict"] for cell, r in newest.items()}, {"dense": "no_regression",
-                                                                            "sparse": "regression"})
-        self.assertEqual(newest["sparse"]["point"], "P")
-
-    def test_the_baseline_is_filtered_by_label(self):
-        for sha in ("a", "b", "c"):
-            self.session(sha, 1.0)
-        self.assertEqual(verdicts(self.root, baseline="someone-else"), [])
+    def test_a_members_label_is_its_owners_scope_and_its_arm_the_last_segment(self):
+        plant(self.root, tip_ms=1.0, tip_owner="suite/tip/entmax_solve@layer=w16")
+        _, rows = index.query("SELECT label, arm, git_sha FROM timing_members WHERE member = 'm0'", root=self.root)
+        self.assertEqual(rows, [("suite/tip", "entmax_solve@layer=w16", "a")])
+        _, rows = index.query("SELECT count(*), min(round), max(round), max(rep) FROM timing_samples WHERE member = 'm0'",
+                              root=self.root)
+        self.assertEqual(rows, [(ROUNDS * REPS, 0, ROUNDS - 1, REPS - 1)])
 
 
 if __name__ == "__main__":

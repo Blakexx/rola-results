@@ -1,31 +1,30 @@
-"""THE SUITE'S DASHBOARD: the newest composed sessions, memory rows and instrument records as one standalone page.
+"""THE SUITE'S DASHBOARD: one run's timing sessions, memory rows and instrument records as one standalone page.
 
-    python -m rola_results dashboard --out suite.html [--group G]
+    python -m rola_results dashboard --out suite.html [--reference LABEL] [--run RUN] [--session S]
 
-A reading of the index (`session_members`, `memory_rows`, the instrument locations), rebuilt each time it is asked for
-and never stored. For each group, each subject's newest session: every member's median and interquartile range, its
-paired ratio to the subject checkout's arm on the same cell, and the peak memory its arm reached alone (the caching
-allocator's peak plus what the arm holds outside it, a paged state). The page
-carries its own style and no script, so it opens from a file.
+A reading of the index (`timing_members`, `timing_samples`, `memory_rows`, the instrument locations), rebuilt each time it
+is asked for and never stored. The run is the newest stored unless `--run` names one. For each of its sessions, every
+member's median and interquartile range over its samples, its paired ratio to the reference label's member of the same
+arm on the same cell (the median of the per-round ratios, within the session) when a reference is named, and the peak
+memory its entry reached alone in the same run (the caching allocator's peak plus what it holds outside it, a paged
+state). The page carries its own style and no script, so it opens from a file.
 """
 from __future__ import annotations
 
 import html
-from collections import defaultdict
+import statistics
 from pathlib import Path
 
 from . import index
 from .store import ROOT
 
-_SESSIONS = """SELECT m.location, m.key, m.n, m.utc, m.session, m.grp, m.holds, m.label, m.role, m.arm, m.cell, m.subject,
-                      m.median_ms, m.iqr_ms, m.ratio_median, m.git_sha, m.device
-               FROM session_members m
-               WHERE m.n = (SELECT max(t.n) FROM samples t WHERE t.location = m.location AND t.key = m.key AND t.ok)
-               ORDER BY m.utc"""
-_MEMORY = """SELECT label, git_sha, cell, subject, peak_bytes, peak_reserved_total_bytes, utc
-             FROM memory_rows ORDER BY utc"""
+_RUNS = "SELECT run, max(utc) FROM timing_members GROUP BY run ORDER BY max(utc) DESC"
+_MEMBERS = """SELECT location, key, n, utc, session, member, label, arm, cell, status, error, git_sha, device
+              FROM timing_members WHERE run = ? ORDER BY session, cell, label"""
+_SAMPLES = "SELECT location, key, n, member, round, ms FROM timing_samples WHERE run = ?"
+_MEMORY = "SELECT label, arm, cell, peak_bytes, peak_reserved_total_bytes FROM memory_rows WHERE run = ? AND status = 'ok'"
 _INSTRUMENTS = """SELECT location, count(DISTINCT key), max(utc) FROM samples
-                  WHERE ok AND (location LIKE 'rola/carry.%') GROUP BY location ORDER BY location"""
+                  WHERE ok AND location LIKE 'rola/%' GROUP BY location ORDER BY location"""
 
 _STYLE = """
 :root { --ink:#1d2330; --muted:#5d6678; --rule:#d9dde5; --ground:#fbfbfc; --band:#eef1f6; --accent:#2f5d9a; }
@@ -40,7 +39,7 @@ p.meta { color:var(--muted); margin:0 0 8px; }
 table { border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; }
 th, td { text-align:left; padding:4px 10px; border-bottom:1px solid var(--rule); white-space:nowrap; }
 th { color:var(--muted); font-weight:600; }
-td.num { text-align:right; } tr.subject td { background:var(--band); }
+td.num { text-align:right; } tr.reference td { background:var(--band); }
 code { font:12px ui-monospace, SFMono-Regular, Menlo, monospace; color:var(--accent); }
 """
 
@@ -53,49 +52,58 @@ def _ms(value) -> str:
     return "" if value is None else f"{value:.4f}"
 
 
-def render(root: Path | str = ROOT, group: str | None = None) -> str:
-    _, sessions = index.query(_SESSIONS, root=root)
-    _, memory = index.query(_MEMORY, root=root)
+def _iqr(values: list[float]) -> float:
+    ordered = sorted(values)
+    return ordered[int(0.75 * len(ordered))] - ordered[int(0.25 * len(ordered))]
+
+
+def _ratio(candidate: dict[int, list[float]], reference: dict[int, list[float]]) -> float | None:
+    if not candidate or sorted(candidate) != sorted(reference):
+        return None
+    return statistics.median(statistics.median(candidate[r]) / statistics.median(reference[r]) for r in sorted(candidate))
+
+
+def render(root: Path | str = ROOT, *, reference: str | None = None, run: str | None = None,
+           session: str | None = None) -> str:
+    runs = index.query(_RUNS, root=root)[1]
+    run = run or (runs[0][0] if runs else None)
+    columns, rows = index.query(_MEMBERS, (run,), root=root)
+    members = [dict(zip(columns, row, strict=True)) for row in rows if session is None or row[4] == session]
+    rounds: dict[tuple, dict[int, list[float]]] = {}
+    for location, key, n, member, rnd, ms in index.query(_SAMPLES, (run,), root=root)[1]:
+        rounds.setdefault((location, key, n, member), {}).setdefault(rnd, []).append(ms)
+    _, memory = index.query(_MEMORY, (run,), root=root)
+    peaks = {(label, arm, cell): (peak, reserved) for label, arm, cell, peak, reserved in memory}
     _, instruments = index.query(_INSTRUMENTS, root=root)
-    peaks = {}
-    for label, _sha, cell, subject, allocated, reserved, _utc in memory:
-        peaks[(label, cell, subject)] = (allocated, reserved)
-    newest: dict[tuple, dict] = {}
-    for row in sessions:
-        (location, key, n, utc, session, grp, holds, label, role, arm, cell, subject, median, iqr, ratio, sha,
-         device) = row
-        if group is not None and grp != group:
-            continue
-        entry = newest.get((grp, session))
-        if entry is None or (entry["utc"], entry["key"]) < (utc, key):
-            entry = newest[(grp, session)] = {"utc": utc, "key": key, "holds": holds, "device": device, "rows": []}
-        if entry["key"] == key:
-            entry["rows"].append((label, role, arm, cell, subject, median, iqr, ratio, sha))
+    sessions: dict[tuple, list[dict]] = {}
+    for m in members:
+        sessions.setdefault((m["session"], m["location"], m["key"], m["n"]), []).append(m)
 
     out = ["<title>RoLA suite</title>", f"<style>{_STYLE}</style>", "<main>", "<h1>RoLA measurement suite</h1>",
-           f"<p class='meta'>{len(newest)} session(s) across {len({g for g, _s in newest})} group(s); "
-           f"{len(memory)} memory row(s). Latency is comparable only within one session.</p>"]
-    by_group: dict[str, list] = defaultdict(list)
-    for (grp, session), entry in sorted(newest.items()):
-        by_group[grp].append((session, entry))
-    for grp, entries in by_group.items():
-        out.append(f"<h2>{html.escape(str(grp))}</h2><p class='meta'>{html.escape(entries[0][1]['holds'] or '')}</p>")
-        for session, entry in entries:
-            out.append(f"<h3>{html.escape(session)}</h3><p class='meta'>{html.escape(entry['utc'])} &middot; "
-                       f"{html.escape(entry['device'] or '')} &middot; <code>{entry['key'][:12]}</code></p>")
-            out.append("<div class='scroll'><table><tr><th>checkout</th><th>role</th><th>cell</th><th>median ms</th>"
-                       "<th>IQR ms</th><th>ratio to subject</th><th>peak MB</th><th>reserved MB</th><th>commit</th></tr>")
-            order = {"subject": 0, "reference": 1, "library": 2}
-            for label, role, _arm, cell, subject, median, iqr, ratio, sha in sorted(
-                    entry["rows"], key=lambda r: (r[3] or "", order.get(r[1], 3))):
-                allocated, reserved = peaks.get((label, cell, subject), (None, None))
-                out.append(f"<tr class='{html.escape(role or '')}'><td>{html.escape(label)}</td>"
-                           f"<td>{html.escape(role or '')}</td><td>{html.escape(cell or '')}</td>"
-                           f"<td class='num'>{_ms(median)}</td><td class='num'>{_ms(iqr)}</td>"
-                           f"<td class='num'>{'' if ratio is None else f'{ratio:.3f}'}</td>"
-                           f"<td class='num'>{_mb(allocated)}</td><td class='num'>{_mb(reserved)}</td>"
-                           f"<td><code>{html.escape((sha or '')[:8])}</code></td></tr>")
-            out.append("</table></div>")
+           f"<p class='meta'>run <code>{html.escape(run or 'none')}</code> &middot; {len(sessions)} session(s); "
+           f"ratios to <code>{html.escape(reference or 'no reference')}</code>. Latency is comparable only within one "
+           "session.</p>"]
+    for (name, location, key, n), ms in sorted(sessions.items()):
+        out.append(f"<h2>{html.escape(name or '')}</h2><p class='meta'>{html.escape(ms[0]['utc'])} &middot; "
+                   f"{html.escape(ms[0]['device'] or '')} &middot; <code>{html.escape(key[:12])}</code></p>")
+        out.append("<div class='scroll'><table><tr><th>label</th><th>arm</th><th>cell</th><th>median ms</th>"
+                   "<th>IQR ms</th><th>ratio to reference</th><th>peak MB</th><th>reserved MB</th><th>commit</th></tr>")
+        refs = {(m["arm"], m["cell"]): m for m in ms if m["label"] == reference}
+        for m in ms:
+            got = rounds.get((location, key, n, m["member"]), {})
+            samples = [v for r in got.values() for v in r]
+            base = refs.get((m["arm"], m["cell"]))
+            ratio = None if base is None or base is m else _ratio(got, rounds.get((location, key, n, base["member"]), {}))
+            allocated, reserved = peaks.get((m["label"], m["arm"], m["cell"]), (None, None))
+            median = _ms(statistics.median(samples)) if samples else html.escape(m["status"] or "")
+            spread = _ms(_iqr(samples)) if samples else html.escape((m["error"] or "")[:60])
+            out.append(f"<tr class='{'reference' if base is m else ''}'><td>{html.escape(m['label'])}</td>"
+                       f"<td>{html.escape(m['arm'])}</td><td>{html.escape(m['cell'] or '')}</td>"
+                       f"<td class='num'>{median}</td><td class='num'>{spread}</td>"
+                       f"<td class='num'>{'' if ratio is None else f'{ratio:.3f}'}</td>"
+                       f"<td class='num'>{_mb(allocated)}</td><td class='num'>{_mb(reserved)}</td>"
+                       f"<td><code>{html.escape((m['git_sha'] or '')[:8])}</code></td></tr>")
+        out.append("</table></div>")
     out.append("<h2>Instrument records</h2><div class='scroll'><table><tr><th>location</th><th>records</th>"
                "<th>newest sample</th></tr>")
     out += [f"<tr><td><code>{html.escape(loc)}</code></td><td class='num'>{count}</td><td>{html.escape(utc)}</td></tr>"
@@ -104,8 +112,8 @@ def render(root: Path | str = ROOT, group: str | None = None) -> str:
     return "\n".join(out) + "\n"
 
 
-def write(out: Path | str, root: Path | str = ROOT, group: str | None = None) -> dict:
-    page = render(root, group)
+def write(out: Path | str, root: Path | str = ROOT, **reading) -> dict:
+    page = render(root, **reading)
     Path(out).write_text(page)
     return {"out": str(out), "bytes": len(page)}
 

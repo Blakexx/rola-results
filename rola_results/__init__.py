@@ -1,6 +1,6 @@
 """rola_results: the interface every tool stores its measurements through.
 
-A tool opens a STORE at its own LOCATION (`Store("probe_cells")`, `Store("suite/carry.sass")`) and hands it what it
+A tool opens a STORE at its own LOCATION (`Store("rola/sass")`, `Store("timing/session")`) and hands it what it
 measured. A RECORD is everything kept under one KEY: the SEMANTICS the tool handed over (what ran: its inputs, their
 identities, its parameters), and every SAMPLE -- one execution under that key, its raw output or its failure, when, how
 long, and its PROVENANCE (which checkout, which commit, which host). The key is sha256 over the semantics, so the same

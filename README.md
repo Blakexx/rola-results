@@ -5,14 +5,14 @@ The interface every rola tool stores its measurements through (`rola_results`), 
 ```python
 from rola_results import Store, checkout
 
-store = Store("probe_cells")                       # the tool's own location
-semantics = {"bench": "prefill_op", "cell": "nl64k-alt-k4", "binary": so_sha256, "instrument": code_key}
+store = Store("mqar/local")                        # the tool's own location
+semantics = {"bench": "mqar", "config": "local", "cell": "d1-n256", "local": checkouts}
 store.put(semantics, output=rows, wall_s=12.3, provenance=checkout(worktree))
 store.put(semantics, error="RuntimeError: ...")    # a failure is a sample too
 record = store.get(key(semantics))                  # Store.complete(record), store.output(record)
 ```
 
-- **A location** names who stores: `probe_cells`, `bench_driver`, `suite/carry.sass`.
+- **A location** names who stores: `rola/sass`, `timing/session`, `mqar/<config>`.
 - **A record** is everything kept under one key: the semantics the tool handed over and every sample.
 - **The key** is sha256 over the semantics, so a repeat lands on the same record and a changed input on a new one.
 - **A sample** is one execution: its output (JSON, or a file moved in) or its error, when, how long, its provenance
@@ -31,8 +31,8 @@ Nothing derived from two records (a ratio, a baseline) is stored: that is the re
     python -m rola_results sql "SELECT ..."       # any query; the index is brought up to date first
     python -m rola_results history LOCATION [--where PATH=VALUE]   # every sample of the matching records
     python -m rola_results latest LOCATION [--where PATH=VALUE]    # each matching record's newest good output
-    python -m rola_results verdict [--cell C] [--subject S] [--baseline LABEL]   # each suite timing unit judged
-    python -m rola_results dashboard --out suite.html [--group G]  # the newest sessions and memory rows as a page
+    python -m rola_results verdict --reference LABEL [--candidate LABEL] [--cell C] [--arm A]   # judged in-session
+    python -m rola_results dashboard --out suite.html [--reference LABEL] [--run RUN]   # one run's sessions as a page
 
 The tables know no tool: `records(location, key, format, semantics)` and `samples(location, key, n, ok, utc, wall_s,
 provenance, error, output_path, output, extra)`, the JSON fields read with SQLite's JSON functions. A tool's shape is a
@@ -40,36 +40,33 @@ view in `views/`, run after every index:
 
 | view | from | one row per |
 |---|---|---|
-| `session_members` | `bench/session`, an owner's `sessions` (`rola_devtools.measure`) | member of a service session: group and claim, label, role, arm, cell, subject, calls, samples and round medians, paired ratio, device, torch, commit |
-| `memory_rows` | `rola/memory`, `bench/memory` (`rola_devtools.measure`) | arm alone on a central cell: unit and arm, peak allocated and reserved bytes, what was allocated before the build and after the calls, bytes held outside the caching allocator (a paged state) and the totals with them, label, commit |
-| `session_arms` | `compare`, `suite/timing.session` (through `tools/compare.py`, before the composer) | arm of an interleaved session: cell, subject, calls, label, role, arm name, samples and round medians, device, torch, commit, clock held |
-| `timing_rows` | `probe_cells`, `suite/timing.session` (before `tools/compare.py`) | timed arm of a session at a cell: label, branch, commit, tree digest, unit, lane, ms, clock |
-| `timing_pairs` | `timing_rows` | pair of arms of one session, cell and unit, with the ratio |
-| `driver_rows` | `bench_driver` | driver result: subject, cell, median and IQR, or an A/B's paired ratio and verdict |
+| `timing_members` | `timing/session` (rola-devtools' `measure_timing`, through a store target) | member of a stored session: the run, the session, its registration (`owner`), the label and arm read from it, the cell, whether it ran and why not, device, torch, the owner's commit and diff, the session's rounds, reps and clock reads |
+| `timing_samples` | `timing_members` | timed call, in the order taken: its member's label, arm and cell, its round, rep and position in the rep's random order, and its milliseconds |
+| `memory_rows` | `timing/memory` (rola-devtools' `measure_memory`) | timing entry alone on a central cell: peak allocated and reserved bytes, what was allocated before the build and after the calls, bytes held outside the caching allocator (a paged state) and the totals with them, label, arm, commit |
 | `cells` | fleet and local grids | stored grid cell: bench, config, cell, image or local checkouts, row |
 
-The questions the old measurements database answered, as SQL:
+A session stores raw samples and no ratio: which label is the reference is the reader's, in a query.
 
 ```sql
--- last: the newest time of a cell at a commit
-SELECT utc, label, ms FROM timing_rows WHERE cell = 'nl64k-alt-k4' AND git_sha LIKE 'b729e70%' ORDER BY utc DESC LIMIT 1;
--- history: a cell on a branch over time
-SELECT utc, git_sha, ms FROM timing_rows WHERE cell = 'nl64k-alt-k4' AND branch = 'master' ORDER BY utc;
--- compare: two commits measured in one session
-SELECT cell, subject, calls, ratio FROM timing_pairs WHERE git_sha LIKE 'b729e70%' AND base_sha LIKE 'd652e77%';
--- baseline: what a stage measured
-SELECT * FROM timing_rows WHERE stage = 'rola-results-landing';
--- regressions: arms of a stage slower than their session's base by more than 10%
-SELECT utc, cell, subject, label, base_label, ratio FROM timing_pairs WHERE stage = ? AND ratio > 1.10;
+-- the runs, newest first
+SELECT run, max(utc), count(DISTINCT session) FROM timing_members GROUP BY run ORDER BY max(utc) DESC;
+-- one session's members that could not run, and why
+SELECT session, label, arm, cell, error FROM timing_members WHERE run = ? AND status = 'failed';
+-- a label's arm on a cell over time: its mean call per stored session
+SELECT utc, git_sha, avg(ms) FROM timing_samples WHERE label = 'tip' AND arm = 'carry_forward' AND cell = 'nl64k-alt-k4'
+GROUP BY location, key, n ORDER BY utc;
+-- two labels in one session, round by round
+SELECT a.round, avg(a.ms) / avg(b.ms) FROM timing_samples a JOIN timing_samples b USING (location, key, n, arm, cell, round)
+WHERE a.label = 'tip' AND b.label = 'master' AND a.cell = 'flagship-dense' AND a.run = ? GROUP BY a.round;
 ```
 
-**The verdict** is a query, never a stored row. `verdict` reads `session_members` and, for sessions from before the
-composer, `session_arms`: for the newest suite session of each unit
-(cell, subject, call count, arm names) and candidate commit, the baseline is the reference arm's samples over the newest
-ten sessions of that unit on the same device and torch, the runs are the candidate's sessions at its commit, and the
-paired differences are the last session's round medians, candidate minus reference. rola-devtools'
-`rola_devtools.verdict.classify` judges them: a regression needs the effect over the baseline's derived threshold, a
-significant paired test and a second run over the line; anything less says what it is.
+**The verdict** is a query, never a stored row. `verdict --reference LABEL` pairs, in every stored session, each other
+label's member with the reference label's member of the same arm on the same cell, and judges the pair within its
+session: per round each member's median, their ratio and difference (`rola_devtools.verdict.session`). A unit is the
+arm, the cell, the two labels and the code each ran (commit and diff); rola-devtools' `rola_devtools.verdict.classify`
+reads a unit's sessions oldest first and judges the newest: a regression needs the session's median ratio over one plus
+three sigmas of its own per-round ratio spread, a significant paired test, and a second session at the same code over its
+own limit; anything less says what it is. Host drift between sessions moves both members of a pair and cancels.
 
 The rola tree names this checkout as `store.root` in its dev config, and `tools/dev.py init` makes the package importable
 from every interpreter it provisions.
