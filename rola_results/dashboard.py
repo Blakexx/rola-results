@@ -4,7 +4,8 @@
 
 A reading of the index (`session_members`, `memory_rows`, the instrument locations), rebuilt each time it is asked for
 and never stored. For each group, each subject's newest session: every member's median and interquartile range, its
-paired ratio to the subject checkout's node of the same name, and the peak memory its arm reached alone. The page
+paired ratio to the subject checkout's node of the same name, and the peak memory its arm reached alone (the caching
+allocator's peak plus what the arm holds outside it, a paged state). The page
 carries its own style and no script, so it opens from a file.
 """
 from __future__ import annotations
@@ -21,7 +22,7 @@ _SESSIONS = """SELECT m.location, m.key, m.n, m.utc, m.session, m.grp, m.holds, 
                FROM session_members m
                WHERE m.n = (SELECT max(t.n) FROM samples t WHERE t.location = m.location AND t.key = m.key AND t.ok)
                ORDER BY m.utc"""
-_MEMORY = """SELECT label, git_sha, cell, subject, peak_allocated_bytes, peak_reserved_bytes, utc
+_MEMORY = """SELECT label, git_sha, cell, subject, peak_bytes, peak_reserved_total_bytes, utc
              FROM memory_rows ORDER BY utc"""
 _INSTRUMENTS = """SELECT location, count(DISTINCT key), max(utc) FROM samples
                   WHERE ok AND (location LIKE 'rola/carry.%') GROUP BY location ORDER BY location"""

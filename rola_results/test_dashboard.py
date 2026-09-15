@@ -36,8 +36,8 @@ class Dashboard(unittest.TestCase):
             provenance={"members": [{"label": "tip", "git_sha": "aaaa1111"}, {"label": "master", "git_sha": "bbbb2222"}]})
         Store("rola/memory", self.root).put(
             {"params": {"cell": "dense", "arm": "carry_forward"}},
-            output={"peak_allocated_bytes": 19_700_000, "peak_reserved_bytes": 52_400_000, "allocated_after_bytes": 1,
-                    "built": {"device": "gpu"}},
+            output={"peak_allocated_bytes": 17_600_000, "peak_reserved_bytes": 52_400_000, "allocated_after_bytes": 1,
+                    "outside_allocator_bytes": 2_100_000, "built": {"device": "gpu"}},
             provenance={"label": "tip", "git_sha": "aaaa1111"})
         page = render(self.root)
         self.assertIn("<h2>G</h2>", page)
@@ -45,6 +45,7 @@ class Dashboard(unittest.TestCase):
         self.assertIn("0.7500", page)
         self.assertIn("1.500", page)
         self.assertIn("19.7", page)
+        self.assertIn("54.5", page)
 
 
 if __name__ == "__main__":
