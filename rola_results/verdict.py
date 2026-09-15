@@ -2,10 +2,10 @@
 
     python -m rola_results verdict [--cell C] [--subject S] [--baseline LABEL] [--window N] [--json]
 
-A timing session -- a composed session (`session_members`) or a suite session from before the composer (`session_arms`),
-role `subject` against role `reference` on the same cell -- is judged per unit: a cell, a subject, a call count and the
-arms' names (a composed member's name is its node, `time.<subject>@<cell>`). For the newest session of each (unit,
-candidate commit):
+A timing session -- a measurement service session (`session_members`) or a suite session from before the service
+(`session_arms`), role `subject` against role `reference` on the same cell -- is judged per unit: a cell, a subject, a
+call count and the arms' names (a service session's member is named by its registration, `carry_forward`). For the
+newest session of each (unit, candidate commit):
 
 - the BASELINE is the reference arm's samples over the newest `window` sessions of that unit whose reference ran the same
   arm on the same device and torch, up to and including this one: the threshold is its own median and spread;
@@ -30,7 +30,7 @@ WINDOW = 10
 _ARMS = """SELECT key, n, utc, point, cell, subject, calls, label, role, arm, samples, blocks, device, torch, git_sha, rounds
            FROM session_arms WHERE location = 'suite/timing.session' AND role IN ('subject', 'reference')
            UNION ALL
-           SELECT key, n, utc, grp, cell, subject, calls, label, role, node, samples, blocks, device, torch, git_sha, rounds
+           SELECT key, n, utc, grp, cell, subject, calls, label, role, arm, samples, blocks, device, torch, git_sha, rounds
            FROM session_members WHERE role IN ('subject', 'reference')
            ORDER BY utc, key, n"""
 

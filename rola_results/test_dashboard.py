@@ -25,19 +25,21 @@ class Dashboard(unittest.TestCase):
         self.tmp.cleanup()
 
     def test_a_session_and_its_memory_rows_are_one_table(self):
-        members = [{"member": f"{label}:time.carry_forward@dense", "label": label, "node": "time.carry_forward@dense",
-                    "built": {"cell": "dense", "subject": "carry_forward", "device": "gpu"}, "ms": [ms], "blocks_ms": [ms],
+        members = [{"member": f"{label}:carry_forward@dense", "label": label, "role": role, "arm": "carry_forward",
+                    "cell": "dense", "built": {"cell": "dense", "subject": "carry_forward", "device": "gpu"}, "ms": [ms],
+                    "blocks_ms": [ms],
                     "median_ms": ms, "iqr_ms": 0.001, "paired": [] if label == "tip" else [{"ratio_median": ms / 0.5}]}
-                   for label, ms in (("tip", 0.5), ("master", 0.75))]
+                   for label, role, ms in (("tip", "subject", 0.5), ("master", "reference", 0.75))]
         Store("bench/session", self.root).put(
             {"members": ["tip", "master"]},
-            output={"session": "carry_forward@G", "members": members, "refused": {},
+            output={"session": "carry_forward@G", "members": members, "refusals": {},
                     "relation": {"group": "G", "holds": "1024 tokens", "roles": {"tip": "subject", "master": "reference"}}},
             provenance={"members": [{"label": "tip", "git_sha": "aaaa1111"}, {"label": "master", "git_sha": "bbbb2222"}]})
         Store("rola/memory", self.root).put(
-            {"params": {"cell": "dense", "arm": "carry_forward"}},
+            {"kind": "memory", "unit": "benchmarks.registry:Subject", "params": {"arm": "carry_forward"},
+             "cell": {"name": "dense", "data": "rola_devtools.cells.carry:carry_cell", "params": {}}},
             output={"peak_allocated_bytes": 17_600_000, "peak_reserved_bytes": 52_400_000, "allocated_after_bytes": 1,
-                    "outside_allocator_bytes": 2_100_000, "built": {"device": "gpu"}},
+                    "outside_allocator_bytes": 2_100_000, "built": {"device": "gpu", "subject": "carry_forward"}},
             provenance={"label": "tip", "git_sha": "aaaa1111"})
         page = render(self.root)
         self.assertIn("<h2>G</h2>", page)

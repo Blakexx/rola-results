@@ -83,23 +83,25 @@ class VerdictQuery(unittest.TestCase):
         self.store.put({"unit": "carry_forward@P", "candidate": candidate_sha}, output=output, provenance=provenance)
 
     def composed(self, candidate_sha: str, ms: dict[str, tuple[float, float]]) -> None:
-        """A composed session (rola_devtools.graph): tip and master members on every cell, and the attention member."""
+        """A service session (rola_devtools.measure): tip and master members on every cell, and the attention member."""
         members = []
         for label, which in (("tip", 0), ("master", 1)):
             for cell, pair in ms.items():
-                members.append({"member": f"{label}:time.carry_forward@{cell}", "label": label,
-                                "node": f"time.carry_forward@{cell}", "unit": "benchmarks.graph:Arm",
+                members.append({"member": f"{label}:carry_forward@{cell}", "label": label,
+                                "role": "subject" if label == "tip" else "reference", "arm": "carry_forward",
+                                "cell": cell, "unit": "benchmarks.registry:Subject",
                                 "built": {"cell": cell, "subject": "carry_forward", "calls": 1, "device": "gpu",
                                           "torch": "2.14"},
                                 "ms": [pair[which]] * (ROUNDS * 3), "blocks_ms": [pair[which]] * ROUNDS,
                                 "median_ms": pair[which], "iqr_ms": 0.0, "post": {}, "paired": []})
-        members.append({"member": "bench:time.flash@q", "label": "bench", "node": "time.flash@q", "unit": "g:Flash",
+        members.append({"member": "bench:flash@q", "label": "bench", "role": "library", "arm": "flash", "cell": "q",
+                        "unit": "rola_bench.measure.registry:Flash",
                         "built": {"cell": "q", "backend": "flash", "device": "gpu", "torch": "2.14"},
                         "ms": [0.1] * (ROUNDS * 3), "blocks_ms": [0.1] * ROUNDS, "median_ms": 0.1, "iqr_ms": 0.0,
                         "post": {}, "paired": []})
         output = {"session": "carry_forward@G", "instrument": "cuda_events", "rounds": ROUNDS, "members": members,
-                  "refused": {}, "relation": {"group": "G", "roles": {"tip": "subject", "master": "reference",
-                                                                      "bench": "attention"}}}
+                  "refusals": {}, "relation": {"group": "G", "roles": {"tip": "subject", "master": "reference",
+                                                                       "bench": "library"}}}
         provenance = {"members": [{"label": "tip", "git_sha": candidate_sha}, {"label": "master", "git_sha": "base"},
                                   {"label": "bench", "git_sha": "bench"}]}
         Store("bench/session", self.root).put({"members": [candidate_sha]}, output=output, provenance=provenance)
@@ -112,7 +114,7 @@ class VerdictQuery(unittest.TestCase):
         newest = {r["cell"]: r for r in verdicts(self.root) if r["git_sha"] == "slow"}
         self.assertEqual({cell: r["verdict"] for cell, r in newest.items()}, {"dense": "no_regression",
                                                                                "sparse": "regression"})
-        self.assertEqual(newest["sparse"]["arm"], "time.carry_forward@sparse")
+        self.assertEqual(newest["sparse"]["arm"], "carry_forward")
 
     def test_a_points_session_judges_each_cell_against_the_reference_on_that_cell(self):
         for sha in ("a", "b", "c"):
