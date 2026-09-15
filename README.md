@@ -40,8 +40,8 @@ view in `views/`, run after every index:
 
 | view | from | one row per |
 |---|---|---|
-| `session_members` | `bench/session`, a lone arm's own location (`rola_devtools.graph`) | member of a composed session: group and claim, label, role, node, cell, subject, calls, samples and round medians, paired ratio, device, torch, commit |
-| `memory_rows` | `rola/memory`, `bench/memory` (`rola_devtools.graph`) | arm alone on a cell: peak allocated and reserved bytes, what stayed allocated, bytes held outside the caching allocator (a paged state) and the totals with them, label, commit |
+| `session_members` | `bench/session`, an owner's `sessions` (`rola_devtools.measure`) | member of a service session: group and claim, label, role, arm, cell, subject, calls, samples and round medians, paired ratio, device, torch, commit |
+| `memory_rows` | `rola/memory`, `bench/memory` (`rola_devtools.measure`) | arm alone on a central cell: unit and arm, peak allocated and reserved bytes, what was allocated before the build and after the calls, bytes held outside the caching allocator (a paged state) and the totals with them, label, commit |
 | `session_arms` | `compare`, `suite/timing.session` (through `tools/compare.py`, before the composer) | arm of an interleaved session: cell, subject, calls, label, role, arm name, samples and round medians, device, torch, commit, clock held |
 | `timing_rows` | `probe_cells`, `suite/timing.session` (before `tools/compare.py`) | timed arm of a session at a cell: label, branch, commit, tree digest, unit, lane, ms, clock |
 | `timing_pairs` | `timing_rows` | pair of arms of one session, cell and unit, with the ratio |
