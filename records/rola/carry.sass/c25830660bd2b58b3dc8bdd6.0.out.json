@@ -1,0 +1,30 @@
+{
+ "carry_arm_0.sm_80.cubin": {
+  "functions": {
+   "_ZN4rola5carry12carry_kernelILi2ELi64ELi8EEEvNS0_11CarryParamsE": {
+    "calls": 0,
+    "hmma": 45,
+    "instr": 6744,
+    "ldl": 0,
+    "per_hmma": 149.87,
+    "pred_hmma": 0,
+    "reds": []
+   }
+  },
+  "ok": true
+ },
+ "carry_arm_0.sm_86.cubin": {
+  "functions": {
+   "_ZN4rola5carry12carry_kernelILi2ELi64ELi8EEEvNS0_11CarryParamsE": {
+    "calls": 0,
+    "hmma": 45,
+    "instr": 6744,
+    "ldl": 0,
+    "per_hmma": 149.87,
+    "pred_hmma": 0,
+    "reds": []
+   }
+  },
+  "ok": true
+ }
+}

@@ -1,0 +1,288 @@
+{
+ "budget_red": false,
+ "cell": "flagship-dense-L16384",
+ "census": {
+  "FoldStream": {
+   "hmma_per_unit": 4608.0,
+   "other_per_unit": 41899.4,
+   "samples_at_hmma": 84871,
+   "samples_at_other": 96421
+  },
+  "ReadoutStream": {
+   "hmma_per_unit": 4608.0,
+   "other_per_unit": 39836.2,
+   "samples_at_hmma": 92131,
+   "samples_at_other": 102636
+  },
+  "carry_kernel": {
+   "hmma_per_unit": 0.0,
+   "other_per_unit": 7437.5,
+   "samples_at_hmma": 0,
+   "samples_at_other": 27032
+  },
+  "head": {
+   "hmma_per_unit": 0.0,
+   "other_per_unit": 4039.9,
+   "samples_at_hmma": 0,
+   "samples_at_other": 11636
+  },
+  "snapshot_publish": {
+   "hmma_per_unit": 0.0,
+   "other_per_unit": 1659.5,
+   "samples_at_hmma": 0,
+   "samples_at_other": 3425
+  }
+ },
+ "components": {
+  "FoldStream": {
+   "budget": null,
+   "instr_per_unit": 46507.4,
+   "samples": 181292,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 3652,
+    "dispatch": 373,
+    "drain": 0,
+    "imc": 0,
+    "lg": 36,
+    "long_sb": 702,
+    "math": 66961,
+    "membar": 0,
+    "mio": 741,
+    "misc": 0,
+    "no_inst": 3486,
+    "not_selected": 2072,
+    "selected": 22063,
+    "short_sb": 20800,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 60406
+   }
+  },
+  "FoldStream [spin]": {
+   "budget": null,
+   "instr_per_unit": 9748.4,
+   "samples": 588,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 0,
+    "dispatch": 0,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 0,
+    "math": 0,
+    "membar": 0,
+    "mio": 28,
+    "misc": 0,
+    "no_inst": 0,
+    "not_selected": 14,
+    "selected": 51,
+    "short_sb": 320,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 175
+   }
+  },
+  "ReadoutStream": {
+   "budget": null,
+   "instr_per_unit": 44444.2,
+   "samples": 194767,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 2836,
+    "dispatch": 2148,
+    "drain": 0,
+    "imc": 0,
+    "lg": 3,
+    "long_sb": 142,
+    "math": 78048,
+    "membar": 0,
+    "mio": 1697,
+    "misc": 0,
+    "no_inst": 1286,
+    "not_selected": 3330,
+    "selected": 21991,
+    "short_sb": 35822,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 47464
+   }
+  },
+  "ReadoutStream [spin]": {
+   "budget": null,
+   "instr_per_unit": 0.0,
+   "samples": 88,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 0,
+    "dispatch": 0,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 0,
+    "math": 0,
+    "membar": 0,
+    "mio": 0,
+    "misc": 0,
+    "no_inst": 0,
+    "not_selected": 0,
+    "selected": 21,
+    "short_sb": 0,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 67
+   }
+  },
+  "carry_kernel": {
+   "budget": null,
+   "instr_per_unit": 7437.5,
+   "samples": 27032,
+   "stalls": {
+    "barrier": 4122,
+    "branch_resolving": 1104,
+    "dispatch": 184,
+    "drain": 10,
+    "imc": 142,
+    "lg": 0,
+    "long_sb": 945,
+    "math": 231,
+    "membar": 0,
+    "mio": 462,
+    "misc": 0,
+    "no_inst": 438,
+    "not_selected": 417,
+    "selected": 4127,
+    "short_sb": 2463,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 12387
+   }
+  },
+  "head": {
+   "budget": null,
+   "instr_per_unit": 4039.9,
+   "samples": 11636,
+   "stalls": {
+    "barrier": 3198,
+    "branch_resolving": 339,
+    "dispatch": 29,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 0,
+    "math": 209,
+    "membar": 0,
+    "mio": 50,
+    "misc": 0,
+    "no_inst": 161,
+    "not_selected": 304,
+    "selected": 1946,
+    "short_sb": 2112,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 3288
+   }
+  },
+  "snapshot_publish": {
+   "budget": null,
+   "instr_per_unit": 1659.5,
+   "samples": 3425,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 122,
+    "dispatch": 3,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 0,
+    "math": 130,
+    "membar": 0,
+    "mio": 683,
+    "misc": 0,
+    "no_inst": 2,
+    "not_selected": 280,
+    "selected": 846,
+    "short_sb": 378,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 981
+   }
+  }
+ },
+ "instructions_per_unit": 113837.0,
+ "per": 8192.0,
+ "samples": 418828,
+ "schedule": "first",
+ "wavefronts": {
+  "excess_per_unit": 5672.1,
+  "lines": [
+   {
+    "excess_per_unit": 3200.0,
+    "line": 784,
+    "per_instr": 24.0,
+    "text": "ops::stage_run_if<16>(slot + pool_v_off<BP>(row, c), vrow + "
+   },
+   {
+    "excess_per_unit": 960.0,
+    "line": 334,
+    "per_instr": 16.0,
+    "text": "ops::stage_run<4>(sm.words_addr(side, lane) + (uint32_t)(r *"
+   },
+   {
+    "excess_per_unit": 768.0,
+    "line": 1232,
+    "per_instr": 16.0,
+    "text": "ops::stage_run_if<16>(slot + row32_off(row, h), arow + bases"
+   },
+   {
+    "excess_per_unit": 320.0,
+    "line": 788,
+    "per_instr": 24.0,
+    "text": "ops::stage_run_if<16>(slot + pool_inner_off<BP>(row, h), aro"
+   },
+   {
+    "excess_per_unit": 320.0,
+    "line": 789,
+    "per_instr": 24.0,
+    "text": "ops::stage_run_if<16>(slot + pool_outer_off<BP>(row, h), aro"
+   },
+   {
+    "excess_per_unit": 64.0,
+    "line": 450,
+    "per_instr": 5.0,
+    "text": "if (lane < BP::kBuckets) counts[lane * BP::kRounds + rho] = "
+   },
+   {
+    "excess_per_unit": 32.0,
+    "line": 791,
+    "per_instr": 2.0,
+    "text": "ops::stage_run_if<4>(slot + pool_gain_off<BP>(row),"
+   },
+   {
+    "excess_per_unit": 4.0,
+    "line": 486,
+    "per_instr": 5.0,
+    "text": "const uint4 v = ops::load_shared_v4(row + (uint32_t)(decltyp"
+   },
+   {
+    "excess_per_unit": 4.0,
+    "line": 516,
+    "per_instr": 5.0,
+    "text": "ops::store_shared_vec16(row + (uint32_t)(v * 16),"
+   },
+   {
+    "excess_per_unit": 0.1,
+    "line": 1546,
+    "per_instr": 2.0,
+    "text": "ops::store_shared_vec16("
+   },
+   {
+    "excess_per_unit": 0.0,
+    "line": 1540,
+    "per_instr": 3.0,
+    "text": "ops::store_shared_vec16(sm.pool(s) + pool_v_off<BP>(BP::kPoo"
+   }
+  ]
+ }
+}

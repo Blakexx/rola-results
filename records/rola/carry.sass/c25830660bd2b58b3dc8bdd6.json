@@ -1,0 +1,53 @@
+{
+ "format": 1,
+ "key": "c25830660bd2b58b3dc8bdd6",
+ "location": "rola/carry.sass",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "c25830660bd2b58b3dc8bdd6.0.out.json",
+   "provenance": {
+    "branch": "master",
+    "checkout": "k31-mainline",
+    "diff_sha256": null,
+    "git_sha": "fd69ba8a8a87ecd90a9a9b78215ce9ed73230cb0",
+    "host": "DESKTOP-MKIUJID",
+    "label": "master"
+   },
+   "utc": "2026-09-15T18:04:34Z",
+   "wall_s": 1.995
+  }
+ ],
+ "semantics": {
+  "cell": null,
+  "deps": {
+   "build": {
+    "key": "96e63b741f96808e25adcdb8",
+    "output": "3116823a33ec6b7e250d3ad5f9edfea0b9757de9d85991df27004b350f41dcfd"
+   }
+  },
+  "draw": null,
+  "identity": {
+   "args": [
+    "{binary}"
+   ],
+   "binary": "35da650f7d34917e3599584934fb32e6e06b412aa2fa11791594de599d8af7ef",
+   "code": "3de2b44365b5f6cf89d12b751b179d85e1fb36ebeaa7b0f05e2fc0ee6c32d33e",
+   "environment": "8e4babba64117665d39feeb34ef43dafeeb988d771468765b046376c6de21e38"
+  },
+  "kind": "instrument",
+  "params": {
+   "args": [
+    "{binary}"
+   ],
+   "data": [],
+   "location": "rola/carry.sass",
+   "per_cell": false,
+   "repeatable": false,
+   "timeout": 900,
+   "tool": "tools/sass_gate.py"
+  },
+  "unit": "benchmarks.registry:Tool"
+ }
+}

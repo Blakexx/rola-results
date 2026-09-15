@@ -1,0 +1,46 @@
+{
+ "format": 1,
+ "key": "ba9ce78e1e8b509d54fdf9d8",
+ "location": "bench/memory",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "ba9ce78e1e8b509d54fdf9d8.0.out.json",
+   "provenance": {
+    "branch": "master",
+    "checkout": "rola-bench",
+    "diff_sha256": null,
+    "git_sha": "42751d717d0f1b5b39a97fbfdeb106261940e467",
+    "host": "DESKTOP-MKIUJID",
+    "label": "bench"
+   },
+   "utc": "2026-09-15T18:14:53Z",
+   "wall_s": 0.082
+  }
+ ],
+ "semantics": {
+  "calls": 5,
+  "cell": {
+   "data": "rola_devtools.cells.qkv:qkv_cell",
+   "name": "qkv-L32-dv64",
+   "params": {
+    "batch": 1,
+    "causal": true,
+    "dtype": "bfloat16",
+    "dv": 64,
+    "heads": 1,
+    "tokens": 32
+   }
+  },
+  "deps": {},
+  "draw": "7fbf0177eb68ebb5f895bb2ffb762d88eeba9c3cf8756a1a6f2174945b3ca8f4",
+  "identity": {
+   "code": "e76fd2c1f1013b70021b79412b0d29ed2fbfd6f973c3e8f6d910b08b2fc3682b",
+   "environment": "84239fa01023f510d5ac37001655c8d3574493d245005b9403dd5e59ce917970"
+  },
+  "kind": "memory",
+  "params": {},
+  "unit": "rola_bench.measure.registry:Flash"
+ }
+}

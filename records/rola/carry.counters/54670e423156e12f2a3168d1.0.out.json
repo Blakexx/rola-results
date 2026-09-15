@@ -1,0 +1,30 @@
+{
+ "cell": "flagship-dense-L16384",
+ "cta_windows": 8192,
+ "launch": {
+  "dram__bytes_read.sum": 144855808.0,
+  "dram__bytes_write.sum": 32610176.0,
+  "gpu__time_duration.sum": 9825472.0,
+  "l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_ld.sum": 848958.0,
+  "l1tex__data_bank_conflicts_pipe_lsu_mem_shared_op_st.sum": 8520951.0,
+  "l1tex__data_pipe_lsu_wavefronts_mem_shared_op_ld.sum": 168543125.0,
+  "l1tex__data_pipe_lsu_wavefronts_mem_shared_op_st.sum": 23315865.0,
+  "l1tex__lsu_writeback_active.avg.pct_of_peak_sustained_active": 23.03,
+  "l1tex__t_requests_pipe_lsu_mem_global_op_red.sum": 8912896.0,
+  "lts__t_sectors_op_red.sum": 34078720.0,
+  "sm__cycles_elapsed.avg": 13409335.78,
+  "sm__inst_executed_pipe_tensor_op_hmma.sum": 75497472.0,
+  "smsp__cycles_active.avg": 10725431.76,
+  "smsp__inst_executed.sum": 836627018.0,
+  "smsp__issue_active.avg.pct_of_peak_sustained_active": 24.38,
+  "smsp__sass_inst_executed_op_global_ld.sum": 32768.0,
+  "smsp__sass_inst_executed_op_global_red.sum": 8912896.0,
+  "smsp__sass_inst_executed_op_ldsm.sum": 29622272.0,
+  "smsp__sass_inst_executed_op_shared_ld.sum": 44754194.0,
+  "smsp__sass_inst_executed_op_shared_st.sum": 14708480.0,
+  "smsp__warps_active.avg.per_cycle_active": 2.0,
+  "smsp__warps_eligible.avg.per_cycle_active": 0.27
+ },
+ "missing": [],
+ "schedule": "first"
+}

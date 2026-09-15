@@ -1,0 +1,62 @@
+{
+ "format": 1,
+ "key": "dd7609d9b10c1583c01d5545",
+ "location": "rola/carry.registers",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "dd7609d9b10c1583c01d5545.0.out.json",
+   "provenance": {
+    "branch": "master",
+    "checkout": "k31-mainline",
+    "diff_sha256": null,
+    "git_sha": "fd69ba8a8a87ecd90a9a9b78215ce9ed73230cb0",
+    "host": "DESKTOP-MKIUJID",
+    "label": "master"
+   },
+   "utc": "2026-09-15T18:04:38Z",
+   "wall_s": 3.331
+  }
+ ],
+ "semantics": {
+  "cell": null,
+  "deps": {
+   "build": {
+    "key": "96e63b741f96808e25adcdb8",
+    "output": "3116823a33ec6b7e250d3ad5f9edfea0b9757de9d85991df27004b350f41dcfd"
+   }
+  },
+  "draw": null,
+  "identity": {
+   "args": [
+    "--arm",
+    "0",
+    "--source",
+    "csrc/rola/src/carry/carry_kernel.cuh"
+   ],
+   "binary": "35da650f7d34917e3599584934fb32e6e06b412aa2fa11791594de599d8af7ef",
+   "code": "820675506b05ca69f541e9276ccdf7baff55f25d3cd454ac59eb04813064f19e",
+   "environment": "8e4babba64117665d39feeb34ef43dafeeb988d771468765b046376c6de21e38"
+  },
+  "kind": "instrument",
+  "params": {
+   "args": [
+    "--arm",
+    "0",
+    "--source",
+    "csrc/rola/src/carry/carry_kernel.cuh"
+   ],
+   "data": [
+    "csrc/rola/src",
+    "build/generated/carry_parts.inc"
+   ],
+   "location": "rola/carry.registers",
+   "per_cell": false,
+   "repeatable": false,
+   "timeout": 1800,
+   "tool": "tools/life_ranges.py"
+  },
+  "unit": "benchmarks.registry:Tool"
+ }
+}

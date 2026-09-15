@@ -1,0 +1,32 @@
+{
+ "allocated_after_bytes": 339456,
+ "allocated_before_build_bytes": 0,
+ "built": {
+  "backing": "dense",
+  "calls": 1,
+  "cell": "one-box-multiwindow",
+  "construction": null,
+  "d_v": 64,
+  "device": "NVIDIA GeForce RTX 3080 Ti",
+  "family_stamp": 256143400732159057,
+  "kind": "carry",
+  "manifest_sha256": "b9b9d4892e6d639dac7ff54f3756891c5ce64662d9c0a518b089d06d5c8f47fd",
+  "ptxas": "ptxas: NVIDIA (R) Ptx optimizing assembler Copyright (c) 2005-2025 NVIDIA Corporation Built on Wed_Jul_16_07:24:57_PM_PDT_2025 Cuda compilation tools, release 13.0, V13.0.48 Build cuda_13.0.r13.0/compiler.36260728_0",
+  "rola_file": "rola/__init__.py",
+  "schedule": "first",
+  "sm": "sm_86",
+  "sm_ghz_at_build": 1.6646439596117788,
+  "state": "fresh",
+  "subject": "carry_forward",
+  "tokens": 1024,
+  "torch": "2.14.0+cu130",
+  "widths": [
+   16,
+   16
+  ]
+ },
+ "calls": 5,
+ "outside_allocator_bytes": 0,
+ "peak_allocated_bytes": 605696,
+ "peak_reserved_bytes": 4194304
+}

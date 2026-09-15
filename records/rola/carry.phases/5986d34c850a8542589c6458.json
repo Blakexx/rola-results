@@ -1,0 +1,83 @@
+{
+ "format": 1,
+ "key": "5986d34c850a8542589c6458",
+ "location": "rola/carry.phases",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "5986d34c850a8542589c6458.0.out.json",
+   "provenance": {
+    "branch": "master",
+    "checkout": "k31-mainline",
+    "diff_sha256": null,
+    "git_sha": "fd69ba8a8a87ecd90a9a9b78215ce9ed73230cb0",
+    "host": "DESKTOP-MKIUJID",
+    "label": "master"
+   },
+   "utc": "2026-09-15T18:07:33Z",
+   "wall_s": 1.446
+  }
+ ],
+ "semantics": {
+  "cell": {
+   "data": "rola_devtools.cells.carry:carry_cell",
+   "name": "nl16k-dense",
+   "params": {
+    "backing": "dense",
+    "cohort": null,
+    "draw": "dense",
+    "dv": 64,
+    "k_tok": null,
+    "regime": {
+     "coherence": "iid",
+     "density": "dense",
+     "mass": "spread",
+     "rw_correlation": "independent",
+     "support": "full",
+     "tail": "divisible"
+    },
+    "state": "fresh",
+    "support": 1.0,
+    "tier": "probe",
+    "tokens": 16384,
+    "widths": [
+     128,
+     128
+    ]
+   }
+  },
+  "deps": {
+   "build": {
+    "key": "96e63b741f96808e25adcdb8",
+    "output": "3116823a33ec6b7e250d3ad5f9edfea0b9757de9d85991df27004b350f41dcfd"
+   }
+  },
+  "draw": "7fbf0177eb68ebb5f895bb2ffb762d88eeba9c3cf8756a1a6f2174945b3ca8f4",
+  "identity": {
+   "args": [
+    "{cell}",
+    "--launches",
+    "1"
+   ],
+   "binary": "35da650f7d34917e3599584934fb32e6e06b412aa2fa11791594de599d8af7ef",
+   "code": "a8c6514fee21af11e6377193ecef5443b7cf3df89f819279995e3f34c5a30672",
+   "environment": "8e4babba64117665d39feeb34ef43dafeeb988d771468765b046376c6de21e38"
+  },
+  "kind": "instrument",
+  "params": {
+   "args": [
+    "{cell}",
+    "--launches",
+    "1"
+   ],
+   "data": [],
+   "location": "rola/carry.phases",
+   "per_cell": true,
+   "repeatable": true,
+   "timeout": 3600,
+   "tool": "tools/phase_ledger.py"
+  },
+  "unit": "benchmarks.registry:Tool"
+ }
+}

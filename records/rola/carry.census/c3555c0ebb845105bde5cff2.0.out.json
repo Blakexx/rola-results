@@ -1,0 +1,306 @@
+{
+ "budget_red": false,
+ "cell": "flagship-cohort-k16-L16384",
+ "census": {
+  "FoldStream": {
+   "hmma_per_unit": 432.7,
+   "other_per_unit": 3928.5,
+   "samples_at_hmma": 8372,
+   "samples_at_other": 9567
+  },
+  "ReadoutStream": {
+   "hmma_per_unit": 288.0,
+   "other_per_unit": 3686.5,
+   "samples_at_hmma": 5193,
+   "samples_at_other": 10499
+  },
+  "carry_kernel": {
+   "hmma_per_unit": 0.0,
+   "other_per_unit": 3410.2,
+   "samples_at_hmma": 0,
+   "samples_at_other": 14068
+  },
+  "head": {
+   "hmma_per_unit": 0.0,
+   "other_per_unit": 3495.1,
+   "samples_at_hmma": 0,
+   "samples_at_other": 17648
+  },
+  "snapshot_publish": {
+   "hmma_per_unit": 0.0,
+   "other_per_unit": 982.6,
+   "samples_at_hmma": 0,
+   "samples_at_other": 2044
+  }
+ },
+ "components": {
+  "FoldStream": {
+   "budget": null,
+   "instr_per_unit": 4361.2,
+   "samples": 17939,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 380,
+    "dispatch": 25,
+    "drain": 0,
+    "imc": 0,
+    "lg": 3,
+    "long_sb": 130,
+    "math": 6742,
+    "membar": 0,
+    "mio": 210,
+    "misc": 0,
+    "no_inst": 388,
+    "not_selected": 237,
+    "selected": 2166,
+    "short_sb": 2027,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 5631
+   }
+  },
+  "FoldStream [spin]": {
+   "budget": null,
+   "instr_per_unit": 166.1,
+   "samples": 372,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 12,
+    "dispatch": 0,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 0,
+    "math": 1,
+    "membar": 0,
+    "mio": 11,
+    "misc": 0,
+    "no_inst": 12,
+    "not_selected": 3,
+    "selected": 38,
+    "short_sb": 154,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 141
+   }
+  },
+  "ReadoutStream": {
+   "budget": null,
+   "instr_per_unit": 3974.5,
+   "samples": 15692,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 381,
+    "dispatch": 179,
+    "drain": 0,
+    "imc": 0,
+    "lg": 1,
+    "long_sb": 8,
+    "math": 4376,
+    "membar": 0,
+    "mio": 182,
+    "misc": 0,
+    "no_inst": 120,
+    "not_selected": 252,
+    "selected": 1986,
+    "short_sb": 3740,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 4467
+   }
+  },
+  "ReadoutStream [spin]": {
+   "budget": null,
+   "instr_per_unit": 0.0,
+   "samples": 4,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 0,
+    "dispatch": 0,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 0,
+    "math": 0,
+    "membar": 0,
+    "mio": 0,
+    "misc": 0,
+    "no_inst": 0,
+    "not_selected": 0,
+    "selected": 1,
+    "short_sb": 0,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 3
+   }
+  },
+  "carry_kernel": {
+   "budget": null,
+   "instr_per_unit": 3410.2,
+   "samples": 14068,
+   "stalls": {
+    "barrier": 4317,
+    "branch_resolving": 861,
+    "dispatch": 176,
+    "drain": 4,
+    "imc": 89,
+    "lg": 1,
+    "long_sb": 789,
+    "math": 150,
+    "membar": 0,
+    "mio": 439,
+    "misc": 0,
+    "no_inst": 417,
+    "not_selected": 317,
+    "selected": 1677,
+    "short_sb": 1259,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 3572
+   }
+  },
+  "head": {
+   "budget": null,
+   "instr_per_unit": 3495.1,
+   "samples": 17648,
+   "stalls": {
+    "barrier": 9324,
+    "branch_resolving": 351,
+    "dispatch": 29,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 0,
+    "math": 205,
+    "membar": 0,
+    "mio": 173,
+    "misc": 0,
+    "no_inst": 200,
+    "not_selected": 271,
+    "selected": 1724,
+    "short_sb": 2160,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 3211
+   }
+  },
+  "snapshot_publish": {
+   "budget": null,
+   "instr_per_unit": 982.6,
+   "samples": 2044,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 144,
+    "dispatch": 0,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 0,
+    "math": 101,
+    "membar": 0,
+    "mio": 290,
+    "misc": 0,
+    "no_inst": 47,
+    "not_selected": 167,
+    "selected": 466,
+    "short_sb": 245,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 584
+   }
+  }
+ },
+ "instructions_per_unit": 16389.7,
+ "per": 8192.0,
+ "samples": 67767,
+ "schedule": "first",
+ "wavefronts": {
+  "excess_per_unit": 1555.5,
+  "lines": [
+   {
+    "excess_per_unit": 960.0,
+    "line": 334,
+    "per_instr": 16.0,
+    "text": "ops::stage_run<4>(sm.words_addr(side, lane) + (uint32_t)(r *"
+   },
+   {
+    "excess_per_unit": 322.0,
+    "line": 784,
+    "per_instr": 20.65,
+    "text": "ops::stage_run_if<16>(slot + pool_v_off<BP>(row, c), vrow + "
+   },
+   {
+    "excess_per_unit": 93.0,
+    "line": 1232,
+    "per_instr": 16.0,
+    "text": "ops::stage_run_if<16>(slot + row32_off(row, h), arow + bases"
+   },
+   {
+    "excess_per_unit": 64.0,
+    "line": 450,
+    "per_instr": 5.0,
+    "text": "if (lane < BP::kBuckets) counts[lane * BP::kRounds + rho] = "
+   },
+   {
+    "excess_per_unit": 32.2,
+    "line": 788,
+    "per_instr": 20.65,
+    "text": "ops::stage_run_if<16>(slot + pool_inner_off<BP>(row, h), aro"
+   },
+   {
+    "excess_per_unit": 32.2,
+    "line": 789,
+    "per_instr": 20.65,
+    "text": "ops::stage_run_if<16>(slot + pool_outer_off<BP>(row, h), aro"
+   },
+   {
+    "excess_per_unit": 19.2,
+    "line": 718,
+    "per_instr": 2.69,
+    "text": "if (q == 0 && t1) sm.massrow()[ro1] = st.m[bi][2];"
+   },
+   {
+    "excess_per_unit": 19.2,
+    "line": 717,
+    "per_instr": 2.65,
+    "text": "if (q == 0 && t0) sm.massrow()[ro0] = st.m[bi][0];"
+   },
+   {
+    "excess_per_unit": 4.0,
+    "line": 486,
+    "per_instr": 5.0,
+    "text": "const uint4 v = ops::load_shared_v4(row + (uint32_t)(decltyp"
+   },
+   {
+    "excess_per_unit": 4.0,
+    "line": 516,
+    "per_instr": 5.0,
+    "text": "ops::store_shared_vec16(row + (uint32_t)(v * 16),"
+   },
+   {
+    "excess_per_unit": 3.9,
+    "line": 791,
+    "per_instr": 2.0,
+    "text": "ops::stage_run_if<4>(slot + pool_gain_off<BP>(row),"
+   },
+   {
+    "excess_per_unit": 1.8,
+    "line": 632,
+    "per_instr": 8.0,
+    "text": "const uint32_t w = __float_as_uint(m);"
+   },
+   {
+    "excess_per_unit": 0.1,
+    "line": 1546,
+    "per_instr": 2.0,
+    "text": "ops::store_shared_vec16("
+   },
+   {
+    "excess_per_unit": 0.0,
+    "line": 1540,
+    "per_instr": 3.0,
+    "text": "ops::store_shared_vec16(sm.pool(s) + pool_v_off<BP>(BP::kPoo"
+   }
+  ]
+ }
+}

@@ -1,0 +1,348 @@
+{
+ "budget_red": false,
+ "cell": "flagship-alt-k16-L16384",
+ "census": {
+  "FoldStream": {
+   "hmma_per_unit": 888.9,
+   "other_per_unit": 19562.6,
+   "samples_at_hmma": 17175,
+   "samples_at_other": 52361
+  },
+  "ReadoutStream": {
+   "hmma_per_unit": 1321.3,
+   "other_per_unit": 17689.4,
+   "samples_at_hmma": 24477,
+   "samples_at_other": 48593
+  },
+  "carry_kernel": {
+   "hmma_per_unit": 0.0,
+   "other_per_unit": 5510.1,
+   "samples_at_hmma": 0,
+   "samples_at_other": 18591
+  },
+  "head": {
+   "hmma_per_unit": 0.0,
+   "other_per_unit": 3935.5,
+   "samples_at_hmma": 0,
+   "samples_at_other": 19878
+  },
+  "snapshot_publish": {
+   "hmma_per_unit": 0.0,
+   "other_per_unit": 1659.5,
+   "samples_at_hmma": 0,
+   "samples_at_other": 3485
+  }
+ },
+ "components": {
+  "FoldStream": {
+   "budget": null,
+   "instr_per_unit": 20451.5,
+   "samples": 69536,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 2583,
+    "dispatch": 72,
+    "drain": 0,
+    "imc": 0,
+    "lg": 83,
+    "long_sb": 1123,
+    "math": 14566,
+    "membar": 0,
+    "mio": 1563,
+    "misc": 0,
+    "no_inst": 1480,
+    "not_selected": 1345,
+    "selected": 10241,
+    "short_sb": 11183,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 25297
+   }
+  },
+  "FoldStream [spin]": {
+   "budget": null,
+   "instr_per_unit": 4981.3,
+   "samples": 4753,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 267,
+    "dispatch": 1,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 0,
+    "math": 19,
+    "membar": 0,
+    "mio": 28,
+    "misc": 0,
+    "no_inst": 343,
+    "not_selected": 69,
+    "selected": 363,
+    "short_sb": 2119,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 1544
+   }
+  },
+  "ReadoutStream": {
+   "budget": null,
+   "instr_per_unit": 19010.6,
+   "samples": 73070,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 1623,
+    "dispatch": 1090,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 51,
+    "math": 20899,
+    "membar": 0,
+    "mio": 1128,
+    "misc": 0,
+    "no_inst": 520,
+    "not_selected": 1416,
+    "selected": 9421,
+    "short_sb": 15970,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 20952
+   }
+  },
+  "ReadoutStream [spin]": {
+   "budget": null,
+   "instr_per_unit": 0.0,
+   "samples": 61,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 0,
+    "dispatch": 0,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 0,
+    "math": 0,
+    "membar": 0,
+    "mio": 0,
+    "misc": 0,
+    "no_inst": 0,
+    "not_selected": 0,
+    "selected": 16,
+    "short_sb": 0,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 45
+   }
+  },
+  "carry_kernel": {
+   "budget": null,
+   "instr_per_unit": 5510.1,
+   "samples": 18591,
+   "stalls": {
+    "barrier": 2336,
+    "branch_resolving": 1227,
+    "dispatch": 131,
+    "drain": 8,
+    "imc": 101,
+    "lg": 0,
+    "long_sb": 810,
+    "math": 247,
+    "membar": 0,
+    "mio": 475,
+    "misc": 0,
+    "no_inst": 516,
+    "not_selected": 424,
+    "selected": 2795,
+    "short_sb": 3333,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 6188
+   }
+  },
+  "head": {
+   "budget": null,
+   "instr_per_unit": 3935.5,
+   "samples": 19878,
+   "stalls": {
+    "barrier": 10285,
+    "branch_resolving": 411,
+    "dispatch": 39,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 0,
+    "math": 77,
+    "membar": 0,
+    "mio": 42,
+    "misc": 0,
+    "no_inst": 159,
+    "not_selected": 178,
+    "selected": 2011,
+    "short_sb": 3277,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 3399
+   }
+  },
+  "snapshot_publish": {
+   "budget": null,
+   "instr_per_unit": 1659.5,
+   "samples": 3485,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 152,
+    "dispatch": 4,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 0,
+    "math": 188,
+    "membar": 0,
+    "mio": 685,
+    "misc": 0,
+    "no_inst": 0,
+    "not_selected": 261,
+    "selected": 794,
+    "short_sb": 442,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 959
+   }
+  }
+ },
+ "instructions_per_unit": 55548.5,
+ "per": 8192.0,
+ "samples": 189374,
+ "schedule": "first",
+ "wavefronts": {
+  "excess_per_unit": 11543.3,
+  "lines": [
+   {
+    "excess_per_unit": 6960.5,
+    "line": 784,
+    "per_instr": 40.03,
+    "text": "ops::stage_run_if<16>(slot + pool_v_off<BP>(row, c), vrow + "
+   },
+   {
+    "excess_per_unit": 960.0,
+    "line": 334,
+    "per_instr": 16.0,
+    "text": "ops::stage_run<4>(sm.words_addr(side, lane) + (uint32_t)(r *"
+   },
+   {
+    "excess_per_unit": 723.2,
+    "line": 973,
+    "per_instr": 7.66,
+    "text": "ops::load_frag_t(*reinterpret_cast<uint32_t(*)[4]>(v + 4 * i"
+   },
+   {
+    "excess_per_unit": 697.3,
+    "line": 788,
+    "per_instr": 40.1,
+    "text": "ops::stage_run_if<16>(slot + pool_inner_off<BP>(row, h), aro"
+   },
+   {
+    "excess_per_unit": 697.3,
+    "line": 789,
+    "per_instr": 40.1,
+    "text": "ops::stage_run_if<16>(slot + pool_outer_off<BP>(row, h), aro"
+   },
+   {
+    "excess_per_unit": 525.6,
+    "line": 1232,
+    "per_instr": 16.37,
+    "text": "ops::stage_run_if<16>(slot + row32_off(row, h), arow + bases"
+   },
+   {
+    "excess_per_unit": 301.0,
+    "line": 791,
+    "per_instr": 8.28,
+    "text": "ops::stage_run_if<4>(slot + pool_gain_off<BP>(row),"
+   },
+   {
+    "excess_per_unit": 176.0,
+    "line": 969,
+    "per_instr": 7.56,
+    "text": "ops::load_frag_t(sp, slot + pool_outer_off<BP>(rrow, rchunk)"
+   },
+   {
+    "excess_per_unit": 176.0,
+    "line": 968,
+    "per_instr": 7.56,
+    "text": "ops::load_frag_t(a, slot + pool_inner_off<BP>(rrow, rchunk))"
+   },
+   {
+    "excess_per_unit": 64.0,
+    "line": 450,
+    "per_instr": 5.0,
+    "text": "if (lane < BP::kBuckets) counts[lane * BP::kRounds + rho] = "
+   },
+   {
+    "excess_per_unit": 51.2,
+    "line": 453,
+    "per_instr": 4.2,
+    "text": "if ((same & lt) == 0u) counts[k * BP::kRounds + rho] = (uint"
+   },
+   {
+    "excess_per_unit": 51.2,
+    "line": 542,
+    "per_instr": 4.2,
+    "text": "const int rank = (int)sm.rcounts()[key[g] * BP::kRounds + rh"
+   },
+   {
+    "excess_per_unit": 49.5,
+    "line": 717,
+    "per_instr": 4.0,
+    "text": "if (q == 0 && t0) sm.massrow()[ro0] = st.m[bi][0];"
+   },
+   {
+    "excess_per_unit": 49.5,
+    "line": 718,
+    "per_instr": 4.0,
+    "text": "if (q == 0 && t1) sm.massrow()[ro1] = st.m[bi][2];"
+   },
+   {
+    "excess_per_unit": 25.6,
+    "line": 543,
+    "per_instr": 2.6,
+    "text": "sm.order(parity)[rank] = (uint16_t)t;"
+   },
+   {
+    "excess_per_unit": 25.6,
+    "line": 544,
+    "per_instr": 2.6,
+    "text": "sm.masks()[rank] = (uint16_t)mask[g];"
+   },
+   {
+    "excess_per_unit": 4.0,
+    "line": 486,
+    "per_instr": 5.0,
+    "text": "const uint4 v = ops::load_shared_v4(row + (uint32_t)(decltyp"
+   },
+   {
+    "excess_per_unit": 4.0,
+    "line": 516,
+    "per_instr": 5.0,
+    "text": "ops::store_shared_vec16(row + (uint32_t)(v * 16),"
+   },
+   {
+    "excess_per_unit": 1.8,
+    "line": 632,
+    "per_instr": 8.0,
+    "text": "const uint32_t w = __float_as_uint(m);"
+   },
+   {
+    "excess_per_unit": 0.1,
+    "line": 1546,
+    "per_instr": 2.0,
+    "text": "ops::store_shared_vec16("
+   },
+   {
+    "excess_per_unit": 0.0,
+    "line": 1540,
+    "per_instr": 3.0,
+    "text": "ops::store_shared_vec16(sm.pool(s) + pool_v_off<BP>(BP::kPoo"
+   }
+  ]
+ }
+}

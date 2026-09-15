@@ -1,0 +1,348 @@
+{
+ "budget_red": false,
+ "cell": "flagship-alt-k4-L4096",
+ "census": {
+  "FoldStream": {
+   "hmma_per_unit": 296.3,
+   "other_per_unit": 9952.3,
+   "samples_at_hmma": 1438,
+   "samples_at_other": 6596
+  },
+  "ReadoutStream": {
+   "hmma_per_unit": 276.6,
+   "other_per_unit": 5503.9,
+   "samples_at_hmma": 1297,
+   "samples_at_other": 4001
+  },
+  "carry_kernel": {
+   "hmma_per_unit": 0.0,
+   "other_per_unit": 5070.9,
+   "samples_at_hmma": 0,
+   "samples_at_other": 4244
+  },
+  "head": {
+   "hmma_per_unit": 0.0,
+   "other_per_unit": 3756.7,
+   "samples_at_hmma": 0,
+   "samples_at_other": 4113
+  },
+  "snapshot_publish": {
+   "hmma_per_unit": 0.0,
+   "other_per_unit": 1742.2,
+   "samples_at_hmma": 0,
+   "samples_at_other": 911
+  }
+ },
+ "components": {
+  "FoldStream": {
+   "budget": null,
+   "instr_per_unit": 10248.6,
+   "samples": 8034,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 445,
+    "dispatch": 5,
+    "drain": 0,
+    "imc": 0,
+    "lg": 146,
+    "long_sb": 364,
+    "math": 1274,
+    "membar": 0,
+    "mio": 188,
+    "misc": 0,
+    "no_inst": 152,
+    "not_selected": 224,
+    "selected": 1312,
+    "short_sb": 1232,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 2692
+   }
+  },
+  "FoldStream [spin]": {
+   "budget": null,
+   "instr_per_unit": 145.4,
+   "samples": 173,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 5,
+    "dispatch": 0,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 0,
+    "math": 2,
+    "membar": 0,
+    "mio": 4,
+    "misc": 0,
+    "no_inst": 2,
+    "not_selected": 3,
+    "selected": 11,
+    "short_sb": 75,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 71
+   }
+  },
+  "ReadoutStream": {
+   "budget": null,
+   "instr_per_unit": 5780.5,
+   "samples": 5298,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 168,
+    "dispatch": 90,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 2,
+    "math": 1168,
+    "membar": 0,
+    "mio": 90,
+    "misc": 0,
+    "no_inst": 33,
+    "not_selected": 109,
+    "selected": 717,
+    "short_sb": 1309,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 1612
+   }
+  },
+  "ReadoutStream [spin]": {
+   "budget": null,
+   "instr_per_unit": 0.0,
+   "samples": 6,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 0,
+    "dispatch": 0,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 0,
+    "math": 0,
+    "membar": 0,
+    "mio": 0,
+    "misc": 0,
+    "no_inst": 0,
+    "not_selected": 0,
+    "selected": 2,
+    "short_sb": 0,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 4
+   }
+  },
+  "carry_kernel": {
+   "budget": null,
+   "instr_per_unit": 5070.9,
+   "samples": 4244,
+   "stalls": {
+    "barrier": 818,
+    "branch_resolving": 247,
+    "dispatch": 40,
+    "drain": 10,
+    "imc": 82,
+    "lg": 1,
+    "long_sb": 367,
+    "math": 81,
+    "membar": 0,
+    "mio": 124,
+    "misc": 0,
+    "no_inst": 172,
+    "not_selected": 139,
+    "selected": 636,
+    "short_sb": 503,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 1024
+   }
+  },
+  "head": {
+   "budget": null,
+   "instr_per_unit": 3756.7,
+   "samples": 4113,
+   "stalls": {
+    "barrier": 1857,
+    "branch_resolving": 94,
+    "dispatch": 11,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 0,
+    "math": 33,
+    "membar": 0,
+    "mio": 19,
+    "misc": 0,
+    "no_inst": 45,
+    "not_selected": 57,
+    "selected": 481,
+    "short_sb": 685,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 831
+   }
+  },
+  "snapshot_publish": {
+   "budget": null,
+   "instr_per_unit": 1742.2,
+   "samples": 911,
+   "stalls": {
+    "barrier": 0,
+    "branch_resolving": 35,
+    "dispatch": 0,
+    "drain": 0,
+    "imc": 0,
+    "lg": 0,
+    "long_sb": 0,
+    "math": 45,
+    "membar": 0,
+    "mio": 200,
+    "misc": 0,
+    "no_inst": 1,
+    "not_selected": 59,
+    "selected": 215,
+    "short_sb": 88,
+    "sleep": 0,
+    "tex": 0,
+    "wait": 268
+   }
+  }
+ },
+ "instructions_per_unit": 26744.4,
+ "per": 2048.0,
+ "samples": 22779,
+ "schedule": "first",
+ "wavefronts": {
+  "excess_per_unit": 7629.8,
+  "lines": [
+   {
+    "excess_per_unit": 4580.5,
+    "line": 784,
+    "per_instr": 32.26,
+    "text": "ops::stage_run_if<16>(slot + pool_v_off<BP>(row, c), vrow + "
+   },
+   {
+    "excess_per_unit": 960.0,
+    "line": 334,
+    "per_instr": 16.0,
+    "text": "ops::stage_run<4>(sm.words_addr(side, lane) + (uint32_t)(r *"
+   },
+   {
+    "excess_per_unit": 462.6,
+    "line": 788,
+    "per_instr": 32.54,
+    "text": "ops::stage_run_if<16>(slot + pool_inner_off<BP>(row, h), aro"
+   },
+   {
+    "excess_per_unit": 462.6,
+    "line": 789,
+    "per_instr": 32.54,
+    "text": "ops::stage_run_if<16>(slot + pool_outer_off<BP>(row, h), aro"
+   },
+   {
+    "excess_per_unit": 396.5,
+    "line": 791,
+    "per_instr": 12.7,
+    "text": "ops::stage_run_if<4>(slot + pool_gain_off<BP>(row),"
+   },
+   {
+    "excess_per_unit": 199.3,
+    "line": 1232,
+    "per_instr": 17.16,
+    "text": "ops::stage_run_if<16>(slot + row32_off(row, h), arow + bases"
+   },
+   {
+    "excess_per_unit": 190.1,
+    "line": 973,
+    "per_instr": 6.89,
+    "text": "ops::load_frag_t(*reinterpret_cast<uint32_t(*)[4]>(v + 4 * i"
+   },
+   {
+    "excess_per_unit": 64.0,
+    "line": 450,
+    "per_instr": 5.0,
+    "text": "if (lane < BP::kBuckets) counts[lane * BP::kRounds + rho] = "
+   },
+   {
+    "excess_per_unit": 54.0,
+    "line": 717,
+    "per_instr": 4.0,
+    "text": "if (q == 0 && t0) sm.massrow()[ro0] = st.m[bi][0];"
+   },
+   {
+    "excess_per_unit": 54.0,
+    "line": 718,
+    "per_instr": 4.0,
+    "text": "if (q == 0 && t1) sm.massrow()[ro1] = st.m[bi][2];"
+   },
+   {
+    "excess_per_unit": 47.5,
+    "line": 969,
+    "per_instr": 6.89,
+    "text": "ops::load_frag_t(sp, slot + pool_outer_off<BP>(rrow, rchunk)"
+   },
+   {
+    "excess_per_unit": 47.5,
+    "line": 968,
+    "per_instr": 6.89,
+    "text": "ops::load_frag_t(a, slot + pool_inner_off<BP>(rrow, rchunk))"
+   },
+   {
+    "excess_per_unit": 30.5,
+    "line": 453,
+    "per_instr": 2.91,
+    "text": "if ((same & lt) == 0u) counts[k * BP::kRounds + rho] = (uint"
+   },
+   {
+    "excess_per_unit": 30.5,
+    "line": 542,
+    "per_instr": 2.91,
+    "text": "const int rank = (int)sm.rcounts()[key[g] * BP::kRounds + rh"
+   },
+   {
+    "excess_per_unit": 17.3,
+    "line": 543,
+    "per_instr": 2.08,
+    "text": "sm.order(parity)[rank] = (uint16_t)t;"
+   },
+   {
+    "excess_per_unit": 17.3,
+    "line": 544,
+    "per_instr": 2.08,
+    "text": "sm.masks()[rank] = (uint16_t)mask[g];"
+   },
+   {
+    "excess_per_unit": 7.0,
+    "line": 632,
+    "per_instr": 8.0,
+    "text": "const uint32_t w = __float_as_uint(m);"
+   },
+   {
+    "excess_per_unit": 4.0,
+    "line": 486,
+    "per_instr": 5.0,
+    "text": "const uint4 v = ops::load_shared_v4(row + (uint32_t)(decltyp"
+   },
+   {
+    "excess_per_unit": 4.0,
+    "line": 516,
+    "per_instr": 5.0,
+    "text": "ops::store_shared_vec16(row + (uint32_t)(v * 16),"
+   },
+   {
+    "excess_per_unit": 0.2,
+    "line": 1546,
+    "per_instr": 2.0,
+    "text": "ops::store_shared_vec16("
+   },
+   {
+    "excess_per_unit": 0.1,
+    "line": 1540,
+    "per_instr": 3.0,
+    "text": "ops::store_shared_vec16(sm.pool(s) + pool_v_off<BP>(BP::kPoo"
+   }
+  ]
+ }
+}

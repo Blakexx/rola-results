@@ -1,0 +1,70 @@
+{
+ "format": 1,
+ "key": "9d4b9d6c8d6fdbfcfa060324",
+ "location": "rola/carry.timeline",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "9d4b9d6c8d6fdbfcfa060324.0.out.json",
+   "provenance": {
+    "branch": "master",
+    "checkout": "k31-mainline",
+    "diff_sha256": null,
+    "git_sha": "fd69ba8a8a87ecd90a9a9b78215ce9ed73230cb0",
+    "host": "DESKTOP-MKIUJID",
+    "label": "master"
+   },
+   "utc": "2026-09-15T18:06:25Z",
+   "wall_s": 3.929
+  }
+ ],
+ "semantics": {
+  "cell": {
+   "data": "rola_devtools.cells.carry:carry_cell",
+   "name": "nl16k-alt-k4",
+   "params": {
+    "backing": "dense",
+    "cohort": null,
+    "draw": "alt",
+    "dv": 64,
+    "k_tok": 4,
+    "regime": {
+     "coherence": "iid",
+     "density": "sparse",
+     "mass": "spread",
+     "rw_correlation": "independent",
+     "support": "partial",
+     "tail": "divisible"
+    },
+    "state": "fresh",
+    "support": 1.0,
+    "tier": "probe",
+    "tokens": 16384,
+    "widths": [
+     128,
+     128
+    ]
+   }
+  },
+  "deps": {
+   "build": {
+    "key": "96e63b741f96808e25adcdb8",
+    "output": "3116823a33ec6b7e250d3ad5f9edfea0b9757de9d85991df27004b350f41dcfd"
+   }
+  },
+  "draw": "7fbf0177eb68ebb5f895bb2ffb762d88eeba9c3cf8756a1a6f2174945b3ca8f4",
+  "identity": {
+   "args": [
+    "--cell",
+    "{cell}"
+   ],
+   "binary": "35da650f7d34917e3599584934fb32e6e06b412aa2fa11791594de599d8af7ef",
+   "code": "f6caddfe299f4250d07a7b534a184486082d50113b310c0ab702fdcc2a613f29",
+   "environment": "8e4babba64117665d39feeb34ef43dafeeb988d771468765b046376c6de21e38"
+  },
+  "kind": "instrument",
+  "params": {},
+  "unit": "benchmarks.registry:Timeline"
+ }
+}
