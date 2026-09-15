@@ -10,4 +10,4 @@ SELECT s.location, s.key, s.n, s.utc,
        json_extract(c.value, '$.exit') AS exit,
        json_extract(c.value, '$.error') AS error
 FROM samples s, json_each(s.extra, '$.summary.cells') c
-WHERE s.ok AND json_type(s.extra, '$.summary.cells') = 'object';
+WHERE s.ok AND s.location LIKE 'rola/%' AND json_type(s.extra, '$.summary.cells') = 'object';

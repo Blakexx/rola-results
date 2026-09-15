@@ -1,0 +1,151 @@
+{
+ "format": 1,
+ "key": "6ef0c52f662f58b95c61eab9",
+ "location": "timing/session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "6ef0c52f662f58b95c61eab9.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "bench/flash": {
+      "branch": "master",
+      "checkout": "rola-bench",
+      "diff_sha256": null,
+      "git_sha": "58151ea3f33877e8f91910bca0c4d431ab551740"
+     },
+     "master/prefill_op": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "e3a87f6bdcf8416ff6ced5475a17ec7d63850983"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260915T221733Z-4716a5"
+   },
+   "run": "20260915T221733Z-4716a5",
+   "summary": {
+    "members": [
+     {
+      "cell": "flagship-dense",
+      "error": null,
+      "id": "m0",
+      "owner": "master/prefill_op",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k4",
+      "error": null,
+      "id": "m1",
+      "owner": "master/prefill_op",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k16",
+      "error": null,
+      "id": "m2",
+      "owner": "master/prefill_op",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k4",
+      "error": null,
+      "id": "m3",
+      "owner": "master/prefill_op",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k16",
+      "error": null,
+      "id": "m4",
+      "owner": "master/prefill_op",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-both-k4",
+      "error": null,
+      "id": "m5",
+      "owner": "master/prefill_op",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-paged",
+      "error": null,
+      "id": "m6",
+      "owner": "master/prefill_op",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-struct50",
+      "error": null,
+      "id": "m7",
+      "owner": "master/prefill_op",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-struct25",
+      "error": null,
+      "id": "m8",
+      "owner": "master/prefill_op",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L1024-dv64",
+      "error": null,
+      "id": "m9",
+      "owner": "bench/flash",
+      "status": "ok"
+     }
+    ],
+    "samples": 880
+   },
+   "utc": "2026-09-15T22:29:39Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "clock": {
+    "key": "b8af461f023b3d6a60ad43e9",
+    "output": "a5250eb3400c36771191c58b536de5bd4d8810f7408fc82b7f9250440af9332e"
+   },
+   "r0": {
+    "key": "ec27ee334252ddb6bc61b698",
+    "output": "cc439892aea27f9f208cbb257311c5ffe74b8d94c0f7d754aa0217bafcac9dd8"
+   },
+   "r1": {
+    "key": "34043a3d1eb56787cabdee54",
+    "output": "064dbad2edd71157ec519930d7b018bc0879a2d5949eec982ac6b09fbb804c45"
+   },
+   "server": {
+    "key": "62bbd5210b2ce5b87c534bb2",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "draw": null,
+  "executor": "rola_devtools.timing.executors:measure",
+  "inputs": [],
+  "params": {
+   "cells": [
+    "flagship-dense",
+    "flagship-alt-k4",
+    "flagship-alt-k16",
+    "flagship-cohort-k4",
+    "flagship-cohort-k16",
+    "flagship-both-k4",
+    "flagship-paged",
+    "flagship-struct50",
+    "flagship-struct25",
+    "qkv-L1024-dv64"
+   ],
+   "claim": "",
+   "reps": 11,
+   "rounds": 8,
+   "seed": 0,
+   "warmup": 10
+  }
+ }
+}

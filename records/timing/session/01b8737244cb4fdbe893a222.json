@@ -1,0 +1,95 @@
+{
+ "format": 1,
+ "key": "01b8737244cb4fdbe893a222",
+ "location": "timing/session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "01b8737244cb4fdbe893a222.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "bench/flash": {
+      "branch": "master",
+      "checkout": "rola-bench",
+      "diff_sha256": null,
+      "git_sha": "58151ea3f33877e8f91910bca0c4d431ab551740"
+     },
+     "master/prefill_op": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "e3a87f6bdcf8416ff6ced5475a17ec7d63850983"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260915T221733Z-4716a5"
+   },
+   "run": "20260915T221733Z-4716a5",
+   "summary": {
+    "members": [
+     {
+      "cell": "one-box-multiwindow",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 84, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: one-box-multiwindow: this checkout runs no arm prefill_op there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'intra_forward', 'liveness_pass']\n",
+      "id": "m0",
+      "owner": "master/prefill_op",
+      "status": "failed"
+     },
+     {
+      "cell": "one-box-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 84, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: one-box-alt-k4: this checkout runs no arm prefill_op there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'intra_forward', 'liveness_pass']\n",
+      "id": "m1",
+      "owner": "master/prefill_op",
+      "status": "failed"
+     },
+     {
+      "cell": "qkv-L1024-dv64",
+      "error": null,
+      "id": "m2",
+      "owner": "bench/flash",
+      "status": "ok"
+     }
+    ],
+    "samples": 88
+   },
+   "utc": "2026-09-15T22:29:36Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "clock": {
+    "key": "b8af461f023b3d6a60ad43e9",
+    "output": "a5250eb3400c36771191c58b536de5bd4d8810f7408fc82b7f9250440af9332e"
+   },
+   "r0": {
+    "key": "ec27ee334252ddb6bc61b698",
+    "output": "cc439892aea27f9f208cbb257311c5ffe74b8d94c0f7d754aa0217bafcac9dd8"
+   },
+   "r1": {
+    "key": "34043a3d1eb56787cabdee54",
+    "output": "064dbad2edd71157ec519930d7b018bc0879a2d5949eec982ac6b09fbb804c45"
+   },
+   "server": {
+    "key": "62bbd5210b2ce5b87c534bb2",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "draw": null,
+  "executor": "rola_devtools.timing.executors:measure",
+  "inputs": [],
+  "params": {
+   "cells": [
+    "one-box-multiwindow",
+    "one-box-alt-k4",
+    "qkv-L1024-dv64"
+   ],
+   "claim": "",
+   "reps": 11,
+   "rounds": 8,
+   "seed": 0,
+   "warmup": 10
+  }
+ }
+}
