@@ -89,6 +89,14 @@ class VerdictQuery(unittest.TestCase):
                               root=self.root)
         self.assertEqual(rows, [(ROUNDS * REPS, 0, ROUNDS - 1, REPS - 1)])
 
+    def test_a_null_gates_cells_are_rows(self):
+        cells = {"dense": {"trusted": True, "ratio_median": 1.0, "ratio_q1": 0.99, "ratio_q3": 1.01},
+                 "sparse": {"trusted": None, "error": "a copy could not run"}}
+        Store("timing/null", self.root).put({"executor": "null_gate"}, output={"members": [], "samples": [], "null": cells},
+                                            provenance={"run": "r"}, run="r")
+        _, rows = index.query("SELECT cell, trusted, ratio_median, error FROM null_gates ORDER BY cell", root=self.root)
+        self.assertEqual(rows, [("dense", 1, 1.0, None), ("sparse", None, None, "a copy could not run")])
+
 
 if __name__ == "__main__":
     unittest.main()

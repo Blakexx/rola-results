@@ -43,6 +43,7 @@ view in `views/`, run after every index:
 | `timing_members` | `timing/session` (rola-devtools' `measure_timing`, through a store target) | member of a stored session: the run, the session, its registration (`owner`), the label and arm read from it, the cell, whether it ran and why not, device, torch, the owner's commit and diff, the session's rounds, reps and clock reads |
 | `timing_samples` | `timing_members` | timed call, in the order taken: its member's label, arm and cell, its round, rep and position in the rep's random order, and its milliseconds |
 | `memory_rows` | `timing/memory` (rola-devtools' `measure_memory`) | timing entry alone on a central cell: peak allocated and reserved bytes, what was allocated before the build and after the calls, bytes held outside the caching allocator (a paged state) and the totals with them, label, arm, commit |
+| `null_gates` | `timing/null` (rola-devtools' `measure_null_gate`) | cell of a null gate: the run, whether the entry's two workers agree (the per-rep ratios' interquartile range holds one), the ratio's median and quartiles |
 | `cells` | fleet and local grids | stored grid cell: bench, config, cell, image or local checkouts, row |
 
 A session stores raw samples and no ratio: which label is the reference is the reader's, in a query.
