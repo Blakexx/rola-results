@@ -1,0 +1,24 @@
+{
+ "format": 1,
+ "key": "fa3195ab9738e5d9e13baa98",
+ "location": "environment",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "fa3195ab9738e5d9e13baa98.0.out.json",
+   "provenance": {
+    "branch": "p82-stable-abi",
+    "checkout": "p82-stable-abi",
+    "diff_sha256": "c47d676be18adef8f4a39029e692f9f3a11da97c3bbbf8b7c1b8969a25cf545f",
+    "git_sha": "d1e36c770b0574e13f2fb6c9c65ce648c2b3ba9c",
+    "host": "DESKTOP-MKIUJID"
+   },
+   "utc": "2026-09-14T23:54:34Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "env_key": "070147dbe08cc727ba1e3a7fae0eae387d02925a1477342bae80893c6a310369"
+ }
+}
