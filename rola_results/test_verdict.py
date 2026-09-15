@@ -97,6 +97,13 @@ class VerdictQuery(unittest.TestCase):
         _, rows = index.query("SELECT cell, trusted, ratio_median, error FROM null_gates ORDER BY cell", root=self.root)
         self.assertEqual(rows, [("dense", 1, 1.0, None), ("sparse", None, None, "a copy could not run")])
 
+    def test_an_instruments_cells_are_rows_with_their_status(self):
+        summary = {"cells": {"dense": {"status": "ok", "exit": 0}, "deep": {"status": "failed", "exit": 1, "error": "no arm"}}}
+        Store("rola/phases", self.root).put({"executor": "run_tool"}, output={"dense": {}}, provenance={"run": "r"},
+                                            run="r", summary=summary)
+        _, rows = index.query("SELECT instrument, cell, status, error FROM instrument_cells ORDER BY cell", root=self.root)
+        self.assertEqual(rows, [("phases", "deep", "failed", "no arm"), ("phases", "dense", "ok", None)])
+
 
 if __name__ == "__main__":
     unittest.main()
