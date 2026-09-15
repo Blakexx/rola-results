@@ -4,8 +4,9 @@
 
 A reading of the index (`timing_members`, `timing_samples`, `memory_rows`, the instrument locations), rebuilt each time it
 is asked for and never stored. The run is the newest stored unless `--run` names one. For each of its sessions, every
-member's median and interquartile range over its samples, its paired ratio to the reference label's member of the same
-arm on the same cell (the median of the per-round ratios, within the session) when a reference is named, and the peak
+member's median and interquartile range over its samples, the LEVEL it prices (`kernel`, `op`, `layer`: a reading
+compares one level), its paired ratio to the reference label's member of the same arm on the same cell (the median of
+the per-round ratios, within the session) when a reference is named, and the peak
 memory its entry reached alone in the same run (the caching allocator's peak plus what it holds outside it, a paged
 state). The page carries its own style and no script, so it opens from a file.
 """
@@ -19,7 +20,7 @@ from . import index
 from .store import ROOT
 
 _RUNS = "SELECT run, max(utc) FROM timing_members GROUP BY run ORDER BY max(utc) DESC"
-_MEMBERS = """SELECT location, key, n, utc, session, member, label, arm, cell, status, error, git_sha, device
+_MEMBERS = """SELECT location, key, n, utc, session, member, label, arm, cell, level, status, error, git_sha, device
               FROM timing_members WHERE run = ? ORDER BY session, cell, label"""
 _SAMPLES = "SELECT location, key, n, member, round, ms FROM timing_samples WHERE run = ?"
 _MEMORY = "SELECT label, arm, cell, peak_bytes, peak_reserved_total_bytes FROM memory_rows WHERE run = ? AND status = 'ok'"
@@ -86,7 +87,7 @@ def render(root: Path | str = ROOT, *, reference: str | None = None, run: str | 
     for (name, location, key, n), ms in sorted(sessions.items()):
         out.append(f"<h2>{html.escape(name or '')}</h2><p class='meta'>{html.escape(ms[0]['utc'])} &middot; "
                    f"{html.escape(ms[0]['device'] or '')} &middot; <code>{html.escape(key[:12])}</code></p>")
-        out.append("<div class='scroll'><table><tr><th>label</th><th>arm</th><th>cell</th><th>median ms</th>"
+        out.append("<div class='scroll'><table><tr><th>label</th><th>arm</th><th>level</th><th>cell</th><th>median ms</th>"
                    "<th>IQR ms</th><th>ratio to reference</th><th>peak MB</th><th>reserved MB</th><th>commit</th></tr>")
         refs = {(m["arm"], m["cell"]): m for m in ms if m["label"] == reference}
         for m in ms:
@@ -98,7 +99,8 @@ def render(root: Path | str = ROOT, *, reference: str | None = None, run: str | 
             median = _ms(statistics.median(samples)) if samples else html.escape(m["status"] or "")
             spread = _ms(_iqr(samples)) if samples else html.escape((m["error"] or "")[:60])
             out.append(f"<tr class='{'reference' if base is m else ''}'><td>{html.escape(m['label'])}</td>"
-                       f"<td>{html.escape(m['arm'])}</td><td>{html.escape(m['cell'] or '')}</td>"
+                       f"<td>{html.escape(m['arm'])}</td><td>{html.escape(m['level'] or '')}</td>"
+                       f"<td>{html.escape(m['cell'] or '')}</td>"
                        f"<td class='num'>{median}</td><td class='num'>{spread}</td>"
                        f"<td class='num'>{'' if ratio is None else f'{ratio:.3f}'}</td>"
                        f"<td class='num'>{_mb(allocated)}</td><td class='num'>{_mb(reserved)}</td>"

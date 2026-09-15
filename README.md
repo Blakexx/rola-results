@@ -40,7 +40,7 @@ view in `views/`, run after every index:
 
 | view | from | one row per |
 |---|---|---|
-| `timing_members` | `timing/session` (rola-devtools' `measure_timing`, through a store target) | member of a stored session: the run, the session, its registration (`owner`), the label and arm read from it, the cell, whether it ran and why not, device, torch, the owner's commit and diff, the session's rounds, reps and clock reads |
+| `timing_members` | `timing/session` (rola-devtools' `measure_timing`, through a store target) | member of a stored session: the run, the session, its registration (`owner`), the label and arm read from it, the cell, the LEVEL it prices (`kernel`, `op`, `layer`), whether it ran and why not, device, torch, the owner's commit and diff, the session's rounds, reps and clock reads |
 | `timing_samples` | `timing_members` | timed call, in the order taken: its member's label, arm and cell, its round, rep and position in the rep's random order, and its milliseconds |
 | `memory_rows` | `timing/memory` (rola-devtools' `measure_memory`) | timing entry alone on a central cell: peak allocated and reserved bytes, what was allocated before the build and after the calls, bytes held outside the caching allocator (a paged state) and the totals with them, label, arm, commit |
 | `instrument_cells` | `rola/<instrument>` (a rola checkout's instrument targets) | cell of an instrument run: the run, whether the tool ran on it, and its exit and error when it could not |
@@ -64,7 +64,8 @@ WHERE a.label = 'tip' AND b.label = 'master' AND a.cell = 'flagship-dense' AND a
 
 **The verdict** is a query, never a stored row. `verdict --reference LABEL` pairs, in every stored session, each other
 label's member with the reference label's member of the same arm on the same cell, and judges the pair within its
-session: per round each member's median, their ratio and difference (`rola_devtools.verdict.session`). A unit is the
+session. A pair whose members price different LEVELS is refused rather than reported -- a kernel's launch and a layer's
+whole call are different quantities, and a comparison between two libraries is a comparison of their layers. Otherwise: per round each member's median, their ratio and difference (`rola_devtools.verdict.session`). A unit is the
 arm, the cell, the two labels and the code each ran (commit and diff); rola-devtools' `rola_devtools.verdict.classify`
 reads a unit's sessions oldest first and judges the newest: a regression needs the session's median ratio over one plus
 three sigmas of its own per-round ratio spread, a significant paired test, and a second session at the same code over its

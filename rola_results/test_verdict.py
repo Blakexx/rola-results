@@ -21,12 +21,15 @@ REPS = 3
 
 
 def plant(root: Path, *, tip_ms: float, master_ms: float = 1.0, tip_sha: str = "a", drift: float = 1.0,
-          tip_owner: str = "tip/carry_forward") -> None:
+          tip_owner: str = "tip/carry_forward", tip_level: str = "kernel") -> None:
     """One stored session: tip and master timing `carry_forward` on `dense` with a host drift both share and a per-round
     swing, the attention reference on its own cell, and a tip registration that could not run."""
-    members = [{"id": "m0", "owner": tip_owner, "cell": "dense", "status": "ok", "built": {"device": "gpu"}},
-               {"id": "m1", "owner": "master/carry_forward", "cell": "dense", "status": "ok", "built": {"device": "gpu"}},
-               {"id": "m2", "owner": "bench/flash", "cell": "q", "status": "ok", "built": {"device": "gpu"}},
+    members = [{"id": "m0", "owner": tip_owner, "cell": "dense", "status": "ok",
+                "built": {"device": "gpu", "level": tip_level}},
+               {"id": "m1", "owner": "master/carry_forward", "cell": "dense", "status": "ok",
+                "built": {"device": "gpu", "level": "kernel"}},
+               {"id": "m2", "owner": "bench/flash", "cell": "q", "status": "ok",
+                "built": {"device": "gpu", "level": "layer"}},
                {"id": "m3", "owner": "tip/prefill_op", "cell": "dense", "status": "failed", "error": "no prefill arm"}]
     samples, position = [], itertools.count()
     for rnd, rep in itertools.product(range(ROUNDS), range(REPS)):
@@ -80,6 +83,15 @@ class VerdictQuery(unittest.TestCase):
         self.assertAlmostEqual(inverse["ratio"], 1 / 1.6)
         self.assertEqual(verdicts(self.root, reference="someone-else"), [])
         self.assertEqual(verdicts(self.root, reference="master", arm="prefill_op"), [])
+
+    def test_a_pair_of_two_levels_is_refused_rather_than_reported(self):
+        plant(self.root, tip_ms=1.0, tip_level="op")
+        with self.assertRaisesRegex(ValueError, "prices the op level"):
+            verdicts(self.root, reference="master")
+        _, rows = index.query("SELECT label, arm, level FROM timing_members WHERE status = 'ok' ORDER BY label",
+                              root=self.root)
+        self.assertEqual(rows, [("bench", "flash", "layer"), ("master", "carry_forward", "kernel"),
+                                ("tip", "carry_forward", "op")])
 
     def test_a_members_label_is_its_owners_scope_and_its_arm_the_last_segment(self):
         plant(self.root, tip_ms=1.0, tip_owner="suite/tip/entmax_solve@layer=w16")

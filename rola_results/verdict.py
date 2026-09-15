@@ -7,7 +7,9 @@ The reference is the reader's choice, never the run's. In every stored timing se
 candidate, and the pair is judged within the session: `rola_devtools.verdict.session` turns the two members' samples,
 by round, into the session's paired ratio, its limit and its per-round differences. A UNIT is (arm, cell, candidate
 label, reference label) and the code both members ran (each checkout's commit and uncommitted diff): `classify` reads a
-unit's sessions oldest first and judges the newest. Nothing is stored: a verdict is a reading of the records, taken again
+unit's sessions oldest first and judges the newest. A pair whose two members price different LEVELS (`kernel`, `op`,
+`layer`) is refused, not reported: a kernel's launch and a layer's whole call are different quantities, and a comparison
+between two libraries is a comparison of their layers. Nothing is stored: a verdict is a reading of the records, taken again
 whenever it is asked for.
 """
 from __future__ import annotations
@@ -17,7 +19,7 @@ from pathlib import Path
 from . import index
 from .store import ROOT
 
-_MEMBERS = """SELECT location, key, n, utc, member, label, arm, cell, git_sha, diff_sha256, device
+_MEMBERS = """SELECT location, key, n, utc, member, label, arm, cell, level, git_sha, diff_sha256, device
               FROM timing_members WHERE status = 'ok' ORDER BY utc, location, key, n"""
 _SAMPLES = "SELECT location, key, n, member, round, ms FROM timing_samples"
 
@@ -46,12 +48,21 @@ def verdicts(root: Path | str = ROOT, *, reference: str, candidate: str | None =
             c, b = rounds.get((*sample, m["member"]), {}), rounds.get((*sample, base["member"]), {})
             if not c or sorted(c) != sorted(b):
                 continue
-            unit = (m["arm"], m["cell"], m["label"], m["git_sha"], m["diff_sha256"], base["git_sha"], base["diff_sha256"])
+            #: A PAIR IS ONE LEVEL (Blake, 2026-09-15): a kernel's launch and a layer's whole call are different
+            #: quantities, so a ratio between them is refused here rather than reported as a comparison.
+            if m["level"] != base["level"]:
+                raise ValueError(
+                    f"{m['label']}'s {m['arm']} prices the {m['level']} level and {reference}'s prices the "
+                    f"{base['level']} level on {m['cell']}: a verdict compares one level. Name a reference of the "
+                    f"same level, or narrow with --arm.")
+            unit = (m["arm"], m["cell"], m["label"], m["level"], m["git_sha"], m["diff_sha256"], base["git_sha"],
+                    base["diff_sha256"])
             units.setdefault(unit, []).append((m, session([c[r] for r in sorted(c)], [b[r] for r in sorted(b)])))
     out = []
-    for (unit_arm, unit_cell, label, sha, diff, base_sha, base_diff), judged in units.items():
+    for (unit_arm, unit_cell, label, level, sha, diff, base_sha, base_diff), judged in units.items():
         newest = judged[-1][0]
-        out.append({"arm": unit_arm, "cell": unit_cell, "candidate": label, "git_sha": sha, "diff_sha256": diff,
+        out.append({"arm": unit_arm, "cell": unit_cell, "candidate": label, "level": level, "git_sha": sha,
+                    "diff_sha256": diff,
                     "reference": reference, "reference_git_sha": base_sha, "reference_diff_sha256": base_diff,
                     "utc": newest["utc"], "device": newest["device"], **classify([paired for _m, paired in judged])})
     return sorted(out, key=lambda r: (r["utc"], r["arm"], r["cell"], r["candidate"]))
