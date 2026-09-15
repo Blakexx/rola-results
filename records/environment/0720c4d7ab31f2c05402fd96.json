@@ -1,0 +1,78 @@
+{
+ "format": 1,
+ "key": "0720c4d7ab31f2c05402fd96",
+ "location": "environment",
+ "samples": [
+  {
+   "error": "RED: ['dev check', 'GPU, torch and its flash backend', 'a host-held lock is held here', 'the extension builds and imports']",
+   "image": "rola-dev:5b24fefced8a",
+   "image_id": "",
+   "n": 0,
+   "ok": false,
+   "proofs": [
+    {
+     "ok": false,
+     "proof": "dev check",
+     "tail": [
+      "runtime stack:",
+      "runtime.throw(fatal error: unexpected signal during runtime execution",
+      "stack trace unavailable"
+     ]
+    },
+    {
+     "ok": false,
+     "proof": "GPU, torch and its flash backend",
+     "tail": [
+      "runtime stack:",
+      "runtime.throw(fatal error: unexpected signal during runtime execution",
+      "stack trace unavailable"
+     ]
+    },
+    {
+     "ok": false,
+     "proof": "a host-held lock is held here",
+     "tail": [
+      "runtime stack:",
+      "runtime.throw(fatal error: unexpected signal during runtime execution",
+      "stack trace unavailable"
+     ]
+    },
+    {
+     "ok": false,
+     "proof": "the extension builds and imports",
+     "tail": [
+      "runtime stack:",
+      "runtime.throw(fatal error: unexpected signal during runtime execution",
+      "stack trace unavailable"
+     ]
+    }
+   ],
+   "provenance": {
+    "branch": "master",
+    "checkout": "k31-mainline",
+    "diff_sha256": "d76872ca0e263f7eebc34e2c9afceb768fa4adbdb1032494bfdde70f2ad34a51",
+    "git_sha": "ee845e64b217eee19bc6b0d34dcd4741dd66a530",
+    "host": "DESKTOP-MKIUJID"
+   },
+   "utc": "2026-09-15T03:12:30Z",
+   "wall_s": null
+  },
+  {
+   "n": 1,
+   "ok": true,
+   "output": "0720c4d7ab31f2c05402fd96.1.out.json",
+   "provenance": {
+    "branch": "master",
+    "checkout": "k31-mainline",
+    "diff_sha256": "356a46b8d448dd56e4eb85cc0db838acd7f9b824d0eb3cf338738fd757738caa",
+    "git_sha": "48fb59db0692cde67afaf0f42563c5f6286679bb",
+    "host": "DESKTOP-MKIUJID"
+   },
+   "utc": "2026-09-15T03:34:48Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "env_key": "5b24fefced8abd9797c92c49c9cb2d1002143f344d7a0da48234584887b8b4d1"
+ }
+}
