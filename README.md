@@ -32,6 +32,7 @@ Nothing derived from two records (a ratio, a baseline) is stored: that is the re
     python -m rola_results history LOCATION [--where PATH=VALUE]   # every sample of the matching records
     python -m rola_results latest LOCATION [--where PATH=VALUE]    # each matching record's newest good output
     python -m rola_results verdict [--cell C] [--subject S] [--baseline LABEL]   # each suite timing unit judged
+    python -m rola_results dashboard --out suite.html [--group G]  # the newest sessions and memory rows as a page
 
 The tables know no tool: `records(location, key, format, semantics)` and `samples(location, key, n, ok, utc, wall_s,
 provenance, error, output_path, output, extra)`, the JSON fields read with SQLite's JSON functions. A tool's shape is a
@@ -39,7 +40,9 @@ view in `views/`, run after every index:
 
 | view | from | one row per |
 |---|---|---|
-| `session_arms` | `compare`, `suite/timing.session` (through `tools/compare.py`) | arm of an interleaved session: cell, subject, calls, label, role, arm name, samples and round medians, device, torch, commit, clock held |
+| `session_members` | `bench/session`, a lone arm's own location (`rola_devtools.graph`) | member of a composed session: group and claim, label, role, node, cell, subject, calls, samples and round medians, paired ratio, device, torch, commit |
+| `memory_rows` | `rola/memory`, `bench/memory` (`rola_devtools.graph`) | arm alone on a cell: peak allocated and reserved bytes, what stayed allocated, label, commit |
+| `session_arms` | `compare`, `suite/timing.session` (through `tools/compare.py`, before the composer) | arm of an interleaved session: cell, subject, calls, label, role, arm name, samples and round medians, device, torch, commit, clock held |
 | `timing_rows` | `probe_cells`, `suite/timing.session` (before `tools/compare.py`) | timed arm of a session at a cell: label, branch, commit, tree digest, unit, lane, ms, clock |
 | `timing_pairs` | `timing_rows` | pair of arms of one session, cell and unit, with the ratio |
 | `driver_rows` | `bench_driver` | driver result: subject, cell, median and IQR, or an A/B's paired ratio and verdict |
@@ -60,7 +63,8 @@ SELECT * FROM timing_rows WHERE stage = 'rola-results-landing';
 SELECT utc, cell, subject, label, base_label, ratio FROM timing_pairs WHERE stage = ? AND ratio > 1.10;
 ```
 
-**The verdict** is a query, never a stored row. `verdict` reads `session_arms`: for the newest suite session of each unit
+**The verdict** is a query, never a stored row. `verdict` reads `session_members` and, for sessions from before the
+composer, `session_arms`: for the newest suite session of each unit
 (cell, subject, call count, arm names) and candidate commit, the baseline is the reference arm's samples over the newest
 ten sessions of that unit on the same device and torch, the runs are the candidate's sessions at its commit, and the
 paired differences are the last session's round medians, candidate minus reference. rola-devtools'

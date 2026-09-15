@@ -28,7 +28,8 @@ class VerdictQuery(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.root = Path(self.tmp.name) / "records"
         (Path(self.tmp.name) / "views").mkdir()
-        shutil.copy(VIEWS / "session_arms.sql", Path(self.tmp.name) / "views" / "session_arms.sql")
+        for view in ("session_arms.sql", "session_members.sql"):
+            shutil.copy(VIEWS / view, Path(self.tmp.name) / "views" / view)
         self.store = Store("suite/timing.session", self.root)
         clock = (f"2026-09-14T00:{m:02d}:00Z" for m in itertools.count())
         patcher = mock.patch.object(store_module, "utc", lambda: next(clock))
@@ -80,6 +81,38 @@ class VerdictQuery(unittest.TestCase):
         provenance = {"arms": [{"role": "subject", "label": "tip", "git_sha": candidate_sha},
                                {"role": "reference", "label": "master", "git_sha": "base"}]}
         self.store.put({"unit": "carry_forward@P", "candidate": candidate_sha}, output=output, provenance=provenance)
+
+    def composed(self, candidate_sha: str, ms: dict[str, tuple[float, float]]) -> None:
+        """A composed session (rola_devtools.graph): tip and master members on every cell, and the attention member."""
+        members = []
+        for label, which in (("tip", 0), ("master", 1)):
+            for cell, pair in ms.items():
+                members.append({"member": f"{label}:time.carry_forward@{cell}", "label": label,
+                                "node": f"time.carry_forward@{cell}", "unit": "benchmarks.graph:Arm",
+                                "built": {"cell": cell, "subject": "carry_forward", "calls": 1, "device": "gpu",
+                                          "torch": "2.14"},
+                                "ms": [pair[which]] * (ROUNDS * 3), "blocks_ms": [pair[which]] * ROUNDS,
+                                "median_ms": pair[which], "iqr_ms": 0.0, "post": {}, "paired": []})
+        members.append({"member": "bench:time.flash@q", "label": "bench", "node": "time.flash@q", "unit": "g:Flash",
+                        "built": {"cell": "q", "backend": "flash", "device": "gpu", "torch": "2.14"},
+                        "ms": [0.1] * (ROUNDS * 3), "blocks_ms": [0.1] * ROUNDS, "median_ms": 0.1, "iqr_ms": 0.0,
+                        "post": {}, "paired": []})
+        output = {"session": "carry_forward@G", "instrument": "cuda_events", "rounds": ROUNDS, "members": members,
+                  "refused": {}, "relation": {"group": "G", "roles": {"tip": "subject", "master": "reference",
+                                                                      "bench": "attention"}}}
+        provenance = {"members": [{"label": "tip", "git_sha": candidate_sha}, {"label": "master", "git_sha": "base"},
+                                  {"label": "bench", "git_sha": "bench"}]}
+        Store("bench/session", self.root).put({"members": [candidate_sha]}, output=output, provenance=provenance)
+
+    def test_a_composed_session_judges_each_cell_against_the_reference_on_that_cell(self):
+        for sha in ("a", "b", "c"):
+            self.composed(sha, {"dense": (1.0, 1.0), "sparse": (0.2, 0.2)})
+        self.composed("slow", {"dense": (1.0, 1.0), "sparse": (0.4, 0.2)})
+        self.composed("slow", {"dense": (1.0, 1.0), "sparse": (0.4, 0.2)})
+        newest = {r["cell"]: r for r in verdicts(self.root) if r["git_sha"] == "slow"}
+        self.assertEqual({cell: r["verdict"] for cell, r in newest.items()}, {"dense": "no_regression",
+                                                                               "sparse": "regression"})
+        self.assertEqual(newest["sparse"]["arm"], "time.carry_forward@sparse")
 
     def test_a_points_session_judges_each_cell_against_the_reference_on_that_cell(self):
         for sha in ("a", "b", "c"):

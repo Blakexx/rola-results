@@ -11,7 +11,7 @@ repos:
       - id: library-contract
         name: store, index and verdict contract (python -m unittest rola_results.test_store rola_results.test_index rola_results.test_verdict)
         language: system
-        entry: python3 -m unittest rola_results.test_store rola_results.test_index rola_results.test_verdict
+        entry: python3 -m unittest rola_results.test_store rola_results.test_index rola_results.test_verdict rola_results.test_dashboard
         pass_filenames: false
         files: ^(rola_results|views)/
       - id: records-check

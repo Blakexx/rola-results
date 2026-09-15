@@ -1,4 +1,5 @@
-"""python -m rola_results check | show [LOCATION] | commit -m MESSAGE | index | sql QUERY | history|latest LOCATION"""
+"""python -m rola_results check | show [LOCATION] | commit -m MESSAGE | index | sql QUERY | history|latest LOCATION |
+verdict | dashboard --out FILE"""
 from __future__ import annotations
 
 import argparse
@@ -29,6 +30,9 @@ def main() -> int:
         p.add_argument("location")
         p.add_argument("--where", action="append", default=[], metavar="PATH=VALUE",
                        help="a dotted path into the semantics and the value it holds (repeatable)")
+    dashboard = sub.add_parser("dashboard", help="the newest composed sessions and memory rows as a standalone page")
+    dashboard.add_argument("--out", type=Path, required=True)
+    dashboard.add_argument("--group", help="one group's sessions only")
     verdict = sub.add_parser("verdict", help="each suite timing unit's newest session judged against its baseline")
     verdict.add_argument("--cell")
     verdict.add_argument("--subject")
@@ -36,6 +40,12 @@ def main() -> int:
     verdict.add_argument("--window", type=int, default=10, help="baseline sessions the threshold is read from")
     verdict.add_argument("--json", action="store_true", help="one JSON object per unit")
     a = ap.parse_args()
+
+    if a.cmd == "dashboard":
+        from .dashboard import write
+
+        print(json.dumps(write(a.out, a.root, a.group)))
+        return 0
 
     if a.cmd == "verdict":
         from .verdict import table, verdicts
