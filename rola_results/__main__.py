@@ -1,5 +1,5 @@
 """python -m rola_results check | show [LOCATION] | commit -m MESSAGE | index | sql QUERY | history|latest LOCATION |
-verdict | dashboard --out FILE"""
+verdict | instruments --against RUN | dashboard --out FILE"""
 from __future__ import annotations
 
 import argparse
@@ -35,6 +35,12 @@ def main() -> int:
     dashboard.add_argument("--reference", help="the label each member's paired ratio is taken to")
     dashboard.add_argument("--run", help="the run to show (default: the newest)")
     dashboard.add_argument("--session", help="one session only")
+    instruments = sub.add_parser("instruments", help="one run's instrument numbers beside a reference run's, as deltas")
+    instruments.add_argument("--against", required=True, help="the reference run id")
+    instruments.add_argument("--run", help="the run to read (default: the newest with instrument records)")
+    instruments.add_argument("--instrument", help="one instrument only (phases, counters, census, timeline, ...)")
+    instruments.add_argument("--min-change", type=float, default=0.0, help="drop rows whose relative change is below")
+    instruments.add_argument("--json", action="store_true", help="one JSON object per row")
     verdict = sub.add_parser("verdict", help="each candidate judged against a reference timed in the same sessions")
     verdict.add_argument("--reference", required=True, help="the label every other label is judged against")
     verdict.add_argument("--candidate", help="one candidate label only")
@@ -47,6 +53,13 @@ def main() -> int:
         from .dashboard import write
 
         print(json.dumps(write(a.out, a.root, reference=a.reference, run=a.run, session=a.session)))
+        return 0
+
+    if a.cmd == "instruments":
+        from .instruments import compare, table
+
+        rows = compare(a.root, against=a.against, run=a.run, instrument=a.instrument, min_change=a.min_change)
+        print("\n".join(json.dumps(r) for r in rows) if a.json else table(rows))
         return 0
 
     if a.cmd == "verdict":
