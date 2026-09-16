@@ -1,0 +1,113 @@
+{
+ "format": 1,
+ "key": "8206c0db0020e912e70ee376",
+ "location": "rola/carry-vs-oracle",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "8206c0db0020e912e70ee376.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "k31-mainline": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "fcc8e4905e30c0d19f56923e4f50877e2aab7358"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260916T050602Z-d06038"
+   },
+   "run": "20260916T050602Z-d06038",
+   "utc": "2026-09-16T05:12:53Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "left": {
+    "key": "c23c9ca684855ca2e433b329",
+    "output": "1063a4b00310391abacfdfa851519ecbe0ec8c9b29b45579cbb35ca073b45c17"
+   },
+   "right": {
+    "key": "e0b7fec183c65fed752a53df",
+    "output": "7d8d977eadb1d71bea5ff26a4d7f6c0f99ed185bd7712235698213d06b5bfa3f"
+   }
+  },
+  "executor": "rola_devtools.diff.executors:compare",
+  "params": {
+   "expect": "same",
+   "minimum": 29,
+   "on_difference": "record",
+   "params": {
+    "per_quantity": {
+     "den": {
+      "clauses": [
+       [
+        0.0,
+        0.0547
+       ],
+       [
+        0.1,
+        0.0
+       ]
+      ],
+      "envelope_from": "den_envelope",
+      "rtol": 0.01953125
+     },
+     "num": {
+      "clauses": [
+       [
+        0.0,
+        0.0624
+       ],
+       [
+        0.1,
+        0.00105
+       ],
+       [
+        10.0,
+        0.000396
+       ],
+       [
+        100.0,
+        3.17e-05
+       ]
+      ],
+      "envelope_from": "num_envelope",
+      "rtol": 0.01953125
+     },
+     "state": {
+      "clauses": [
+       [
+        0.0,
+        0.0402
+       ],
+       [
+        0.0078125,
+        0.00834
+       ],
+       [
+        1.0,
+        0.00401
+       ],
+       [
+        10.0,
+        0.0019
+       ],
+       [
+        100.0,
+        0.000444
+       ]
+      ],
+      "envelope_from": "state_envelope",
+      "rtol": 0.0078125
+     }
+    }
+   },
+   "strategy": "per-slot"
+  }
+ }
+}

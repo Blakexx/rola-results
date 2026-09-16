@@ -1,0 +1,205 @@
+{
+ "format": 1,
+ "key": "50a6c621a32642d61cf399b2",
+ "location": "timing/null",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "50a6c621a32642d61cf399b2.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "k31-mainline/carry_forward": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "fcc8e4905e30c0d19f56923e4f50877e2aab7358"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260916T050602Z-d06038"
+   },
+   "run": "20260916T050602Z-d06038",
+   "summary": {
+    "cells": {
+     "deep4-dense": {
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 85, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 150, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep4-dense: this binary carries no carry arm (4, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "trusted": null
+     },
+     "flagship-dense": {
+      "ratio_median": 1.0,
+      "ratio_q1": 0.9943924806581926,
+      "ratio_q3": 1.0042504972182984,
+      "trusted": true
+     },
+     "flagship-dense-L16384": {
+      "ratio_median": 0.9998735691843444,
+      "ratio_q1": 0.9994939872847663,
+      "ratio_q3": 1.0005062048098767,
+      "trusted": true
+     },
+     "flat-small-alt-k4": {
+      "ratio_median": 1.0,
+      "ratio_q1": 0.9428571250384716,
+      "ratio_q3": 1.0645161517459658,
+      "trusted": true
+     },
+     "nl16k-dense": {
+      "ratio_median": 0.9999843064302997,
+      "ratio_q1": 0.9989018856125976,
+      "ratio_q3": 1.0009259875319678,
+      "trusted": true
+     },
+     "nl64k-dense": {
+      "ratio_median": 1.0001586286166024,
+      "ratio_q1": 0.9036642167491304,
+      "ratio_q3": 1.1029309099606084,
+      "trusted": true
+     },
+     "one-box-alt-k4": {
+      "ratio_median": 1.0,
+      "ratio_q1": 0.9823008792576102,
+      "ratio_q3": 1.0090090119616741,
+      "trusted": true
+     }
+    },
+    "members": [
+     {
+      "cell": "deep4-dense",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 85, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 150, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep4-dense: this binary carries no carry arm (4, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "id": "m0",
+      "owner": "k31-mainline/carry_forward#a",
+      "status": "failed"
+     },
+     {
+      "cell": "deep4-dense",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 85, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 150, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep4-dense: this binary carries no carry arm (4, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "id": "m1",
+      "owner": "k31-mainline/carry_forward#b",
+      "status": "failed"
+     },
+     {
+      "cell": "flagship-dense",
+      "error": null,
+      "id": "m2",
+      "owner": "k31-mainline/carry_forward#a",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-dense",
+      "error": null,
+      "id": "m3",
+      "owner": "k31-mainline/carry_forward#b",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-dense-L16384",
+      "error": null,
+      "id": "m4",
+      "owner": "k31-mainline/carry_forward#a",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-dense-L16384",
+      "error": null,
+      "id": "m5",
+      "owner": "k31-mainline/carry_forward#b",
+      "status": "ok"
+     },
+     {
+      "cell": "flat-small-alt-k4",
+      "error": null,
+      "id": "m6",
+      "owner": "k31-mainline/carry_forward#a",
+      "status": "ok"
+     },
+     {
+      "cell": "flat-small-alt-k4",
+      "error": null,
+      "id": "m7",
+      "owner": "k31-mainline/carry_forward#b",
+      "status": "ok"
+     },
+     {
+      "cell": "nl16k-dense",
+      "error": null,
+      "id": "m8",
+      "owner": "k31-mainline/carry_forward#a",
+      "status": "ok"
+     },
+     {
+      "cell": "nl16k-dense",
+      "error": null,
+      "id": "m9",
+      "owner": "k31-mainline/carry_forward#b",
+      "status": "ok"
+     },
+     {
+      "cell": "nl64k-dense",
+      "error": null,
+      "id": "m10",
+      "owner": "k31-mainline/carry_forward#a",
+      "status": "ok"
+     },
+     {
+      "cell": "nl64k-dense",
+      "error": null,
+      "id": "m11",
+      "owner": "k31-mainline/carry_forward#b",
+      "status": "ok"
+     },
+     {
+      "cell": "one-box-alt-k4",
+      "error": null,
+      "id": "m12",
+      "owner": "k31-mainline/carry_forward#a",
+      "status": "ok"
+     },
+     {
+      "cell": "one-box-alt-k4",
+      "error": null,
+      "id": "m13",
+      "owner": "k31-mainline/carry_forward#b",
+      "status": "ok"
+     }
+    ],
+    "samples": 1056
+   },
+   "utc": "2026-09-16T05:13:36Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "clock": {
+    "key": "67df8309c45e419c7f4deba0",
+    "output": "1a64931bdccb48537fa826946bf77cb59ddbd0ee10025a86d9ad5f49c20f2566"
+   },
+   "r0": {
+    "key": "e997d02022f26ccab851c3ce",
+    "output": "066d8731658bf48ee79ceff8240d7c5bd8433c3653af9321f7a17afed4a513d6"
+   },
+   "server": {
+    "key": "80f4ef1870d9ac980315bd6d",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "executor": "rola_devtools.timing.executors:null_gate",
+  "params": {
+   "cells": [
+    "flat-small-alt-k4",
+    "deep4-dense",
+    "one-box-alt-k4",
+    "flagship-dense",
+    "nl16k-dense",
+    "flagship-dense-L16384",
+    "nl64k-dense"
+   ],
+   "reps": 11,
+   "rounds": 8,
+   "seed": 0,
+   "warmup": 10
+  }
+ }
+}
