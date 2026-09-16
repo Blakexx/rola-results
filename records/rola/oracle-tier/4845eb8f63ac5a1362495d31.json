@@ -1,0 +1,101 @@
+{
+ "format": 1,
+ "key": "4845eb8f63ac5a1362495d31",
+ "location": "rola/oracle-tier",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "4845eb8f63ac5a1362495d31.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "k31-mainline": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "9cf5bc286b0836000cc353960335bb1c346ec7e9"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260916T033418Z-4b17d9"
+   },
+   "run": "20260916T033418Z-4b17d9",
+   "summary": {
+    "counts": {
+     "errors": 0,
+     "failures": 30,
+     "skipped": 0,
+     "tests": 342
+    },
+    "exit": 1,
+    "failed": [
+     "tests.oracle.test_atom_bitmap::test_the_bitmap_is_bc_free",
+     "tests.oracle.test_atom_bitmap::test_the_stateless_call_class_cannot_be_asked_for_the_bitmap",
+     "tests.oracle.test_carry_vs_oracle::test_the_inter_term_is_the_fp64_reference[deep3-dense]",
+     "tests.oracle.test_carry_vs_oracle::test_the_inter_term_is_the_fp64_reference[deep3-alt-k4]",
+     "tests.oracle.test_carry_vs_oracle::test_the_inter_term_is_the_fp64_reference[deep4-dense]",
+     "tests.oracle.test_carry_vs_oracle::test_the_inter_term_is_the_fp64_reference[deep4-alt-k2]",
+     "tests.oracle.test_carry_vs_oracle::test_the_inter_term_is_the_fp64_reference[flagship-dv32-alt-k4]",
+     "tests.oracle.test_carry_vs_oracle::test_the_inter_term_is_the_fp64_reference[flagship-dv128-alt-k4]",
+     "tests.oracle.test_carry_vs_oracle::test_the_folded_state_is_the_fp64_reference[flagship-dv32-alt-k4]",
+     "tests.oracle.test_carry_vs_oracle::test_the_folded_state_is_the_fp64_reference[flagship-dv128-alt-k4]",
+     "tests.oracle.test_carry_vs_oracle::test_the_sparse_form_is_the_fp64_reference[deep3-dense-first]",
+     "tests.oracle.test_carry_vs_oracle::test_the_sparse_form_is_the_fp64_reference[deep3-dense-identity]",
+     "tests.oracle.test_carry_vs_oracle::test_the_sparse_form_is_the_fp64_reference[deep3-alt-k4-first]",
+     "tests.oracle.test_carry_vs_oracle::test_the_sparse_form_is_the_fp64_reference[deep3-alt-k4-identity]",
+     "tests.oracle.test_carry_vs_oracle::test_the_sparse_form_is_the_fp64_reference[deep4-dense-first]",
+     "tests.oracle.test_carry_vs_oracle::test_the_sparse_form_is_the_fp64_reference[deep4-dense-identity]",
+     "tests.oracle.test_carry_vs_oracle::test_the_sparse_form_is_the_fp64_reference[deep4-alt-k2-first]",
+     "tests.oracle.test_carry_vs_oracle::test_the_sparse_form_is_the_fp64_reference[deep4-alt-k2-identity]",
+     "tests.oracle.test_carry_vs_oracle::test_the_sparse_form_is_the_fp64_reference[flagship-dv32-alt-k4-first]",
+     "tests.oracle.test_carry_vs_oracle::test_the_sparse_form_is_the_fp64_reference[flagship-dv32-alt-k4-identity]",
+     "tests.oracle.test_carry_vs_oracle::test_the_sparse_form_is_the_fp64_reference[flagship-dv128-alt-k4-first]",
+     "tests.oracle.test_carry_vs_oracle::test_the_sparse_form_is_the_fp64_reference[flagship-dv128-alt-k4-identity]",
+     "tests.oracle.test_decode_family::test_the_handoff_holds_across_the_arms_from_an_oracle_prefill[False]",
+     "tests.oracle.test_decode_family::test_the_handoff_holds_across_the_arms_from_an_oracle_prefill[True]",
+     "tests.oracle.test_padding_seam::test_the_api_boundary_pads_and_the_kernel_boundary_refuses",
+     "tests.oracle.test_prefill_vs_oracle::test_prefill_matches_the_fp64_oracle[flagship-partial-window]",
+     "tests.oracle.test_prefill_vs_oracle::test_prefill_matches_the_fp64_oracle[deep3-dense]",
+     "tests.oracle.test_prefill_vs_oracle::test_prefill_matches_the_fp64_oracle[deep3-alt-k4]",
+     "tests.oracle.test_prefill_vs_oracle::test_prefill_matches_the_fp64_oracle[deep4-dense]",
+     "tests.oracle.test_prefill_vs_oracle::test_prefill_matches_the_fp64_oracle[deep4-alt-k2]"
+    ],
+    "passed": 312,
+    "worst_margin": {
+     "carry denominator": 0.4998857404021938,
+     "carry numerator": 0.6854036699791541,
+     "carry state": 0.9104546047470735,
+     "decode state": 0.9945619451716117,
+     "decode y": 0.5454209885304527,
+     "entmax values": 0.1000000000073244,
+     "intra mass": 0.49975549924184814,
+     "intra output": 0.7187536792053904,
+     "prefill readout": 1.0,
+     "prefill state": 0.9282366074554141
+    }
+   },
+   "utc": "2026-09-16T03:34:18Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": "ef501eb839b150fdd3b8bd7872444f7b57e2887bf867d6f378e258f15e2a5df3",
+  "deps": {
+   "binary": {
+    "key": "27602e30883e16c54516c6f6",
+    "output": "205732687486955554a69e3efa1f0e1e05dd2bb49632086c26ac4d88b3cce16d"
+   },
+   "environment": {
+    "key": "012b6cb64a9c98dddab11d1d",
+    "output": "8e4babba64117665d39feeb34ef43dafeeb988d771468765b046376c6de21e38"
+   }
+  },
+  "executor": "measure.executors:pytest_tier",
+  "params": {
+   "paths": [
+    "tests/oracle"
+   ],
+   "timeout": 3600
+  }
+ }
+}

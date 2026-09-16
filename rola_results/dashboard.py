@@ -26,6 +26,18 @@ _SAMPLES = "SELECT location, key, n, member, round, ms FROM timing_samples WHERE
 _MEMORY = "SELECT label, arm, cell, peak_bytes, peak_reserved_total_bytes FROM memory_rows WHERE run = ? AND status = 'ok'"
 _INSTRUMENTS = """SELECT location, count(DISTINCT key), max(utc) FROM samples
                   WHERE ok AND location LIKE 'rola/%' GROUP BY location ORDER BY location"""
+_METRICS = "SELECT instrument, cell, metric, value FROM instrument_metrics WHERE run = ?"
+_DIFFS = """SELECT location, run, strategy, expect, held, compared, quantities, minimum, cell, cell_status, why, quantity,
+                   same, ratio, bound_by FROM diff_cells WHERE run = ? ORDER BY location, cell, quantity"""
+#: THE HEADLINE METRICS an instrument's table shows per cell; the whole-binary instruments show every row they have
+_HEADLINES = {
+    "phases": ["total", "phase.head", "phase.fold", "phase.readout", "phase.sweep"],
+    "counters": ["counter.gpu__time_duration.sum", "counter.dram__bytes_read.sum",
+                 "counter.sm__inst_executed_pipe_tensor_op_hmma.sum"],
+    "census": ["census.instructions_per_unit", "census.wavefronts.excess_per_unit", "census.budget_red"],
+    "timeline": ["timeline.duration_us", "timeline.tensor_mean_full", "timeline.tensor_idle_share_full"],
+    "roofline": ["roofline.ms", "roofline.fraction", "roofline.tflop_per_s"],
+}
 
 _STYLE = """
 :root { --ink:#1d2330; --muted:#5d6678; --rule:#d9dde5; --ground:#fbfbfc; --band:#eef1f6; --accent:#2f5d9a; }
@@ -65,8 +77,10 @@ def _ratio(candidate: dict[int, list[float]], reference: dict[int, list[float]])
 
 
 def render(root: Path | str = ROOT, *, reference: str | None = None, run: str | None = None,
-           session: str | None = None) -> str:
+           session: str | None = None, against: str | None = None) -> str:
     runs = index.query(_RUNS, root=root)[1]
+    if not runs:
+        runs = index.query("SELECT run, max(utc) FROM instrument_metrics GROUP BY run ORDER BY max(utc) DESC", root=root)[1]
     run = run or (runs[0][0] if runs else None)
     columns, rows = index.query(_MEMBERS, (run,), root=root)
     members = [dict(zip(columns, row, strict=True)) for row in rows if session is None or row[4] == session]
@@ -106,12 +120,89 @@ def render(root: Path | str = ROOT, *, reference: str | None = None, run: str | 
                        f"<td class='num'>{_mb(allocated)}</td><td class='num'>{_mb(reserved)}</td>"
                        f"<td><code>{html.escape((m['git_sha'] or '')[:8])}</code></td></tr>")
         out.append("</table></div>")
+    out += _instrument_sections(root, run, against)
+    out += _diff_sections(root, run)
     out.append("<h2>Instrument records</h2><div class='scroll'><table><tr><th>location</th><th>records</th>"
                "<th>newest sample</th></tr>")
     out += [f"<tr><td><code>{html.escape(loc)}</code></td><td class='num'>{count}</td><td>{html.escape(utc)}</td></tr>"
             for loc, count, utc in instruments]
     out.append("</table></div></main>")
     return "\n".join(out) + "\n"
+
+
+def _fmt(value) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, float):
+        return f"{value:.4g}"
+    return html.escape(str(value))
+
+
+def _instrument_sections(root, run: str | None, against: str | None) -> list[str]:
+    """One table per instrument: its headline metrics per cell, and beside each the relative change against the
+    reference run where one is named -- the suite reading its own instruments."""
+    if run is None:
+        return []
+    _, rows = index.query(_METRICS, (run,), root=root)
+    by: dict[str, dict[str | None, dict[str, object]]] = {}
+    for instrument, cell, metric, value in rows:
+        by.setdefault(instrument, {}).setdefault(cell, {})[metric] = value
+    base: dict[tuple, object] = {}
+    if against:
+        for instrument, cell, metric, value in index.query(_METRICS, (against,), root=root)[1]:
+            base[(instrument, cell, metric)] = value
+    out = []
+    for instrument in sorted(by):
+        cells = by[instrument]
+        metrics = _HEADLINES.get(instrument) or sorted({m for c in cells.values() for m in c})
+        out.append(f"<h2>{html.escape(instrument)}</h2><p class='meta'>{len(cells)} cell(s); "
+                   f"{'change against ' + html.escape(against) if against else 'no reference run'}</p>")
+        out.append("<div class='scroll'><table><tr><th>cell</th>" + "".join(
+            f"<th>{html.escape(m.split('.', 1)[-1] if instrument in _HEADLINES else m)}</th>"
+            + ("<th>Δ</th>" if against else "") for m in metrics) + "</tr>")
+        for cell in sorted(cells, key=lambda c: c or ""):
+            tds = []
+            for m in metrics:
+                value = cells[cell].get(m)
+                tds.append(f"<td class='num'>{_fmt(value)}</td>")
+                if against:
+                    ref = base.get((instrument, cell, m))
+                    numeric = isinstance(value, (int, float)) and isinstance(ref, (int, float))
+                    change = ((value - ref) / ref if ref else None) if numeric else None
+                    tds.append(f"<td class='num'>{'' if change is None else f'{change:+.1%}'}</td>")
+            out.append(f"<tr><td>{html.escape(cell or '(binary)')}</td>{''.join(tds)}</tr>")
+        out.append("</table></div>")
+    return out
+
+
+def _diff_sections(root, run: str | None) -> list[str]:
+    """One table per stored diff: the claim and whether it held, then every cell that was refused, unusable or
+    differed, with the worst slot -- a diff stores verdicts, and this shows exactly those."""
+    if run is None:
+        return []
+    columns, rows = index.query(_DIFFS, (run,), root=root)
+    verdicts = [dict(zip(columns, r, strict=True)) for r in rows]
+    out = []
+    for location in sorted({v["location"] for v in verdicts}):
+        mine = [v for v in verdicts if v["location"] == location]
+        head = mine[0]
+        held = "HELD" if head["held"] else "DID NOT HOLD"
+        out.append(f"<h2>diff <code>{html.escape(location)}</code></h2><p class='meta'>{html.escape(head['strategy'])}, "
+                   f"expect {html.escape(head['expect'])}: <b>{held}</b> &middot; {head['compared']} cell(s) compared, "
+                   f"{head['quantities']} quantities (minimum {head['minimum']})</p>")
+        shown = [v for v in mine if v["cell_status"] != "ok" or not v["same"]]
+        if not shown:
+            out.append("<p class='meta'>every cell and quantity the same</p>")
+            continue
+        out.append("<div class='scroll'><table><tr><th>cell</th><th>status</th><th>quantity</th><th>same</th>"
+                   "<th>error / allowance</th><th>bound by</th><th>why</th></tr>")
+        for v in shown:
+            out.append(f"<tr><td>{html.escape(v['cell'])}</td><td>{html.escape(v['cell_status'])}</td>"
+                       f"<td>{html.escape(v['quantity'] or '')}</td><td>{'' if v['same'] is None else int(v['same'])}</td>"
+                       f"<td class='num'>{_fmt(v['ratio'])}</td><td>{html.escape(v['bound_by'] or '')}</td>"
+                       f"<td>{html.escape((v['why'] or '')[:90])}</td></tr>")
+        out.append("</table></div>")
+    return out
 
 
 def write(out: Path | str, root: Path | str = ROOT, **reading) -> dict:

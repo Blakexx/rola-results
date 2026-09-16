@@ -35,6 +35,7 @@ def main() -> int:
     dashboard.add_argument("--reference", help="the label each member's paired ratio is taken to")
     dashboard.add_argument("--run", help="the run to show (default: the newest)")
     dashboard.add_argument("--session", help="one session only")
+    dashboard.add_argument("--against", help="a reference run: each instrument metric's change against it")
     instruments = sub.add_parser("instruments", help="one run's instrument numbers beside a reference run's, as deltas")
     instruments.add_argument("--against", required=True, help="the reference run id")
     instruments.add_argument("--run", help="the run to read (default: the newest with instrument records)")
@@ -52,7 +53,7 @@ def main() -> int:
     if a.cmd == "dashboard":
         from .dashboard import write
 
-        print(json.dumps(write(a.out, a.root, reference=a.reference, run=a.run, session=a.session)))
+        print(json.dumps(write(a.out, a.root, reference=a.reference, run=a.run, session=a.session, against=a.against)))
         return 0
 
     if a.cmd == "instruments":
