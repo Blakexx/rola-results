@@ -115,7 +115,7 @@ class IndexContract(unittest.TestCase):
             f.write_text(json.dumps({"c": {"per_phase": {"fold": fold, "head": 2.0}, "total": fold + 2.0}}))
             Store("rola/phases", self.root).put({"tool": "phases", "run": run}, output_file=f, provenance={"run": run})
         index.build(self.root, views=Path(__file__).resolve().parents[1] / "views")
-        rows = compare(self.root, against="r1", run="r2", min_change=0.1)
+        rows = compare(self.root, baseline="r1", run="r2", min_change=0.1)
         self.assertEqual([(r["metric"], r["value"], r["reference"], round(r["change"], 3)) for r in rows],
                          [("phase.fold", 1.5, 1.0, 0.5), ("total", 3.5, 3.0, 0.167)])
 

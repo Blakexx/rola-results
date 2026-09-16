@@ -1,5 +1,5 @@
 """python -m rola_results check | show [LOCATION] | commit -m MESSAGE | index | sql QUERY | history|latest LOCATION |
-verdict | instruments --against RUN | dashboard --out FILE"""
+verdict | instruments --baseline RUN | dashboard --out FILE"""
 from __future__ import annotations
 
 import argparse
@@ -35,9 +35,9 @@ def main() -> int:
     dashboard.add_argument("--reference", help="the label each member's paired ratio is taken to")
     dashboard.add_argument("--run", help="the run to show (default: the newest)")
     dashboard.add_argument("--session", help="one session only")
-    dashboard.add_argument("--against", help="a reference run: each instrument metric's change against it")
+    dashboard.add_argument("--baseline", help="a reference run: each instrument metric's change against it")
     instruments = sub.add_parser("instruments", help="one run's instrument numbers beside a reference run's, as deltas")
-    instruments.add_argument("--against", required=True, help="the reference run id")
+    instruments.add_argument("--baseline", required=True, help="the reference run id")
     instruments.add_argument("--run", help="the run to read (default: the newest with instrument records)")
     instruments.add_argument("--instrument", help="one instrument only (phases, counters, census, timeline, ...)")
     instruments.add_argument("--min-change", type=float, default=0.0, help="drop rows whose relative change is below")
@@ -53,13 +53,13 @@ def main() -> int:
     if a.cmd == "dashboard":
         from .dashboard import write
 
-        print(json.dumps(write(a.out, a.root, reference=a.reference, run=a.run, session=a.session, against=a.against)))
+        print(json.dumps(write(a.out, a.root, reference=a.reference, run=a.run, session=a.session, baseline=a.baseline)))
         return 0
 
     if a.cmd == "instruments":
         from .instruments import compare, table
 
-        rows = compare(a.root, against=a.against, run=a.run, instrument=a.instrument, min_change=a.min_change)
+        rows = compare(a.root, baseline=a.baseline, run=a.run, instrument=a.instrument, min_change=a.min_change)
         print("\n".join(json.dumps(r) for r in rows) if a.json else table(rows))
         return 0
 

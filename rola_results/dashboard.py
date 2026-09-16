@@ -77,7 +77,7 @@ def _ratio(candidate: dict[int, list[float]], reference: dict[int, list[float]])
 
 
 def render(root: Path | str = ROOT, *, reference: str | None = None, run: str | None = None,
-           session: str | None = None, against: str | None = None) -> str:
+           session: str | None = None, baseline: str | None = None) -> str:
     runs = index.query(_RUNS, root=root)[1]
     if not runs:
         runs = index.query("SELECT run, max(utc) FROM instrument_metrics GROUP BY run ORDER BY max(utc) DESC", root=root)[1]
@@ -120,7 +120,7 @@ def render(root: Path | str = ROOT, *, reference: str | None = None, run: str | 
                        f"<td class='num'>{_mb(allocated)}</td><td class='num'>{_mb(reserved)}</td>"
                        f"<td><code>{html.escape((m['git_sha'] or '')[:8])}</code></td></tr>")
         out.append("</table></div>")
-    out += _instrument_sections(root, run, against)
+    out += _instrument_sections(root, run, baseline)
     out += _diff_sections(root, run)
     out.append("<h2>Instrument records</h2><div class='scroll'><table><tr><th>location</th><th>records</th>"
                "<th>newest sample</th></tr>")
@@ -138,8 +138,8 @@ def _fmt(value) -> str:
     return html.escape(str(value))
 
 
-def _instrument_sections(root, run: str | None, against: str | None) -> list[str]:
-    """One table per instrument: its headline metrics per cell, and beside each the relative change against the
+def _instrument_sections(root, run: str | None, baseline: str | None) -> list[str]:
+    """One table per instrument: its headline metrics per cell, and beside each the relative change baseline the
     reference run where one is named -- the suite reading its own instruments."""
     if run is None:
         return []
@@ -148,24 +148,24 @@ def _instrument_sections(root, run: str | None, against: str | None) -> list[str
     for instrument, cell, metric, value in rows:
         by.setdefault(instrument, {}).setdefault(cell, {})[metric] = value
     base: dict[tuple, object] = {}
-    if against:
-        for instrument, cell, metric, value in index.query(_METRICS, (against,), root=root)[1]:
+    if baseline:
+        for instrument, cell, metric, value in index.query(_METRICS, (baseline,), root=root)[1]:
             base[(instrument, cell, metric)] = value
     out = []
     for instrument in sorted(by):
         cells = by[instrument]
         metrics = _HEADLINES.get(instrument) or sorted({m for c in cells.values() for m in c})
         out.append(f"<h2>{html.escape(instrument)}</h2><p class='meta'>{len(cells)} cell(s); "
-                   f"{'change against ' + html.escape(against) if against else 'no reference run'}</p>")
+                   f"{'change baseline ' + html.escape(baseline) if baseline else 'no reference run'}</p>")
         out.append("<div class='scroll'><table><tr><th>cell</th>" + "".join(
             f"<th>{html.escape(m.split('.', 1)[-1] if instrument in _HEADLINES else m)}</th>"
-            + ("<th>Δ</th>" if against else "") for m in metrics) + "</tr>")
+            + ("<th>Δ</th>" if baseline else "") for m in metrics) + "</tr>")
         for cell in sorted(cells, key=lambda c: c or ""):
             tds = []
             for m in metrics:
                 value = cells[cell].get(m)
                 tds.append(f"<td class='num'>{_fmt(value)}</td>")
-                if against:
+                if baseline:
                     ref = base.get((instrument, cell, m))
                     numeric = isinstance(value, (int, float)) and isinstance(ref, (int, float))
                     change = ((value - ref) / ref if ref else None) if numeric else None

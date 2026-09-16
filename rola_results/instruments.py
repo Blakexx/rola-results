@@ -3,7 +3,7 @@ the same number in a reference run -- a phase time, an HMMA count, a register pe
 table of deltas. This is the suite reading its own instruments: the same records the timing verdict reads, joined on
 (instrument, cell, metric) rather than parsed per tool.
 
-    python -m rola_results instruments --against RUN [--run RUN] [--instrument phases] [--min-change 0.05]
+    python -m rola_results instruments --baseline RUN [--run RUN] [--instrument phases] [--min-change 0.05]
 
 Which run is the reference is the reader's choice; nothing here ranks one. A metric present in one run and absent in
 the other is a row with one side empty -- a kernel that lost a phase or gained a region is a finding, not a join miss.
@@ -27,15 +27,15 @@ def runs(root: Path | str = ROOT) -> list[dict]:
     return [dict(zip(columns, r, strict=True)) for r in rows]
 
 
-def compare(root: Path | str = ROOT, *, against: str, run: str | None = None, instrument: str | None = None,
+def compare(root: Path | str = ROOT, *, baseline: str, run: str | None = None, instrument: str | None = None,
             min_change: float = 0.0) -> list[dict]:
-    """One row per (instrument, cell, metric) of `run` (default: the newest) beside `against`: both values and the
+    """One row per (instrument, cell, metric) of `run` (default: the newest) beside `baseline`: both values and the
     relative change where both are numbers; rows under `min_change` in relative terms are dropped."""
     run = run or (runs(root)[0]["run"] if runs(root) else None)
     if run is None:
         return []
     sides = {}
-    for name, which in (("value", run), ("reference", against)):
+    for name, which in (("value", run), ("reference", baseline)):
         _cols, rows = index.query(_METRICS, (which, instrument, instrument), root=root)
         sides[name] = {(i, c, m): v for i, c, m, v in rows}
     out = []
@@ -50,7 +50,7 @@ def compare(root: Path | str = ROOT, *, against: str, run: str | None = None, in
             continue
         instrument_, cell, metric = key
         out.append({"instrument": instrument_, "cell": cell, "metric": metric, "value": value,
-                    "reference": reference, "change": change, "run": run, "against": against})
+                    "reference": reference, "change": change, "run": run, "baseline": baseline})
     return out
 
 
