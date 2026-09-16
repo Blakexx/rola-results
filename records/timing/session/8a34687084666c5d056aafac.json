@@ -1,0 +1,67 @@
+{
+ "format": 1,
+ "key": "8a34687084666c5d056aafac",
+ "location": "timing/session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "8a34687084666c5d056aafac.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "k31-mainline/decode_step@layer=chunk-decode-w16": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260916T052133Z-9d0f66"
+   },
+   "run": "20260916T052133Z-9d0f66",
+   "summary": {
+    "members": [
+     {
+      "cell": "layer-B2-T128-H2-h128-dv64-fp32-s4-dec8",
+      "error": null,
+      "id": "m0",
+      "owner": "k31-mainline/decode_step@layer=chunk-decode-w16",
+      "status": "ok"
+     }
+    ],
+    "samples": 88
+   },
+   "utc": "2026-09-16T05:28:18Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "clock": {
+    "key": "3ff5d3854a870d0b1d73cb0a",
+    "output": "1a64931bdccb48537fa826946bf77cb59ddbd0ee10025a86d9ad5f49c20f2566"
+   },
+   "r0": {
+    "key": "99f826d21e2f1dec50a6a4cb",
+    "output": "8080c1ae0dfd4f7a6a990d548bde360d6d4c826e4b30ff4a1c931013de3b5a38"
+   },
+   "server": {
+    "key": "80f4ef1870d9ac980315bd6d",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "executor": "rola_devtools.timing.executors:measure",
+  "params": {
+   "cells": [
+    "layer-B2-T128-H2-h128-dv64-fp32-s4-dec8"
+   ],
+   "claim": "",
+   "reps": 11,
+   "rounds": 8,
+   "seed": 0,
+   "warmup": 10
+  }
+ }
+}

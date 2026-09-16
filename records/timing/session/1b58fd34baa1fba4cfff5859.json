@@ -1,0 +1,113 @@
+{
+ "format": 1,
+ "key": "1b58fd34baa1fba4cfff5859",
+ "location": "timing/session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "1b58fd34baa1fba4cfff5859.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "bench/flash": {
+      "branch": "master",
+      "checkout": "rola-bench",
+      "diff_sha256": null,
+      "git_sha": "a642f62f065bf15e0872a134aa98813a5705681c"
+     },
+     "k31-mainline/carry_intra": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260916T052133Z-9d0f66"
+   },
+   "run": "20260916T052133Z-9d0f66",
+   "summary": {
+    "members": [
+     {
+      "cell": "deep3-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 85, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 150, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep3-alt-k4: this binary carries no carry arm (3, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "id": "m0",
+      "owner": "k31-mainline/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "deep3-dense",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 85, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 150, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep3-dense: this binary carries no carry arm (3, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "id": "m1",
+      "owner": "k31-mainline/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flat-small-alt-k16",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 85, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 152, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: flat-small-alt-k16: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "id": "m2",
+      "owner": "k31-mainline/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flat-small-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 85, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 152, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: flat-small-alt-k4: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "id": "m3",
+      "owner": "k31-mainline/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "qkv-L256-dv64",
+      "error": null,
+      "id": "m4",
+      "owner": "bench/flash",
+      "status": "ok"
+     }
+    ],
+    "samples": 88
+   },
+   "utc": "2026-09-16T05:27:55Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "clock": {
+    "key": "3ff5d3854a870d0b1d73cb0a",
+    "output": "1a64931bdccb48537fa826946bf77cb59ddbd0ee10025a86d9ad5f49c20f2566"
+   },
+   "r0": {
+    "key": "735f6266c62953a0d044a584",
+    "output": "8c3dc4b9906ce3c2c990340e972e5b6bea6b3ed0aa55a6e388eccfd12df01735"
+   },
+   "r1": {
+    "key": "0e1492fc89f78de5c23db8da",
+    "output": "071b4c07f82319e7a3fc02612e6f62b7b55894b5d7efea20370246ca145ee4d4"
+   },
+   "server": {
+    "key": "80f4ef1870d9ac980315bd6d",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "executor": "rola_devtools.timing.executors:measure",
+  "params": {
+   "cells": [
+    "flat-small-dense",
+    "flat-small-idle-resident",
+    "flat-small-alt-k4",
+    "flat-small-alt-k16",
+    "flat-small-struct50",
+    "flat-small-struct25",
+    "deep3-dense",
+    "deep3-alt-k4",
+    "qkv-L256-dv64"
+   ],
+   "claim": "",
+   "reps": 11,
+   "rounds": 8,
+   "seed": 0,
+   "warmup": 10
+  }
+ }
+}

@@ -1,0 +1,218 @@
+{
+ "format": 1,
+ "key": "db7ac9cace8700bf91b88cb0",
+ "location": "rola/timeline",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "db7ac9cace8700bf91b88cb0.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "k31-mainline": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260916T052133Z-9d0f66"
+   },
+   "run": "20260916T052133Z-9d0f66",
+   "summary": {
+    "cells": {
+     "deep3-alt-k4": {
+      "error": "pipe_timeline: the capture failed:\n==ERROR== The application returned an error code (1).\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"measure/provider.py\", line 195, in <module>\n    _oneshot(sys.argv[2], sys.argv[3])\n  File \"measure/provider.py\", line 184, in _oneshot\n    offered = arms(by_name(cell))\n              ^^^^^^^^^^^^^^^^^^^\n  File \"measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep3-alt-k4: this binary carries no carry arm (3, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n\n",
+      "exit": 1,
+      "status": "failed"
+     },
+     "deep3-dense": {
+      "error": "pipe_timeline: the capture failed:\n==ERROR== The application returned an error code (1).\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"measure/provider.py\", line 195, in <module>\n    _oneshot(sys.argv[2], sys.argv[3])\n  File \"measure/provider.py\", line 184, in _oneshot\n    offered = arms(by_name(cell))\n              ^^^^^^^^^^^^^^^^^^^\n  File \"measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep3-dense: this binary carries no carry arm (3, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n\n",
+      "exit": 1,
+      "status": "failed"
+     },
+     "deep4-alt-k2": {
+      "error": "pipe_timeline: the capture failed:\n==ERROR== The application returned an error code (1).\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"measure/provider.py\", line 195, in <module>\n    _oneshot(sys.argv[2], sys.argv[3])\n  File \"measure/provider.py\", line 184, in _oneshot\n    offered = arms(by_name(cell))\n              ^^^^^^^^^^^^^^^^^^^\n  File \"measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep4-alt-k2: this binary carries no carry arm (4, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n\n",
+      "exit": 1,
+      "status": "failed"
+     },
+     "deep4-dense": {
+      "error": "pipe_timeline: the capture failed:\n==ERROR== The application returned an error code (1).\nTraceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"measure/provider.py\", line 195, in <module>\n    _oneshot(sys.argv[2], sys.argv[3])\n  File \"measure/provider.py\", line 184, in _oneshot\n    offered = arms(by_name(cell))\n              ^^^^^^^^^^^^^^^^^^^\n  File \"measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep4-dense: this binary carries no carry arm (4, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n\n",
+      "exit": 1,
+      "status": "failed"
+     },
+     "flagship-alt-k16": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-alt-k16-L16384": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-alt-k4": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-alt-k4-L16384": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-cohort-k16": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-cohort-k16-L16384": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-cohort-k4": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-dense": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-dense-L16384": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flat-small-alt-k16": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flat-small-alt-k4": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "nl16k-alt-k4": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "nl16k-dense": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "nl64k-alt-k4": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "nl64k-dense": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "one-box-alt-k4": {
+      "exit": 0,
+      "status": "ok"
+     }
+    }
+   },
+   "utc": "2026-09-16T05:27:13Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": "613f48189ee879f5838fa536e7cf6142bd7184253b8ee8b8e8083236234c74d4",
+  "deps": {
+   "binary": {
+    "key": "3659eda0f80b92bd52021434",
+    "output": "81f8c5d2e67cf0c00c9dfdfa1f6bad162b3d6b8150c228e1b6b11065b2bbde36"
+   },
+   "environment": {
+    "key": "012b6cb64a9c98dddab11d1d",
+    "output": "8e4babba64117665d39feeb34ef43dafeeb988d771468765b046376c6de21e38"
+   },
+   "input 0": {
+    "key": "e244ba2f82bbbdcf2e611de4",
+    "output": "972257e42f34b5f2d6c2cde5c01baffbdabadec96f719900a8d16b21ddce59a0"
+   },
+   "input 1": {
+    "key": "2c45487ae907464313ea7b4c",
+    "output": "870f00fc11b007d2785275e140bed7d946d809ed5860be6d47ed72bbb4369c2a"
+   },
+   "input 10": {
+    "key": "9d10700353fcd3d37e255ce6",
+    "output": "5a53e90596fe941598252cd1fcac1a7103510c59afafb397f9f150bf42a24b13"
+   },
+   "input 11": {
+    "key": "ef1f500fcf6aecc722e5d7fc",
+    "output": "d4df7b2f1bf2071a07105d1542daa630a2502085c1637d2f876f1453caff85f5"
+   },
+   "input 12": {
+    "key": "ef8f3c3f9108f0d6875439a6",
+    "output": "c4b8a2d3f9b9f40f4f2ebf9cb0962a5eaf5f47e37cfa9c7341cc45b7dacc7eb8"
+   },
+   "input 13": {
+    "key": "39a167b3eb383c771ed040e5",
+    "output": "d3286fb21f994a17d2be684f5d3bc3b324d5fde42ec47949fe1a3dcc883afec8"
+   },
+   "input 14": {
+    "key": "97190df76af1d82ca3351f42",
+    "output": "0af4f35e5862b8826808009194c71fbe0069de62708315acae26eaa741deaa71"
+   },
+   "input 15": {
+    "key": "d8381d37bf245c431355aae1",
+    "output": "2d2956a61bae0ae0289ded93d3fbd2295e9cb2b4dc49db04c86ea2ff59f01074"
+   },
+   "input 16": {
+    "key": "7284dfab702e4343d1225687",
+    "output": "bd9cb938c4060c4f6fbf8896073dbcffd31f69818a220fc225a5671e78555360"
+   },
+   "input 17": {
+    "key": "ba037eb055002da08c59eb02",
+    "output": "5f8c775365a5671252187535e1eae342344cc37f42366a1e1f73d060b273747e"
+   },
+   "input 18": {
+    "key": "2d09761fe9cd8f35e1da07e3",
+    "output": "59bd53a1bd457ed5be6d11a43e861f5d89b8a739166c83aacd1e946a3b328d52"
+   },
+   "input 19": {
+    "key": "61f47c9829c1afb8c2914311",
+    "output": "e53f328ed1f668ab98e0e430f5fc1335a432f108f24d924d21c24e366bc4eede"
+   },
+   "input 2": {
+    "key": "58f6dd9e3b15b4ec310f08e4",
+    "output": "55a899e5d67ccace861765c15c50ae36ed815409f0b84ef952906a3a96a06c42"
+   },
+   "input 3": {
+    "key": "6b1b5872eec42eef06cd1a02",
+    "output": "ff70d4d0114ff7f8570f42cc18c23caf503e79fd44dc5a9c972d23d4ceb17958"
+   },
+   "input 4": {
+    "key": "48d80dd3ed97a25bcaafeb6d",
+    "output": "ad54181d13716329823f28b3125b3d585e1dfcabfd63c205251cb3e997834d91"
+   },
+   "input 5": {
+    "key": "ae22833af09dd5049d9c759a",
+    "output": "2de42e901bdd01779e34102dcf261be498754ec655706be41f8c4846d96e1385"
+   },
+   "input 6": {
+    "key": "8167a6a7a878605888d30386",
+    "output": "27c8f048c963b1f1ade9e6d41428286dfd508db105403fdb46110d2d60679247"
+   },
+   "input 7": {
+    "key": "f020b84c8b57f6e7f833b645",
+    "output": "b4c15dc924767ee289e46c65949d5212e7ead245fa70221579f3c6c6d2dbd2de"
+   },
+   "input 8": {
+    "key": "7716084854ea4460a857c698",
+    "output": "cb7a7c6c55a56c3b39dbdc43addaeacc269a5cecefdf210adc6af9c4b8b17a1f"
+   },
+   "input 9": {
+    "key": "9a73b193437a060499101076",
+    "output": "cb0a73aea722d2a290b68885ffd7363af55f5a192db60d100e08adc2f07b3836"
+   }
+  },
+  "executor": "measure.executors:run_tool",
+  "params": {
+   "args": [
+    "--cell",
+    "{cell}"
+   ],
+   "per_cell": true,
+   "timeout": 900,
+   "tool": "tools/pipe_timeline.py"
+  }
+ }
+}

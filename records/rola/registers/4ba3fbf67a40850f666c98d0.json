@@ -1,0 +1,60 @@
+{
+ "format": 1,
+ "key": "4ba3fbf67a40850f666c98d0",
+ "location": "rola/registers",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "4ba3fbf67a40850f666c98d0.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "k31-mainline": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260916T051952Z-f20f7f"
+   },
+   "run": "20260916T051952Z-f20f7f",
+   "summary": {
+    "cells": {
+     "": {
+      "exit": 0,
+      "status": "ok"
+     }
+    }
+   },
+   "utc": "2026-09-16T05:21:01Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": "ed111bba9814a5321deaecb42fa73f602939eb7191b8b4571bab740e9355c8b4",
+  "deps": {
+   "binary": {
+    "key": "3659eda0f80b92bd52021434",
+    "output": "81f8c5d2e67cf0c00c9dfdfa1f6bad162b3d6b8150c228e1b6b11065b2bbde36"
+   },
+   "environment": {
+    "key": "012b6cb64a9c98dddab11d1d",
+    "output": "8e4babba64117665d39feeb34ef43dafeeb988d771468765b046376c6de21e38"
+   }
+  },
+  "executor": "measure.executors:run_tool",
+  "params": {
+   "args": [
+    "--arm",
+    "0",
+    "--source",
+    "csrc/rola/src/carry/carry_kernel.cuh"
+   ],
+   "per_cell": false,
+   "timeout": 600,
+   "tool": "tools/life_ranges.py"
+  }
+ }
+}

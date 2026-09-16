@@ -1,0 +1,671 @@
+{
+ "format": 1,
+ "key": "c758920078ce639e3befdd44",
+ "location": "timing/memory",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "c758920078ce639e3befdd44.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "bench/flash": {
+      "branch": "master",
+      "checkout": "rola-bench",
+      "diff_sha256": null,
+      "git_sha": "a642f62f065bf15e0872a134aa98813a5705681c"
+     },
+     "k31-mainline/carry_forward": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     },
+     "k31-mainline/carry_intra": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     },
+     "k31-mainline/decode_step@layer=chunk-decode-la-w256": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     },
+     "k31-mainline/decode_step@layer=chunk-decode-w16": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     },
+     "k31-mainline/entmax_solve@layer=chunk-bwd-dense-N64": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     },
+     "k31-mainline/entmax_solve@layer=chunk-bwd-smalln": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     },
+     "k31-mainline/entmax_solve@layer=chunk-bwd-splitk": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     },
+     "k31-mainline/entmax_solve@layer=chunk-deadblocks-T64": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     },
+     "k31-mainline/entmax_solve@layer=chunk-decode-la-w256": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     },
+     "k31-mainline/entmax_solve@layer=chunk-decode-w16": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     },
+     "k31-mainline/entmax_solve@layer=chunk-deep-D4-w8": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     },
+     "k31-mainline/entmax_solve@layer=chunk-dense-D2": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     },
+     "k31-mainline/entmax_solve@layer=chunk-dense-NL4096": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     },
+     "k31-mainline/entmax_solve@layer=chunk-p73-pinned": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     },
+     "k31-mainline/entmax_solve@layer=chunk-sparse-gain8": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260916T052133Z-9d0f66"
+   },
+   "run": "20260916T052133Z-9d0f66",
+   "summary": {
+    "members": [
+     {
+      "cell": "deep3-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 150, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep3-alt-k4: this binary carries no carry arm (3, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "k31-mainline/carry_forward",
+      "status": "failed"
+     },
+     {
+      "cell": "deep3-dense",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 150, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep3-dense: this binary carries no carry arm (3, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "k31-mainline/carry_forward",
+      "status": "failed"
+     },
+     {
+      "cell": "deep4-alt-k2",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 150, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep4-alt-k2: this binary carries no carry arm (4, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "k31-mainline/carry_forward",
+      "status": "failed"
+     },
+     {
+      "cell": "deep4-dense",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 150, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep4-dense: this binary carries no carry arm (4, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "k31-mainline/carry_forward",
+      "status": "failed"
+     },
+     {
+      "cell": "flagship-alt-k16",
+      "error": null,
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k16-L16384",
+      "error": null,
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k4",
+      "error": null,
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k4-L16384",
+      "error": null,
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k16",
+      "error": null,
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k16-L16384",
+      "error": null,
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k4",
+      "error": null,
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-dense",
+      "error": null,
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-dense-L16384",
+      "error": null,
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flat-small-alt-k16",
+      "error": null,
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flat-small-alt-k4",
+      "error": null,
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "nl16k-alt-k4",
+      "error": null,
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "nl16k-dense",
+      "error": null,
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "nl64k-alt-k4",
+      "error": null,
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "nl64k-dense",
+      "error": null,
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "one-box-alt-k4",
+      "error": null,
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "deep3-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 150, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep3-alt-k4: this binary carries no carry arm (3, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "k31-mainline/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "deep3-dense",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 150, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep3-dense: this binary carries no carry arm (3, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "k31-mainline/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "deep4-alt-k2",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 150, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep4-alt-k2: this binary carries no carry arm (4, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "k31-mainline/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "deep4-dense",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 150, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep4-dense: this binary carries no carry arm (4, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "k31-mainline/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flagship-alt-k16",
+      "error": null,
+      "owner": "k31-mainline/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k16-L16384",
+      "error": null,
+      "owner": "k31-mainline/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k4",
+      "error": null,
+      "owner": "k31-mainline/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k4-L16384",
+      "error": null,
+      "owner": "k31-mainline/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k16",
+      "error": null,
+      "owner": "k31-mainline/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k16-L16384",
+      "error": null,
+      "owner": "k31-mainline/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k4",
+      "error": null,
+      "owner": "k31-mainline/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-dense",
+      "error": null,
+      "owner": "k31-mainline/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-dense-L16384",
+      "error": null,
+      "owner": "k31-mainline/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flat-small-alt-k16",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 152, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: flat-small-alt-k16: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "owner": "k31-mainline/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flat-small-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 152, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: flat-small-alt-k4: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "owner": "k31-mainline/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "nl16k-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 152, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: nl16k-alt-k4: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'intra_forward', 'liveness_pass']\n",
+      "owner": "k31-mainline/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "nl16k-dense",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 152, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: nl16k-dense: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'intra_forward', 'liveness_pass']\n",
+      "owner": "k31-mainline/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "nl64k-alt-k4",
+      "error": null,
+      "owner": "k31-mainline/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "nl64k-dense",
+      "error": null,
+      "owner": "k31-mainline/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "one-box-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/measure/executors.py\", line 152, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: one-box-alt-k4: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'intra_forward', 'liveness_pass']\n",
+      "owner": "k31-mainline/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "layer-B2-T512-H8-h512-dv64-bf16-s3",
+      "error": null,
+      "owner": "k31-mainline/entmax_solve@layer=chunk-deep-D4-w8",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T128-H2-h128-dv64-fp32-s4-dec8",
+      "error": null,
+      "owner": "k31-mainline/entmax_solve@layer=chunk-decode-w16",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T128-H2-h128-dv64-fp32-s4-dec8",
+      "error": null,
+      "owner": "k31-mainline/decode_step@layer=chunk-decode-w16",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T128-H2-h128-dv64-fp32-s10-dec8",
+      "error": null,
+      "owner": "k31-mainline/entmax_solve@layer=chunk-decode-la-w256",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T128-H2-h128-dv64-fp32-s10-dec8",
+      "error": null,
+      "owner": "k31-mainline/decode_step@layer=chunk-decode-la-w256",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L16-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L32-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L64-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L128-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L256-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L1024-dv32",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L1024-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L1024-dv128",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L1792-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L4096-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L16384-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L65536-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T2048-H8-h512-dv64-bf16-s0",
+      "error": null,
+      "owner": "k31-mainline/entmax_solve@layer=chunk-p73-pinned",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T512-H8-h512-dv64-bf16-s1",
+      "error": null,
+      "owner": "k31-mainline/entmax_solve@layer=chunk-sparse-gain8",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T64-H8-h512-dv64-bf16-s5",
+      "error": null,
+      "owner": "k31-mainline/entmax_solve@layer=chunk-deadblocks-T64",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T512-H8-h512-dv64-bf16-s2",
+      "error": null,
+      "owner": "k31-mainline/entmax_solve@layer=chunk-dense-D2",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T4096-H8-h512-dv64-bf16-s6",
+      "error": null,
+      "owner": "k31-mainline/entmax_solve@layer=chunk-dense-NL4096",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T2048-H8-h512-dv64-bf16-s7",
+      "error": null,
+      "owner": "k31-mainline/entmax_solve@layer=chunk-bwd-smalln",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T2048-H8-h512-dv64-bf16-s8",
+      "error": null,
+      "owner": "k31-mainline/entmax_solve@layer=chunk-bwd-dense-N64",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B1-T512-H2-h512-dv64-bf16-s9",
+      "error": null,
+      "owner": "k31-mainline/entmax_solve@layer=chunk-bwd-splitk",
+      "status": "ok"
+     }
+    ]
+   },
+   "utc": "2026-09-16T05:28:39Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "r0": {
+    "key": "8cd1afe66d7877ce3f214444",
+    "output": "066d8731658bf48ee79ceff8240d7c5bd8433c3653af9321f7a17afed4a513d6"
+   },
+   "r1": {
+    "key": "735f6266c62953a0d044a584",
+    "output": "8c3dc4b9906ce3c2c990340e972e5b6bea6b3ed0aa55a6e388eccfd12df01735"
+   },
+   "r10": {
+    "key": "60cdb2fc7c320a872b246338",
+    "output": "db1e855dae351401f3f25f0c644b6465a6e7d90ceed383b974c4f8c6a27455c9"
+   },
+   "r11": {
+    "key": "c098ad8274a6ed6996cedd4b",
+    "output": "f8f8e9916e8ea7340814f1837c249c396edb4dd79cfe2bceb6225055cf3679bb"
+   },
+   "r12": {
+    "key": "99f826d21e2f1dec50a6a4cb",
+    "output": "8080c1ae0dfd4f7a6a990d548bde360d6d4c826e4b30ff4a1c931013de3b5a38"
+   },
+   "r13": {
+    "key": "8df927a8ebc5d88368be1c54",
+    "output": "b9ba05192a8a4ea13a8d38244911859c793549d3de89feb826fca258cf9dd8b7"
+   },
+   "r14": {
+    "key": "8668170cb6b994c0666e8aa7",
+    "output": "1b569dc5e6255d13b5ab7b77feb30251ecb7ac6423fb20052c835c0332484241"
+   },
+   "r15": {
+    "key": "8648cf98d31e38c30cb73acc",
+    "output": "595a20987f9ad853e7bc7217eb672729616f5ae8d49986183f726518b6dcd2f5"
+   },
+   "r16": {
+    "key": "ee1e6054dca67c78b1884b23",
+    "output": "bd7a592fa472d8b03215f9a7fb6bca031a4d41590cdf2584a36490fe5b34b199"
+   },
+   "r17": {
+    "key": "82c1b8bf81acffdfaa8986af",
+    "output": "29be0987c2971b80f306af6e6eefbe4f5b69c8bb08351875e2a9dcf6a6c88161"
+   },
+   "r18": {
+    "key": "52137516f15403324a447377",
+    "output": "d6f7bfdb7952ebe279d3cab8a336c83d7eedec360c68cb2672000e8c94fdb6e0"
+   },
+   "r19": {
+    "key": "0e1492fc89f78de5c23db8da",
+    "output": "071b4c07f82319e7a3fc02612e6f62b7b55894b5d7efea20370246ca145ee4d4"
+   },
+   "r2": {
+    "key": "62eee1f726b614e8f0e9b9e5",
+    "output": "017ddc294a73dd90012df509a2b653f4347fdb99410cd0f78c3eff0a9d9862e9"
+   },
+   "r3": {
+    "key": "a2814174da99eca986f44cb4",
+    "output": "edad57cb89c62ddb86aac19f4ef991461b587b40642b982a8b71c7f72f2010fc"
+   },
+   "r4": {
+    "key": "9afc820700b6bec4638ea1d2",
+    "output": "924e4da0cef64afa14922a175a233b7169969ecbb50fec02c36eecaf287cbaf8"
+   },
+   "r5": {
+    "key": "e3c413b48925ae42c42400f3",
+    "output": "5f4655acb814154a6ae6104f911a76d1928b0616b00b48c5008e62b2c8783a6b"
+   },
+   "r6": {
+    "key": "ce7cdcf6d16ca5d0c662d047",
+    "output": "6a9bcce8fba3ec6ed344240a68fb5c2e5326b5b31bff185c4b91f732f80daa5c"
+   },
+   "r7": {
+    "key": "18a90439c249b0aee3b6075e",
+    "output": "46a45f1355c8350b91c595aac4e55d64d29479fb1440f36133381508d26db04e"
+   },
+   "r8": {
+    "key": "b78d0326d2446db21434b4ac",
+    "output": "496d37dfb861463b5d856229939e0595c7e0eccfdf672719660b9c05176b122a"
+   },
+   "r9": {
+    "key": "f6f4051a04868f4df1e17184",
+    "output": "27a8203b650f8208a3de6ed7e210a81216ca7fc0e4806457e0f87e66bd24b8d6"
+   },
+   "server": {
+    "key": "80f4ef1870d9ac980315bd6d",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "executor": "rola_devtools.timing.executors:memory",
+  "params": {
+   "calls": 5,
+   "cells": [
+    "identity-passthrough-dense",
+    "identity-passthrough-paged",
+    "single-deposit",
+    "qkv-L16-dv64",
+    "one-box-tiny",
+    "qkv-L32-dv64",
+    "one-box-short",
+    "qkv-L64-dv64",
+    "flat-small-carried",
+    "qkv-L128-dv64",
+    "flat-small-dense",
+    "flat-small-idle-resident",
+    "flat-small-alt-k4",
+    "flat-small-alt-k16",
+    "flat-small-struct50",
+    "flat-small-struct25",
+    "deep3-dense",
+    "deep3-alt-k4",
+    "qkv-L256-dv64",
+    "deep4-dense",
+    "deep4-alt-k2",
+    "flagship-dv32-alt-k4",
+    "qkv-L1024-dv32",
+    "one-box-multiwindow",
+    "one-box-alt-k4",
+    "qkv-L1024-dv64",
+    "flat-small-multiwindow",
+    "flagship-dense",
+    "flagship-alt-k4",
+    "flagship-alt-k16",
+    "flagship-cohort-k4",
+    "flagship-cohort-k16",
+    "flagship-both-k4",
+    "flagship-paged",
+    "flagship-struct50",
+    "flagship-struct25",
+    "flagship-dv128-alt-k4",
+    "qkv-L1024-dv128",
+    "flagship-partial-window",
+    "qkv-L1792-dv64",
+    "flagship-both-k4-L4096",
+    "flagship-alt-k4-L4096",
+    "flagship-cohort-k4-L4096",
+    "qkv-L4096-dv64",
+    "nl16k-dense",
+    "nl16k-alt-k4",
+    "qkv-L16384-dv64",
+    "flagship-dense-L16384",
+    "flagship-alt-k16-L16384",
+    "flagship-alt-k4-L16384",
+    "flagship-cohort-k16-L16384",
+    "nl64k-dense",
+    "nl64k-alt-k4",
+    "qkv-L65536-dv64",
+    "layer-B2-T2048-H8-h512-dv64-bf16-s0",
+    "layer-B2-T512-H8-h512-dv64-bf16-s1",
+    "layer-B2-T64-H8-h512-dv64-bf16-s5",
+    "layer-B2-T512-H8-h512-dv64-bf16-s2",
+    "layer-B2-T4096-H8-h512-dv64-bf16-s6",
+    "layer-B2-T2048-H8-h512-dv64-bf16-s7",
+    "layer-B2-T2048-H8-h512-dv64-bf16-s8",
+    "layer-B1-T512-H2-h512-dv64-bf16-s9",
+    "layer-B2-T512-H8-h512-dv64-bf16-s3",
+    "layer-B2-T128-H2-h128-dv64-fp32-s4-dec8",
+    "layer-B2-T128-H2-h128-dv64-fp32-s10-dec8"
+   ]
+  }
+ }
+}

@@ -1,0 +1,57 @@
+{
+ "format": 1,
+ "key": "de009c7af59ce38937b3f276",
+ "location": "rola/sass",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "de009c7af59ce38937b3f276.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "k31-mainline": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "63fae949793f6e9f3f567052c238e539105b9e31"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260916T051952Z-f20f7f"
+   },
+   "run": "20260916T051952Z-f20f7f",
+   "summary": {
+    "cells": {
+     "": {
+      "exit": 0,
+      "status": "ok"
+     }
+    }
+   },
+   "utc": "2026-09-16T05:20:58Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": "55f5fd4d8ee9380837bdbc058769cbd7628107b55d81a3ccc878841ef21a23e3",
+  "deps": {
+   "binary": {
+    "key": "3659eda0f80b92bd52021434",
+    "output": "81f8c5d2e67cf0c00c9dfdfa1f6bad162b3d6b8150c228e1b6b11065b2bbde36"
+   },
+   "environment": {
+    "key": "012b6cb64a9c98dddab11d1d",
+    "output": "8e4babba64117665d39feeb34ef43dafeeb988d771468765b046376c6de21e38"
+   }
+  },
+  "executor": "measure.executors:run_tool",
+  "params": {
+   "args": [
+    "{binary}"
+   ],
+   "per_cell": false,
+   "timeout": 600,
+   "tool": "tools/sass_gate.py"
+  }
+ }
+}
