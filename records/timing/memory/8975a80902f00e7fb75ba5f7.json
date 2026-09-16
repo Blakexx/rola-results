@@ -1,0 +1,906 @@
+{
+ "format": 1,
+ "key": "8975a80902f00e7fb75ba5f7",
+ "location": "timing/memory",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "8975a80902f00e7fb75ba5f7.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "bench/flash": {
+      "branch": "master",
+      "checkout": "rola-bench",
+      "diff_sha256": null,
+      "git_sha": "8f0adf3d70457caace7456dc9a434b96fd97a3b7"
+     },
+     "master/carry_forward": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     },
+     "master/carry_intra": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     },
+     "master/decode_step@layer=chunk-decode-la-w256": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     },
+     "master/decode_step@layer=chunk-decode-w16": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     },
+     "master/entmax_solve@layer=chunk-bwd-dense-N64": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     },
+     "master/entmax_solve@layer=chunk-bwd-smalln": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     },
+     "master/entmax_solve@layer=chunk-bwd-splitk": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     },
+     "master/entmax_solve@layer=chunk-deadblocks-T64": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     },
+     "master/entmax_solve@layer=chunk-decode-la-w256": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     },
+     "master/entmax_solve@layer=chunk-decode-w16": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     },
+     "master/entmax_solve@layer=chunk-deep-D4-w8": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     },
+     "master/entmax_solve@layer=chunk-dense-D2": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     },
+     "master/entmax_solve@layer=chunk-dense-NL4096": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     },
+     "master/entmax_solve@layer=chunk-p73-pinned": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     },
+     "master/entmax_solve@layer=chunk-sparse-gain8": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260916T002422Z-795696"
+   },
+   "run": "20260916T002422Z-795696",
+   "summary": {
+    "members": [
+     {
+      "cell": "identity-passthrough-dense",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "identity-passthrough-paged",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "single-deposit",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "one-box-tiny",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "one-box-short",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flat-small-carried",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flat-small-dense",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flat-small-idle-resident",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flat-small-alt-k4",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flat-small-alt-k16",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flat-small-struct50",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flat-small-struct25",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "deep3-dense",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 112, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/bench/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep3-dense: this binary carries no carry arm (3, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "master/carry_forward",
+      "status": "failed"
+     },
+     {
+      "cell": "deep3-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 112, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/bench/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep3-alt-k4: this binary carries no carry arm (3, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "master/carry_forward",
+      "status": "failed"
+     },
+     {
+      "cell": "deep4-dense",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 112, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/bench/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep4-dense: this binary carries no carry arm (4, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "master/carry_forward",
+      "status": "failed"
+     },
+     {
+      "cell": "deep4-alt-k2",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 112, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/bench/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep4-alt-k2: this binary carries no carry arm (4, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "master/carry_forward",
+      "status": "failed"
+     },
+     {
+      "cell": "flagship-dv32-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 112, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/bench/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: flagship-dv32-alt-k4: this binary carries no carry arm (2, 32, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "master/carry_forward",
+      "status": "failed"
+     },
+     {
+      "cell": "one-box-multiwindow",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "one-box-alt-k4",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flat-small-multiwindow",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-dense",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k4",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k16",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k4",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k16",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-both-k4",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-paged",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-struct50",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-struct25",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-dv128-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 112, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/bench/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: flagship-dv128-alt-k4: this binary carries no carry arm (2, 128, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "master/carry_forward",
+      "status": "failed"
+     },
+     {
+      "cell": "flagship-partial-window",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-both-k4-L4096",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k4-L4096",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k4-L4096",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "nl16k-dense",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "nl16k-alt-k4",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-dense-L16384",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k16-L16384",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k4-L16384",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k16-L16384",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "nl64k-alt-k4",
+      "error": null,
+      "owner": "master/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "identity-passthrough-dense",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: identity-passthrough-dense: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "identity-passthrough-paged",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: identity-passthrough-paged: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "single-deposit",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: single-deposit: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "one-box-tiny",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: one-box-tiny: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "one-box-short",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: one-box-short: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flat-small-carried",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: flat-small-carried: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flat-small-dense",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: flat-small-dense: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flat-small-idle-resident",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: flat-small-idle-resident: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flat-small-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: flat-small-alt-k4: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flat-small-alt-k16",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: flat-small-alt-k16: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flat-small-struct50",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: flat-small-struct50: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flat-small-struct25",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: flat-small-struct25: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "deep3-dense",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 112, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/bench/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep3-dense: this binary carries no carry arm (3, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "deep3-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 112, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/bench/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep3-alt-k4: this binary carries no carry arm (3, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "deep4-dense",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 112, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/bench/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep4-dense: this binary carries no carry arm (4, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "deep4-alt-k2",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 112, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/bench/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: deep4-alt-k2: this binary carries no carry arm (4, 64, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flagship-dv32-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 112, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/bench/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: flagship-dv32-alt-k4: this binary carries no carry arm (2, 32, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "one-box-multiwindow",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: one-box-multiwindow: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'intra_forward', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "one-box-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: one-box-alt-k4: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'intra_forward', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flat-small-multiwindow",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: flat-small-multiwindow: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'intra_forward', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flagship-dense",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k4",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k16",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k4",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k16",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-both-k4",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-paged",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-struct50",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-struct25",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-dv128-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 112, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/bench/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: flagship-dv128-alt-k4: this binary carries no carry arm (2, 128, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flagship-partial-window",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: flagship-partial-window: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flagship-both-k4-L4096",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k4-L4096",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k4-L4096",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "nl16k-dense",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: nl16k-dense: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'intra_forward', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "nl16k-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 109, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 114, in timed\n    raise LookupError(f\"{cell.name}: this checkout runs no arm {params['arm']} there; it runs {sorted(offered)}\")\nLookupError: nl16k-alt-k4: this checkout runs no arm carry_intra there; it runs ['carry_forward', 'carry_forward@schedule=identity', 'intra_forward', 'liveness_pass']\n",
+      "owner": "master/carry_intra",
+      "status": "failed"
+     },
+     {
+      "cell": "flagship-dense-L16384",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k16-L16384",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k4-L16384",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k16-L16384",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "nl64k-alt-k4",
+      "error": null,
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T512-H8-h512-dv64-bf16-s3",
+      "error": null,
+      "owner": "master/entmax_solve@layer=chunk-deep-D4-w8",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T128-H2-h128-dv64-fp32-s4-dec8",
+      "error": null,
+      "owner": "master/entmax_solve@layer=chunk-decode-w16",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T128-H2-h128-dv64-fp32-s4-dec8",
+      "error": null,
+      "owner": "master/decode_step@layer=chunk-decode-w16",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T128-H2-h128-dv64-fp32-s10-dec8",
+      "error": null,
+      "owner": "master/entmax_solve@layer=chunk-decode-la-w256",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T128-H2-h128-dv64-fp32-s10-dec8",
+      "error": null,
+      "owner": "master/decode_step@layer=chunk-decode-la-w256",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L16-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L32-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L64-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L128-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L256-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L1024-dv32",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L1024-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L1024-dv128",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L1792-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L4096-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L16384-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L65536-dv64",
+      "error": null,
+      "owner": "bench/flash",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T2048-H8-h512-dv64-bf16-s0",
+      "error": null,
+      "owner": "master/entmax_solve@layer=chunk-p73-pinned",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T512-H8-h512-dv64-bf16-s1",
+      "error": null,
+      "owner": "master/entmax_solve@layer=chunk-sparse-gain8",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T64-H8-h512-dv64-bf16-s5",
+      "error": null,
+      "owner": "master/entmax_solve@layer=chunk-deadblocks-T64",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T512-H8-h512-dv64-bf16-s2",
+      "error": null,
+      "owner": "master/entmax_solve@layer=chunk-dense-D2",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T4096-H8-h512-dv64-bf16-s6",
+      "error": null,
+      "owner": "master/entmax_solve@layer=chunk-dense-NL4096",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T2048-H8-h512-dv64-bf16-s7",
+      "error": null,
+      "owner": "master/entmax_solve@layer=chunk-bwd-smalln",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B2-T2048-H8-h512-dv64-bf16-s8",
+      "error": null,
+      "owner": "master/entmax_solve@layer=chunk-bwd-dense-N64",
+      "status": "ok"
+     },
+     {
+      "cell": "layer-B1-T512-H2-h512-dv64-bf16-s9",
+      "error": null,
+      "owner": "master/entmax_solve@layer=chunk-bwd-splitk",
+      "status": "ok"
+     }
+    ]
+   },
+   "utc": "2026-09-16T00:37:04Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "r0": {
+    "key": "8cd94b27775206aacc315197",
+    "output": "07a9af0b7d946d96080121bfdcea3735b6fc018618b0654958943ab4d37d0c4f"
+   },
+   "r1": {
+    "key": "2f6767c13dc27aaa5ea28ee7",
+    "output": "9978a45fd528f4d9aa28cea351f3ba68d2696befe2fb86776e03bf910263766f"
+   },
+   "r10": {
+    "key": "eaaf3d5a0c9da9f8abd56b2c",
+    "output": "84f322907f4dfc46ccf07d2b713886f2d3469c34042500f8a6afb92d97388d31"
+   },
+   "r11": {
+    "key": "f0e37c73a38aae446ed71dc0",
+    "output": "3e5f75900aa5501f070e060ba6e0c4589ec9f5393d0afe636fcb8493064ba57b"
+   },
+   "r12": {
+    "key": "4396ca515c2419975e4f944c",
+    "output": "941724987a18366907496b8cf0fbeb25ef68434ea9d99b18609f5e39e142bcb1"
+   },
+   "r13": {
+    "key": "f21e9acdc1f6000d53b97f9b",
+    "output": "c786ac90a126097d859230a7c191df49635228d81cc1fa3d3b6b3a69589f2f05"
+   },
+   "r14": {
+    "key": "0852116a8bd0f637aa800daf",
+    "output": "1e5423918432f7550c87c807aafdda57e62b4e3cff5f8e8943378d6e572ce3e6"
+   },
+   "r15": {
+    "key": "a2849f232fc9580fe9a86256",
+    "output": "e9771d069ee5a327a4dd187f3226543d045c29490692b96daaf4c64000512297"
+   },
+   "r2": {
+    "key": "706c8ed2c672d8cd5e835287",
+    "output": "f3e8c198b12b64ee8c1c0859bd07c241d0d954cdd696139be71253a693de44e9"
+   },
+   "r3": {
+    "key": "c02b244e90c6ca1d51dd103b",
+    "output": "964e92b287324c91306ae60e50c1e9bc5552dff54eb5cf652e4080a5a5db1f4d"
+   },
+   "r4": {
+    "key": "390b3cbc3999ad93c40f042e",
+    "output": "3e2c4e91a6be5b410a1062f7d7e386edf7993446003b9411f1e3e5cdac581a2f"
+   },
+   "r5": {
+    "key": "cb5bd3963240b03e7afa2130",
+    "output": "a68188fc66a83069d75fa1e4106af7d68107a9a78dfa2dd62577700e2c6373ef"
+   },
+   "r6": {
+    "key": "89ee6c2dc4953fa1e3651e2f",
+    "output": "3b6d196779b52d5156ce71239251d9915d73516192552652d46c9d65c638c8dd"
+   },
+   "r7": {
+    "key": "bc3367326a1e9696898991ea",
+    "output": "066d65d50af859a61d4f39b45c73e45c3fffed294e04c405b4b59be0e6fa568f"
+   },
+   "r8": {
+    "key": "effc726a73e70dcb2ea97a85",
+    "output": "ad8007e32963fb5267b896bd5bd63bf66e63e98fd1b5c78986aeece46231f981"
+   },
+   "r9": {
+    "key": "8d0adf4cba9e1a69c5fe05a6",
+    "output": "8758631416fead08504b7ea1e47784f9eeabbb0ec12b902432f42f403d6387be"
+   },
+   "server": {
+    "key": "80f4ef1870d9ac980315bd6d",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "executor": "rola_devtools.timing.executors:memory",
+  "params": {
+   "calls": 5,
+   "cells": [
+    "identity-passthrough-dense",
+    "identity-passthrough-paged",
+    "single-deposit",
+    "qkv-L16-dv64",
+    "one-box-tiny",
+    "qkv-L32-dv64",
+    "one-box-short",
+    "qkv-L64-dv64",
+    "flat-small-carried",
+    "qkv-L128-dv64",
+    "flat-small-dense",
+    "flat-small-idle-resident",
+    "flat-small-alt-k4",
+    "flat-small-alt-k16",
+    "flat-small-struct50",
+    "flat-small-struct25",
+    "deep3-dense",
+    "deep3-alt-k4",
+    "qkv-L256-dv64",
+    "deep4-dense",
+    "deep4-alt-k2",
+    "flagship-dv32-alt-k4",
+    "qkv-L1024-dv32",
+    "one-box-multiwindow",
+    "one-box-alt-k4",
+    "qkv-L1024-dv64",
+    "flat-small-multiwindow",
+    "flagship-dense",
+    "flagship-alt-k4",
+    "flagship-alt-k16",
+    "flagship-cohort-k4",
+    "flagship-cohort-k16",
+    "flagship-both-k4",
+    "flagship-paged",
+    "flagship-struct50",
+    "flagship-struct25",
+    "flagship-dv128-alt-k4",
+    "qkv-L1024-dv128",
+    "flagship-partial-window",
+    "qkv-L1792-dv64",
+    "flagship-both-k4-L4096",
+    "flagship-alt-k4-L4096",
+    "flagship-cohort-k4-L4096",
+    "qkv-L4096-dv64",
+    "nl16k-dense",
+    "nl16k-alt-k4",
+    "qkv-L16384-dv64",
+    "flagship-dense-L16384",
+    "flagship-alt-k16-L16384",
+    "flagship-alt-k4-L16384",
+    "flagship-cohort-k16-L16384",
+    "nl64k-alt-k4",
+    "qkv-L65536-dv64",
+    "layer-B2-T2048-H8-h512-dv64-bf16-s0",
+    "layer-B2-T512-H8-h512-dv64-bf16-s1",
+    "layer-B2-T64-H8-h512-dv64-bf16-s5",
+    "layer-B2-T512-H8-h512-dv64-bf16-s2",
+    "layer-B2-T4096-H8-h512-dv64-bf16-s6",
+    "layer-B2-T2048-H8-h512-dv64-bf16-s7",
+    "layer-B2-T2048-H8-h512-dv64-bf16-s8",
+    "layer-B1-T512-H2-h512-dv64-bf16-s9",
+    "layer-B2-T512-H8-h512-dv64-bf16-s3",
+    "layer-B2-T128-H2-h128-dv64-fp32-s4-dec8",
+    "layer-B2-T128-H2-h128-dv64-fp32-s10-dec8"
+   ]
+  }
+ }
+}

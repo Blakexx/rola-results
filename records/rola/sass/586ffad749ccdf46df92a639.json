@@ -1,0 +1,50 @@
+{
+ "format": 1,
+ "key": "586ffad749ccdf46df92a639",
+ "location": "rola/sass",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "586ffad749ccdf46df92a639.0.out.json",
+   "provenance": {
+    "checkouts": {},
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260916T002422Z-795696"
+   },
+   "run": "20260916T002422Z-795696",
+   "summary": {
+    "cells": {
+     "": {
+      "exit": 0,
+      "status": "ok"
+     }
+    }
+   },
+   "utc": "2026-09-16T00:24:32Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": "a789e28fc06974e5ad38898802fb7025962f759086ff5f268e55707cc74e9ff6",
+  "deps": {
+   "binary": {
+    "key": "6c1afcd5526d1ca72663ec1f",
+    "output": "2003a1bcbcbf4141be8de94ac2f59cea040e2424c8c9ff5edb32ab1632c4538d"
+   },
+   "environment": {
+    "key": "fccf25da1145d9af037a47d4",
+    "output": "8e4babba64117665d39feeb34ef43dafeeb988d771468765b046376c6de21e38"
+   }
+  },
+  "executor": "executors:run_tool",
+  "params": {
+   "args": [
+    "{binary}"
+   ],
+   "per_cell": false,
+   "timeout": 3600,
+   "tool": "tools/sass_gate.py"
+  }
+ }
+}

@@ -1,0 +1,85 @@
+{
+ "format": 1,
+ "key": "cccdb57dee70762cc55ba1c3",
+ "location": "timing/session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "cccdb57dee70762cc55ba1c3.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "bench/flash": {
+      "branch": "master",
+      "checkout": "rola-bench",
+      "diff_sha256": null,
+      "git_sha": "8f0adf3d70457caace7456dc9a434b96fd97a3b7"
+     },
+     "master/carry_forward": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260916T002422Z-795696"
+   },
+   "run": "20260916T002422Z-795696",
+   "summary": {
+    "members": [
+     {
+      "cell": "flagship-dv128-alt-k4",
+      "error": "Traceback (most recent call last):\n  File \"~/rola-devtools/rola_devtools/timing/entry_worker.py\", line 85, in serve\n    timed = load(request[\"executor\"])(_cell(request[\"cell\"]), request[\"params\"])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/executors.py\", line 112, in timed\n    offered = arms(cell)\n              ^^^^^^^^^^\n  File \"~/worktrees/k31-mainline/benchmarks/bench/provider.py\", line 62, in arms\n    raise LookupError(f\"{data.name}: this binary carries no carry arm {arm_key(data)} (D, DV, warps_per_cta); it \"\nLookupError: flagship-dv128-alt-k4: this binary carries no carry arm (2, 128, 8) (D, DV, warps_per_cta); it carries [(2, 64, 8)]\n",
+      "id": "m0",
+      "owner": "master/carry_forward",
+      "status": "failed"
+     },
+     {
+      "cell": "qkv-L1024-dv128",
+      "error": null,
+      "id": "m1",
+      "owner": "bench/flash",
+      "status": "ok"
+     }
+    ],
+    "samples": 88
+   },
+   "utc": "2026-09-16T00:36:30Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "clock": {
+    "key": "91c4acff99af53e80c16c908",
+    "output": "a5250eb3400c36771191c58b536de5bd4d8810f7408fc82b7f9250440af9332e"
+   },
+   "r0": {
+    "key": "8cd94b27775206aacc315197",
+    "output": "07a9af0b7d946d96080121bfdcea3735b6fc018618b0654958943ab4d37d0c4f"
+   },
+   "r1": {
+    "key": "a2849f232fc9580fe9a86256",
+    "output": "e9771d069ee5a327a4dd187f3226543d045c29490692b96daaf4c64000512297"
+   },
+   "server": {
+    "key": "80f4ef1870d9ac980315bd6d",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "executor": "rola_devtools.timing.executors:measure",
+  "params": {
+   "cells": [
+    "flagship-dv128-alt-k4",
+    "qkv-L1024-dv128"
+   ],
+   "claim": "",
+   "reps": 11,
+   "rounds": 8,
+   "seed": 0,
+   "warmup": 10
+  }
+ }
+}

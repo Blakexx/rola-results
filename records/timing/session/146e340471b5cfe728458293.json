@@ -1,0 +1,67 @@
+{
+ "format": 1,
+ "key": "146e340471b5cfe728458293",
+ "location": "timing/session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "146e340471b5cfe728458293.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "master/entmax_solve@layer=chunk-p73-pinned": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260916T002422Z-795696"
+   },
+   "run": "20260916T002422Z-795696",
+   "summary": {
+    "members": [
+     {
+      "cell": "layer-B2-T2048-H8-h512-dv64-bf16-s0",
+      "error": null,
+      "id": "m0",
+      "owner": "master/entmax_solve@layer=chunk-p73-pinned",
+      "status": "ok"
+     }
+    ],
+    "samples": 88
+   },
+   "utc": "2026-09-16T00:36:42Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "clock": {
+    "key": "91c4acff99af53e80c16c908",
+    "output": "a5250eb3400c36771191c58b536de5bd4d8810f7408fc82b7f9250440af9332e"
+   },
+   "r0": {
+    "key": "706c8ed2c672d8cd5e835287",
+    "output": "f3e8c198b12b64ee8c1c0859bd07c241d0d954cdd696139be71253a693de44e9"
+   },
+   "server": {
+    "key": "80f4ef1870d9ac980315bd6d",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "executor": "rola_devtools.timing.executors:measure",
+  "params": {
+   "cells": [
+    "layer-B2-T2048-H8-h512-dv64-bf16-s0"
+   ],
+   "claim": "",
+   "reps": 11,
+   "rounds": 8,
+   "seed": 0,
+   "warmup": 10
+  }
+ }
+}

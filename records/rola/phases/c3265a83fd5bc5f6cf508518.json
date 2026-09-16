@@ -1,0 +1,382 @@
+{
+ "format": 1,
+ "key": "c3265a83fd5bc5f6cf508518",
+ "location": "rola/phases",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "c3265a83fd5bc5f6cf508518.0.out.json",
+   "provenance": {
+    "checkouts": {},
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260916T002422Z-795696"
+   },
+   "run": "20260916T002422Z-795696",
+   "summary": {
+    "cells": {
+     "deep3-alt-k4": {
+      "error": "Traceback (most recent call last):\n  File \"tools/phase_ledger.py\", line 91, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"tools/phase_ledger.py\", line 66, in main\n    c.carry_forward(routes, v, state_out=plane, **kw)\n  File \"rola/ops/carry.py\", line 452, in carry_forward\n    extension().carry_forward(\n  File \"~/rola311-cu13/lib/python3.11/site-packages/torch/_ops.py\", line 1350, in __call__\n    return self._op(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: arm_switch, csrc/rola/src/common/arm_switch.cuh:86, this build carries no carry arm for (D, DV, warps_per_cta) = (3, 64, 8); the field that misses is D. It carries 1 of 1 declared arms: (2, 64, 8)\n",
+      "exit": 1,
+      "status": "failed"
+     },
+     "deep3-dense": {
+      "error": "Traceback (most recent call last):\n  File \"tools/phase_ledger.py\", line 91, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"tools/phase_ledger.py\", line 66, in main\n    c.carry_forward(routes, v, state_out=plane, **kw)\n  File \"rola/ops/carry.py\", line 452, in carry_forward\n    extension().carry_forward(\n  File \"~/rola311-cu13/lib/python3.11/site-packages/torch/_ops.py\", line 1350, in __call__\n    return self._op(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: arm_switch, csrc/rola/src/common/arm_switch.cuh:86, this build carries no carry arm for (D, DV, warps_per_cta) = (3, 64, 8); the field that misses is D. It carries 1 of 1 declared arms: (2, 64, 8)\n",
+      "exit": 1,
+      "status": "failed"
+     },
+     "deep4-alt-k2": {
+      "error": "Traceback (most recent call last):\n  File \"tools/phase_ledger.py\", line 91, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"tools/phase_ledger.py\", line 66, in main\n    c.carry_forward(routes, v, state_out=plane, **kw)\n  File \"rola/ops/carry.py\", line 452, in carry_forward\n    extension().carry_forward(\n  File \"~/rola311-cu13/lib/python3.11/site-packages/torch/_ops.py\", line 1350, in __call__\n    return self._op(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: arm_switch, csrc/rola/src/common/arm_switch.cuh:86, this build carries no carry arm for (D, DV, warps_per_cta) = (4, 64, 8); the field that misses is D. It carries 1 of 1 declared arms: (2, 64, 8)\n",
+      "exit": 1,
+      "status": "failed"
+     },
+     "deep4-dense": {
+      "error": "Traceback (most recent call last):\n  File \"tools/phase_ledger.py\", line 91, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"tools/phase_ledger.py\", line 66, in main\n    c.carry_forward(routes, v, state_out=plane, **kw)\n  File \"rola/ops/carry.py\", line 452, in carry_forward\n    extension().carry_forward(\n  File \"~/rola311-cu13/lib/python3.11/site-packages/torch/_ops.py\", line 1350, in __call__\n    return self._op(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: arm_switch, csrc/rola/src/common/arm_switch.cuh:86, this build carries no carry arm for (D, DV, warps_per_cta) = (4, 64, 8); the field that misses is D. It carries 1 of 1 declared arms: (2, 64, 8)\n",
+      "exit": 1,
+      "status": "failed"
+     },
+     "flagship-alt-k16": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-alt-k16-L16384": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-alt-k4": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-alt-k4-L16384": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-alt-k4-L4096": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-both-k4": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-both-k4-L4096": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-cohort-k16": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-cohort-k16-L16384": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-cohort-k4": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-cohort-k4-L4096": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-dense": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-dense-L16384": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-dv128-alt-k4": {
+      "error": "Traceback (most recent call last):\n  File \"tools/phase_ledger.py\", line 91, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"tools/phase_ledger.py\", line 66, in main\n    c.carry_forward(routes, v, state_out=plane, **kw)\n  File \"rola/ops/carry.py\", line 452, in carry_forward\n    extension().carry_forward(\n  File \"~/rola311-cu13/lib/python3.11/site-packages/torch/_ops.py\", line 1350, in __call__\n    return self._op(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: arm_switch, csrc/rola/src/common/arm_switch.cuh:86, this build carries no carry arm for (D, DV, warps_per_cta) = (2, 128, 8); the field that misses is DV. It carries 1 of 1 declared arms: (2, 64, 8)\n",
+      "exit": 1,
+      "status": "failed"
+     },
+     "flagship-dv32-alt-k4": {
+      "error": "Traceback (most recent call last):\n  File \"tools/phase_ledger.py\", line 91, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"tools/phase_ledger.py\", line 66, in main\n    c.carry_forward(routes, v, state_out=plane, **kw)\n  File \"rola/ops/carry.py\", line 452, in carry_forward\n    extension().carry_forward(\n  File \"~/rola311-cu13/lib/python3.11/site-packages/torch/_ops.py\", line 1350, in __call__\n    return self._op(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: arm_switch, csrc/rola/src/common/arm_switch.cuh:86, this build carries no carry arm for (D, DV, warps_per_cta) = (2, 32, 8); the field that misses is DV. It carries 1 of 1 declared arms: (2, 64, 8)\n",
+      "exit": 1,
+      "status": "failed"
+     },
+     "flagship-paged": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-partial-window": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-struct25": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flagship-struct50": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flat-small-alt-k16": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flat-small-alt-k4": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flat-small-carried": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flat-small-dense": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flat-small-idle-resident": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flat-small-multiwindow": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flat-small-struct25": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "flat-small-struct50": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "identity-passthrough-dense": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "identity-passthrough-paged": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "nl16k-alt-k4": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "nl16k-dense": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "nl64k-alt-k4": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "one-box-alt-k4": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "one-box-multiwindow": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "one-box-short": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "one-box-tiny": {
+      "exit": 0,
+      "status": "ok"
+     },
+     "single-deposit": {
+      "exit": 0,
+      "status": "ok"
+     }
+    }
+   },
+   "utc": "2026-09-16T00:25:36Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": "587dd6de258a554bab9bd619cba5b142594dcb3caed16135c9b71cc178ad48d1",
+  "deps": {
+   "binary": {
+    "key": "6c1afcd5526d1ca72663ec1f",
+    "output": "2003a1bcbcbf4141be8de94ac2f59cea040e2424c8c9ff5edb32ab1632c4538d"
+   },
+   "environment": {
+    "key": "fccf25da1145d9af037a47d4",
+    "output": "8e4babba64117665d39feeb34ef43dafeeb988d771468765b046376c6de21e38"
+   },
+   "input 0": {
+    "key": "e74165d80f1cd8aea8c4027d",
+    "output": "ffa4b532f64cf2dbac63e99dc3c30b9ac06d8d3597df5a4a8a4479cb3d3af85c"
+   },
+   "input 1": {
+    "key": "bccc86b0c2f6c08f8d886aa8",
+    "output": "9efe65db7e6b03cc7dd2dbeef4217626fafc7427e793f797e364654a38d3686a"
+   },
+   "input 10": {
+    "key": "6fc4f2ec2a5343227dbd6900",
+    "output": "c119b80bff4f494f3db0ce0128ee28f64bbca6cdc06ed637138b535ae550803d"
+   },
+   "input 11": {
+    "key": "224642a9600a296c39f7361e",
+    "output": "080bfee5f737365ffa32dc10b50002c8c3a28c26ee3ba68be291b5b7e3eadc7e"
+   },
+   "input 12": {
+    "key": "2c45487ae907464313ea7b4c",
+    "output": "2eb22ad1c3be4fd5c0ee769876c2ce2305eff5b29b8f2bedf361cb24ac368f66"
+   },
+   "input 13": {
+    "key": "e244ba2f82bbbdcf2e611de4",
+    "output": "8382e55441a292250284cd25dd32d83da1b4708ba3f1ba681aec465e3e373755"
+   },
+   "input 14": {
+    "key": "6b1b5872eec42eef06cd1a02",
+    "output": "77084c7bf822e056018233e55a7215cb382dcd118c3f63fde0e571c60b3dbd24"
+   },
+   "input 15": {
+    "key": "58f6dd9e3b15b4ec310f08e4",
+    "output": "8a79b792a8d7a2a8ed6ef2acd023292b12a0a2bcd423c68b210ff3ea9c8801c6"
+   },
+   "input 16": {
+    "key": "b4b8eef6b39fcce5e0685d95",
+    "output": "02719da505e72e6b142cbe5f477bfc6b466d562d919fa175ff59a78b6d3a07ee"
+   },
+   "input 17": {
+    "key": "2e9a4e1b1abda49db3aa84ca",
+    "output": "2ff4541d39403ed122fa1d04a14a5a9f6cf8a10583c03494131e504635bef935"
+   },
+   "input 18": {
+    "key": "61f47c9829c1afb8c2914311",
+    "output": "0a3a47716f3ea08cdc9c67d8dd412bb526db15aa5f6c0878010828377ff581d2"
+   },
+   "input 19": {
+    "key": "612af19655e08c6c339decb7",
+    "output": "92a83944b37820a003a329b045a9d4da1d307adc06ce80adc146db4d40e68d5f"
+   },
+   "input 2": {
+    "key": "34ff3f1af63e5dd81fd5267a",
+    "output": "186334b31bac731ad63714e675f3f11bbff81ad2cb7380b14ae59b81a216421b"
+   },
+   "input 20": {
+    "key": "ef1f500fcf6aecc722e5d7fc",
+    "output": "1b1b8947aab39d6ff0acd6b6ed7b38366b389d6bdbc3757b9ea98b494fcac0ca"
+   },
+   "input 21": {
+    "key": "8167a6a7a878605888d30386",
+    "output": "6b0056591670efd84d4b41c37775ef25745ba6ee5bc3210ecb7f9f23c77a5b5f"
+   },
+   "input 22": {
+    "key": "48d80dd3ed97a25bcaafeb6d",
+    "output": "7355141a53aa50ab510ba53d2d3424c94d01a6f42104d4365617d062ae7b97b7"
+   },
+   "input 23": {
+    "key": "9d10700353fcd3d37e255ce6",
+    "output": "72a74e0c906051a189de86462a102cea97fc048ecbdc2eaa436899458cfc997b"
+   },
+   "input 24": {
+    "key": "7716084854ea4460a857c698",
+    "output": "a66bcd14355f1a1ea1627a21d7444fceda9405c47fb10e98e94164ca176d5905"
+   },
+   "input 25": {
+    "key": "f6493534cc6cbb28d11cb09d",
+    "output": "0ed39a6a981607e93904a54dcb70da490efb3205f25becceddf8d2fc282a01f8"
+   },
+   "input 26": {
+    "key": "50418c580cb56907deb052b0",
+    "output": "22b9cbd9e76b15da569e1bbef445a74ca0d236d0798ed55e0c4ddd35b9769af2"
+   },
+   "input 27": {
+    "key": "c073f964dfe927e6978f22c7",
+    "output": "96836a2d9b5d80ff375ecc49452ec1a3ffb4674248850fc5e3f7eeab6e644804"
+   },
+   "input 28": {
+    "key": "c44a7df393d7898c90e40e72",
+    "output": "fd278f53ad7a1e3f18d4facbc411450b64b893a7532f6542fbd1c5fd01b49968"
+   },
+   "input 29": {
+    "key": "903fe43eaaf6cec94547e5e4",
+    "output": "e08e950cfe76ad63e844b3e1fb16a3df55cf7ae55761e22bb9e82fdabcc21b83"
+   },
+   "input 3": {
+    "key": "541eb52d97fdb3349e0746d1",
+    "output": "29beb1b694b27c2d2db028088424d0f6c45b480efbd4521a45ef29fd7e68ebf1"
+   },
+   "input 30": {
+    "key": "0a548ed6326bcf8a208899fa",
+    "output": "3f016e61e4626f27e4d40aa72b0c3b96f36c9ece411848b20a72b4aaadb2c86f"
+   },
+   "input 31": {
+    "key": "91a1bc63a06f11a8a5e0d2a4",
+    "output": "1062f8d57a4c3ce99c90181cdb8f00c0ec264e64c9974f09af72a0f91520936f"
+   },
+   "input 32": {
+    "key": "df904a4212d8f9498e31fa0c",
+    "output": "ac0dd9e0e01a16685c370f6d08756c4eea5234308a21604d9d424d02883a531e"
+   },
+   "input 33": {
+    "key": "03f88dcc5a3c56436bd01285",
+    "output": "fae0e703458ca41af798b8040c3ee4d649d15da6c1293f7d2bbc232e2af8c610"
+   },
+   "input 34": {
+    "key": "7284dfab702e4343d1225687",
+    "output": "9574ed3956327894dbd2792abcd2e6fc734d5d37de61009bfc00cc46899449f7"
+   },
+   "input 35": {
+    "key": "d8381d37bf245c431355aae1",
+    "output": "a9b02778c2d25641e41575c8620ddd2d74c57935b0b72250c0fbc350b36a4aae"
+   },
+   "input 36": {
+    "key": "ef8f3c3f9108f0d6875439a6",
+    "output": "178164d8a46f075dd62c9477cdeae8225629f3b131e68b66680ec694b88ea7fc"
+   },
+   "input 37": {
+    "key": "ae22833af09dd5049d9c759a",
+    "output": "f35f5733113e2e7b1258d26fc733d075077486b0364db079730b1d01419aebc8"
+   },
+   "input 38": {
+    "key": "f020b84c8b57f6e7f833b645",
+    "output": "ca595fd16ef36a5f42f5cb69ff08817a275bcb8b0dc2941a65c774f115b11bdf"
+   },
+   "input 39": {
+    "key": "9a73b193437a060499101076",
+    "output": "2f95824d8659c209a5f93de634ab377b7f489347115005851414b07f901ea7b4"
+   },
+   "input 4": {
+    "key": "a460563ea1c2ad6b4e2ef115",
+    "output": "d4d0a98606bcdcc54b9b91cd0b95a0871afc6db4724dbeae11dcfcb759742261"
+   },
+   "input 40": {
+    "key": "ba037eb055002da08c59eb02",
+    "output": "bfd75cfb2581b8f1bcf17e60366c4db16f26496fdf97421c8cda98080d348ac5"
+   },
+   "input 5": {
+    "key": "5523de66366573a1ec98e175",
+    "output": "b09a05a0b0e3b268898774131cd43033450e8825af1dce0b657ca08787f8e9b1"
+   },
+   "input 6": {
+    "key": "0268fa62a0b4aba2539423d2",
+    "output": "08e41778e0ec71b7dd31912efa5d20d02a4eaf88c27d7d75096c98e95c95afc9"
+   },
+   "input 7": {
+    "key": "11c2d2a210234997fc257e8c",
+    "output": "e7437fbabdba503cf100eece5b66db7cbcbe0db03bda5ea1edb1c988fedfbb28"
+   },
+   "input 8": {
+    "key": "97190df76af1d82ca3351f42",
+    "output": "b4ac40ff3515cd94ecbe11a60d986f14bbb3a5ee9964d35d8c916e08fa038143"
+   },
+   "input 9": {
+    "key": "39a167b3eb383c771ed040e5",
+    "output": "573ca61e284009cd15afb66fe04b12d33c9419f3e3f9a92388bb1c7a765d4f2e"
+   }
+  },
+  "executor": "executors:run_tool",
+  "params": {
+   "args": [
+    "{cell}",
+    "--launches",
+    "1"
+   ],
+   "per_cell": true,
+   "timeout": 3600,
+   "tool": "tools/phase_ledger.py"
+  }
+ }
+}

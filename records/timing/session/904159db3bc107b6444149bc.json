@@ -1,0 +1,109 @@
+{
+ "format": 1,
+ "key": "904159db3bc107b6444149bc",
+ "location": "timing/session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "904159db3bc107b6444149bc.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "bench/flash": {
+      "branch": "master",
+      "checkout": "rola-bench",
+      "diff_sha256": null,
+      "git_sha": "8f0adf3d70457caace7456dc9a434b96fd97a3b7"
+     },
+     "master/carry_intra": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": null,
+      "git_sha": "eb5c61153ca99d4f624ef75bba1c801fdae3d5df"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260916T002422Z-795696"
+   },
+   "run": "20260916T002422Z-795696",
+   "summary": {
+    "members": [
+     {
+      "cell": "flagship-dense-L16384",
+      "error": null,
+      "id": "m0",
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k16-L16384",
+      "error": null,
+      "id": "m1",
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-alt-k4-L16384",
+      "error": null,
+      "id": "m2",
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "flagship-cohort-k16-L16384",
+      "error": null,
+      "id": "m3",
+      "owner": "master/carry_intra",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L16384-dv64",
+      "error": null,
+      "id": "m4",
+      "owner": "bench/flash",
+      "status": "ok"
+     }
+    ],
+    "samples": 440
+   },
+   "utc": "2026-09-16T00:36:38Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "clock": {
+    "key": "91c4acff99af53e80c16c908",
+    "output": "a5250eb3400c36771191c58b536de5bd4d8810f7408fc82b7f9250440af9332e"
+   },
+   "r0": {
+    "key": "2f6767c13dc27aaa5ea28ee7",
+    "output": "9978a45fd528f4d9aa28cea351f3ba68d2696befe2fb86776e03bf910263766f"
+   },
+   "r1": {
+    "key": "a2849f232fc9580fe9a86256",
+    "output": "e9771d069ee5a327a4dd187f3226543d045c29490692b96daaf4c64000512297"
+   },
+   "server": {
+    "key": "80f4ef1870d9ac980315bd6d",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "executor": "rola_devtools.timing.executors:measure",
+  "params": {
+   "cells": [
+    "flagship-dense-L16384",
+    "flagship-alt-k16-L16384",
+    "flagship-alt-k4-L16384",
+    "flagship-cohort-k16-L16384",
+    "qkv-L16384-dv64"
+   ],
+   "claim": "",
+   "reps": 11,
+   "rounds": 8,
+   "seed": 0,
+   "warmup": 10
+  }
+ }
+}
