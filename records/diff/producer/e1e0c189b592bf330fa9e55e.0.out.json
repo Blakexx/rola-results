@@ -1,0 +1,1251 @@
+{
+ "bindings": {
+  "left": {
+   "checkout": "k31-mainline",
+   "executor": "tests.oracle.sides:producer",
+   "file": "rola/__init__.py",
+   "module": "rola"
+  },
+  "right": {
+   "checkout": "p82-old",
+   "executor": "tests.oracle.sides:producer",
+   "file": "rola/__init__.py",
+   "module": "rola"
+  }
+ },
+ "cells": {
+  "producer-union-w16-s0.5": {
+   "quantities": {
+    "packed": {
+     "failed": 0,
+     "same": true,
+     "slots": 32,
+     "support": 32
+    },
+    "read": {
+     "failed": 0,
+     "same": true,
+     "slots": 160,
+     "support": 136
+    },
+    "write": {
+     "failed": 0,
+     "same": true,
+     "slots": 160,
+     "support": 136
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-union-w16-s3": {
+   "quantities": {
+    "packed": {
+     "failed": 0,
+     "same": true,
+     "slots": 32,
+     "support": 24
+    },
+    "read": {
+     "failed": 0,
+     "same": true,
+     "slots": 160,
+     "support": 36
+    },
+    "write": {
+     "failed": 0,
+     "same": true,
+     "slots": 160,
+     "support": 36
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-union-w16-s30": {
+   "quantities": {
+    "packed": {
+     "failed": 0,
+     "same": true,
+     "slots": 32,
+     "support": 10
+    },
+    "read": {
+     "failed": 0,
+     "same": true,
+     "slots": 160,
+     "support": 11
+    },
+    "write": {
+     "failed": 0,
+     "same": true,
+     "slots": 160,
+     "support": 11
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-union-w4-s0.5": {
+   "quantities": {
+    "packed": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    },
+    "read": {
+     "failed": 0,
+     "same": true,
+     "slots": 40,
+     "support": 40
+    },
+    "write": {
+     "failed": 0,
+     "same": true,
+     "slots": 40,
+     "support": 40
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-union-w4-s3": {
+   "quantities": {
+    "packed": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 7
+    },
+    "read": {
+     "failed": 0,
+     "same": true,
+     "slots": 40,
+     "support": 14
+    },
+    "write": {
+     "failed": 0,
+     "same": true,
+     "slots": 40,
+     "support": 14
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-union-w4-s30": {
+   "quantities": {
+    "packed": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 5
+    },
+    "read": {
+     "failed": 0,
+     "same": true,
+     "slots": 40,
+     "support": 10
+    },
+    "write": {
+     "failed": 0,
+     "same": true,
+     "slots": 40,
+     "support": 10
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w16-s0.5-dense-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 80
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 80
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 80
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w16-s0.5-dense-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 32
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 32
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 32
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w16-s0.5-masked-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 69
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 69
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 69
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w16-s0.5-masked-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 30
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 30
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 30
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w16-s3-dense-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 14
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 17
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 17
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w16-s3-dense-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 9
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 13
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 13
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w16-s3-masked-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 16
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 18
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 18
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w16-s3-masked-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 9
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 13
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 13
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w16-s30-dense-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 2
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 9
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 9
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w16-s30-dense-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 0
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 8
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 8
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w16-s30-masked-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 2
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 9
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 9
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w16-s30-masked-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 0
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 8
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "support": 8
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w256-s0.5-dense-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 329
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 329
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 329
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w256-s0.5-dense-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 54
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 54
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 54
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w256-s0.5-masked-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 327
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 327
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 327
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w256-s0.5-masked-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 54
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 54
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 54
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w256-s3-dense-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 37
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 37
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 37
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w256-s3-dense-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 16
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 17
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 17
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w256-s3-masked-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 39
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 39
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 39
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w256-s3-masked-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 16
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 17
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 17
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w256-s30-dense-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 0
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 8
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 8
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w256-s30-dense-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 0
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 8
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 8
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w256-s30-masked-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 2
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 9
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 9
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w256-s30-masked-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 2
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 9
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "support": 9
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w3-s0.5-dense-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 24
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 24
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 24
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w3-s0.5-dense-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 17
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 20
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 20
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w3-s0.5-masked-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 15
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 17
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 17
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w3-s0.5-masked-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 12
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 16
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 16
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w3-s3-dense-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 8
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 12
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 12
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w3-s3-dense-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 0
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 8
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 8
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w3-s3-masked-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 2
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 9
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 9
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w3-s3-masked-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 2
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 9
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 9
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w3-s30-dense-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 0
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 8
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 8
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w3-s30-dense-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 0
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 8
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 8
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w3-s30-masked-a1.5": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 0
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 8
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 8
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "producer-w3-s30-masked-a2": {
+   "quantities": {
+    "dz": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 0
+    },
+    "p": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 8
+    },
+    "support": {
+     "failed": 0,
+     "same": true,
+     "slots": 24,
+     "support": 8
+    },
+    "tau": {
+     "failed": 0,
+     "same": true,
+     "slots": 8,
+     "support": 8
+    }
+   },
+   "same": true,
+   "status": "ok"
+  }
+ },
+ "compared": 42,
+ "differing": [],
+ "expect": "same",
+ "held": true,
+ "minimum": 42,
+ "quantities": 162,
+ "refused": [],
+ "strategy": "support-equal",
+ "unusable": []
+}
