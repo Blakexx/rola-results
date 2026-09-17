@@ -1,0 +1,75 @@
+{
+ "format": 1,
+ "key": "36f6a12949e48256eff5538f",
+ "location": "diff/carry-kernel",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "36f6a12949e48256eff5538f.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "k31-mainline": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": "7af174d1ce3849d9c952cc16ec606119c786b1b36333a9887826780e21c7c619",
+      "git_sha": "bcc2b592b2b8db554bbe2c63339726d220c7107c"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260917T050237Z-92e0b7"
+   },
+   "run": "20260917T050237Z-92e0b7",
+   "utc": "2026-09-17T05:02:50Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "left": {
+    "key": "953882c2c55e5544eff2c7a2",
+    "output": "1063a4b00310391abacfdfa851519ecbe0ec8c9b29b45579cbb35ca073b45c17"
+   },
+   "right": {
+    "key": "d6fdd5f3eba8ec5c29046daa",
+    "output": "29c1a83e9cd32c13973eac899a71c69d771cb5bf168984a2ada7cd787014f51b"
+   }
+  },
+  "executor": "rola_devtools.diff.executors:compare",
+  "params": {
+   "expect": "same",
+   "minimum": 29,
+   "on_difference": "fail",
+   "params": {
+    "per_quantity": {
+     "den": {
+      "clauses": [
+       [
+        1.4e-06,
+        4.8e-07
+       ]
+      ]
+     },
+     "num": {
+      "clauses": [
+       [
+        1.4e-06,
+        3.8e-09
+       ]
+      ]
+     },
+     "state": {
+      "clauses": [
+       [
+        0.0,
+        0.0
+       ]
+      ]
+     }
+    }
+   },
+   "strategy": "per-slot"
+  }
+ }
+}

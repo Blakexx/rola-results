@@ -1,0 +1,121 @@
+{
+ "clock": {
+  "ghz": 1.665,
+  "lock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-lock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ],
+  "unlock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-unlock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ]
+ },
+ "ghz_after": 1.664716053316305,
+ "ghz_before": 1.664784600212027,
+ "owners": 80,
+ "rows": [
+  {
+   "burst": 1,
+   "cycles_an_op_a_warp": 79.15071201268385,
+   "ghz": 1.664784600212027,
+   "iters": 763107,
+   "mode": 0,
+   "name": "hmma_2w",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.32600685599936696,
+    0.3281471459995373,
+    0.32653122899955633
+   ],
+   "warps": 8,
+   "what": "the kernel's HMMA atom, two warps a scheduler (the kernel's regime)"
+  },
+  {
+   "burst": 1,
+   "cycles_an_op_a_warp": 39.07516016844926,
+   "ghz": 1.664784600212027,
+   "iters": 1289834,
+   "mode": 0,
+   "name": "hmma_1w",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.27332497799943667,
+    0.27203824400021404,
+    0.27247022299980017
+   ],
+   "warps": 4,
+   "what": "the same atom, one warp a scheduler"
+  },
+  {
+   "burst": 18,
+   "cycles_an_op_a_warp": 39.38080372076812,
+   "ghz": 1.664784600212027,
+   "iters": 764467,
+   "mode": 14,
+   "name": "hmma_frag_1w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.325884662000135,
+    0.32550508199983597,
+    0.32479771900034393
+   ],
+   "warps": 4,
+   "what": "the fold fragment's burst: eighteen HMMAs into eighteen accumulators, one warp a scheduler"
+  },
+  {
+   "burst": 18,
+   "cycles_an_op_a_warp": 79.57435726140038,
+   "ghz": 1.664784600212027,
+   "iters": 285769,
+   "mode": 14,
+   "name": "hmma_frag_2w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.2458683969998674,
+    0.24475195499962865,
+    0.24609558500014828
+   ],
+   "warps": 8,
+   "what": "the same, two warps a scheduler"
+  },
+  {
+   "burst": 18,
+   "cycles_an_op_a_warp": 46.2412968479896,
+   "ghz": 1.664784600212027,
+   "iters": 647492,
+   "mode": 15,
+   "name": "hmma_frag_chain_1w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.32296421400042163,
+    0.3243934319998516,
+    0.3237269589999414
+   ],
+   "warps": 4,
+   "what": "the burst behind the fragment's gather chain (shuffle, ldmatrix, two multiplies), one warp"
+  },
+  {
+   "burst": 18,
+   "cycles_an_op_a_warp": 79.81728444311882,
+   "ghz": 1.664784600212027,
+   "iters": 400875,
+   "mode": 15,
+   "name": "hmma_frag_chain_2w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.345955609000157,
+    0.34619209700031206,
+    0.34578621800028486
+   ],
+   "warps": 8,
+   "what": "the same, two warps"
+  }
+ ],
+ "utc": "2026-09-17T0325Z"
+}

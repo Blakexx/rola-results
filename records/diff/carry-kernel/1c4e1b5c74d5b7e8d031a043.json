@@ -1,0 +1,75 @@
+{
+ "format": 1,
+ "key": "1c4e1b5c74d5b7e8d031a043",
+ "location": "diff/carry-kernel",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "1c4e1b5c74d5b7e8d031a043.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "k31-mainline": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": "695223263b57645c9398387faed587f124b216fa42ba7cf8c0d44d2a0be85caa",
+      "git_sha": "bcc2b592b2b8db554bbe2c63339726d220c7107c"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260917T051038Z-24579c"
+   },
+   "run": "20260917T051038Z-24579c",
+   "utc": "2026-09-17T05:10:41Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "left": {
+    "key": "0e9ac2e6786c56c3bc5c9eaf",
+    "output": "1063a4b00310391abacfdfa851519ecbe0ec8c9b29b45579cbb35ca073b45c17"
+   },
+   "right": {
+    "key": "d6fdd5f3eba8ec5c29046daa",
+    "output": "29c1a83e9cd32c13973eac899a71c69d771cb5bf168984a2ada7cd787014f51b"
+   }
+  },
+  "executor": "rola_devtools.diff.executors:compare",
+  "params": {
+   "expect": "same",
+   "minimum": 29,
+   "on_difference": "fail",
+   "params": {
+    "per_quantity": {
+     "den": {
+      "clauses": [
+       [
+        1.4e-06,
+        4.8e-07
+       ]
+      ]
+     },
+     "num": {
+      "clauses": [
+       [
+        1.4e-06,
+        3.8e-09
+       ]
+      ]
+     },
+     "state": {
+      "clauses": [
+       [
+        0.0,
+        0.0
+       ]
+      ]
+     }
+    }
+   },
+   "strategy": "per-slot"
+  }
+ }
+}

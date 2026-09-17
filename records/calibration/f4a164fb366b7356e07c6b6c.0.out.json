@@ -1,0 +1,105 @@
+{
+ "clock": {
+  "ghz": 1.665,
+  "lock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-lock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ],
+  "unlock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-unlock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ]
+ },
+ "ghz_after": 1.6647860985179423,
+ "ghz_before": 1.664786681192465,
+ "owners": 80,
+ "rows": [
+  {
+   "burst": 1,
+   "cycles_an_op_a_warp": 39.06489350225092,
+   "ghz": 1.664786681192465,
+   "iters": 1324570,
+   "mode": 0,
+   "name": "hmma_1w",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.27931426400027703,
+    0.2797341420000521,
+    0.28251549800006615
+   ],
+   "warps": 4,
+   "what": "the same atom, one warp a scheduler"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 19.635043074319906,
+   "ghz": 1.664786681192465,
+   "iters": 1459573,
+   "mode": 2,
+   "name": "shared_store_16",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.27543496399994183,
+    0.27464790499925584,
+    0.27679679300035787
+   ],
+   "warps": 8,
+   "what": "sixteen"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 39.466330928999874,
+   "ghz": 1.664786681192465,
+   "iters": 2441138,
+   "mode": 9,
+   "name": "matrix_load_4",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.23148373599997285,
+    0.23112075500011997,
+    0.23263377599960222
+   ],
+   "warps": 8,
+   "what": "four two-n-tile ldmatrix.trans loads a unit (the readout's B, the fold's operands)"
+  },
+  {
+   "burst": 1,
+   "cycles_an_op_a_warp": 61.25268746851063,
+   "ghz": 1.664786681192465,
+   "iters": 3911546,
+   "mode": 6,
+   "name": "cta_barrier",
+   "ops_a_unit": 1,
+   "seconds": [
+    0.14279172000078688,
+    0.14391796099971543,
+    0.14452962999985175
+   ],
+   "warps": 8,
+   "what": "a CTA barrier over every lane"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 39.470463101951125,
+   "ghz": 1.664786681192465,
+   "iters": 1356922,
+   "mode": 10,
+   "name": "hmma_load_4_1w",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.28954163500020513,
+    0.28768643100011104,
+    0.2898831170004996
+   ],
+   "warps": 4,
+   "what": "the same, one warp a scheduler: no partner warp to hide the loads"
+  }
+ ],
+ "utc": "2026-09-17T0328Z"
+}
