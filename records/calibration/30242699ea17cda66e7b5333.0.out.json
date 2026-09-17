@@ -1,0 +1,105 @@
+{
+ "clock": {
+  "ghz": 1.665,
+  "lock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-lock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ],
+  "unlock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-unlock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ]
+ },
+ "ghz_after": 1.6649291773665928,
+ "ghz_before": 1.665069866261722,
+ "owners": 80,
+ "rows": [
+  {
+   "burst": 1,
+   "cycles_an_op_a_warp": 65.05957739698603,
+   "ghz": 1.665069866261722,
+   "iters": 747180,
+   "mode": 0,
+   "name": "hmma_2w",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.2627522989996578,
+    0.2642057520006347,
+    0.2616235140003482
+   ],
+   "warps": 8,
+   "what": "the kernel's HMMA atom, two warps a scheduler (the kernel's regime)"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 69.97123535703265,
+   "ghz": 1.665069866261722,
+   "iters": 710803,
+   "mode": 12,
+   "name": "hmma_reduce_4",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.26883068699953583,
+    0.2694961189999958,
+    0.2646594069992716
+   ],
+   "warps": 8,
+   "what": "four"
+  },
+  {
+   "burst": 8,
+   "cycles_an_op_a_warp": 76.4174519467144,
+   "ghz": 1.665069866261722,
+   "iters": 621244,
+   "mode": 12,
+   "name": "hmma_reduce_8",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.2566048190001311,
+    0.25407157500012545,
+    0.2576412149992393
+   ],
+   "warps": 8,
+   "what": "eight, one an HMMA"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 122.5859791863398,
+   "ghz": 1.665069866261722,
+   "iters": 422815,
+   "mode": 13,
+   "name": "hmma_reduce_div_4",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.2748328810002931,
+    0.28015684300044086,
+    0.2814522130001933
+   ],
+   "warps": 8,
+   "what": "four DIVERGENT reductions (a lane at its accumulator's row and column: eight sectors a red)"
+  },
+  {
+   "burst": 8,
+   "cycles_an_op_a_warp": 242.7994038277178,
+   "ghz": 1.665069866261722,
+   "iters": 222780,
+   "mode": 13,
+   "name": "hmma_reduce_div_8",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.29237071099942114,
+    0.29296084999987215,
+    0.2894536039993909
+   ],
+   "warps": 8,
+   "what": "eight divergent"
+  }
+ ],
+ "utc": "2026-09-17T0255Z"
+}
