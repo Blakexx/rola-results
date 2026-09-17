@@ -1,0 +1,201 @@
+{
+ "clock": {
+  "ghz": 1.665,
+  "lock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-lock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ],
+  "unlock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-unlock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ]
+ },
+ "ghz_after": 1.6649285946424004,
+ "ghz_before": 1.6650706155424126,
+ "owners": 80,
+ "rows": [
+  {
+   "burst": 1,
+   "cycles_an_op_a_warp": 64.79633112986612,
+   "ghz": 1.6650706155424126,
+   "iters": 718876,
+   "mode": 0,
+   "name": "hmma_2w",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.2517759560000741,
+    0.25173856399987926,
+    0.2543977390000691
+   ],
+   "warps": 8,
+   "what": "the kernel's HMMA atom, two warps a scheduler (the kernel's regime)"
+  },
+  {
+   "burst": 1,
+   "cycles_an_op_a_warp": 32.358577890621056,
+   "ghz": 1.6650706155424126,
+   "iters": 1338353,
+   "mode": 0,
+   "name": "hmma_1w",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.23408304399981716,
+    0.23569772600012584,
+    0.23355154899991248
+   ],
+   "warps": 4,
+   "what": "the same atom, one warp a scheduler"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 32.565056688029095,
+   "ghz": 1.6650706155424126,
+   "iters": 2281819,
+   "mode": 9,
+   "name": "matrix_load_4",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.17910288499979288,
+    0.17685772799995902,
+    0.1785091020001346
+   ],
+   "warps": 8,
+   "what": "four two-n-tile ldmatrix.trans loads a unit (the readout's B, the fold's operands)"
+  },
+  {
+   "burst": 1,
+   "cycles_an_op_a_warp": 64.88703516677579,
+   "ghz": 1.6650706155424126,
+   "iters": 750054,
+   "mode": 10,
+   "name": "hmma_load_1",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.2653579779998836,
+    0.2630633310000121,
+    0.2625236369999584
+   ],
+   "warps": 8,
+   "what": "nine HMMAs a unit fed by one ldmatrix.trans load issued ahead of them, two warps a scheduler"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 65.00698680797554,
+   "ghz": 1.6650706155424126,
+   "iters": 754771,
+   "mode": 10,
+   "name": "hmma_load_4",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.2654573879999589,
+    0.2652070679996541,
+    0.2631004820000271
+   ],
+   "warps": 8,
+   "what": "nine HMMAs fed by four loads ahead of them (the readout's box)"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 32.69297493636127,
+   "ghz": 1.6650706155424126,
+   "iters": 1327988,
+   "mode": 10,
+   "name": "hmma_load_4_1w",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.23467047100029959,
+    0.2357418599999619,
+    0.23364947099980782
+   ],
+   "warps": 4,
+   "what": "the same, one warp a scheduler: no partner warp to hide the loads"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 65.9761566804596,
+   "ghz": 1.6650706155424126,
+   "iters": 746044,
+   "mode": 11,
+   "name": "hmma_load_4_free",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.26604880200011394,
+    0.26718297900015386,
+    0.26479374900009134
+   ],
+   "warps": 8,
+   "what": "four loads beside nine HMMAs, the loads' results a sink: the pipes' sharing alone"
+  },
+  {
+   "burst": 1,
+   "cycles_an_op_a_warp": 65.6469339067398,
+   "ghz": 1.6650706155424126,
+   "iters": 741435,
+   "mode": 12,
+   "name": "hmma_reduce_1",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.26309718200036514,
+    0.2630837850001626,
+    0.2630857849999302
+   ],
+   "warps": 8,
+   "what": "nine HMMAs with one global f32 reduction issued between them"
+  },
+  {
+   "burst": 2,
+   "cycles_an_op_a_warp": 67.62873143762057,
+   "ghz": 1.6650706155424126,
+   "iters": 725130,
+   "mode": 12,
+   "name": "hmma_reduce_2",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.26674826499993287,
+    0.2639243200001147,
+    0.2650677960000394
+   ],
+   "warps": 8,
+   "what": "two reductions between them"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 68.91175367209686,
+   "ghz": 1.6650706155424126,
+   "iters": 700090,
+   "mode": 12,
+   "name": "hmma_reduce_4",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.2619015179998314,
+    0.2607525439998426,
+    0.2607696410000244
+   ],
+   "warps": 8,
+   "what": "four"
+  },
+  {
+   "burst": 8,
+   "cycles_an_op_a_warp": 76.27770649834437,
+   "ghz": 1.6650706155424126,
+   "iters": 640193,
+   "mode": 12,
+   "name": "hmma_reduce_8",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.26506889500024045,
+    0.2639480149996416,
+    0.2605313870003556
+   ],
+   "warps": 8,
+   "what": "eight, one an HMMA"
+  }
+ ],
+ "utc": "2026-09-17T0216Z"
+}
