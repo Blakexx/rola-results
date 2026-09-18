@@ -1,0 +1,30 @@
+{
+ "format": 1,
+ "key": "48a3dedf85354354610a4540",
+ "location": "compose_ledger",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "48a3dedf85354354610a4540.0.out.json",
+   "provenance": {
+    "branch": "master",
+    "checkout": "k31-mainline",
+    "diff_sha256": "01935bcdf2cc9ecdb952908772d1b5a1befefdbe89effbf6a146e4a695432a42",
+    "git_sha": "bd64df4ea59f02e0515b858e4dc842cc3258da84",
+    "host": "DESKTOP-MKIUJID"
+   },
+   "utc": "2026-09-18T21:39:44Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "cells": [
+   "nl64k-dense",
+   "nl64k-alt-k4"
+  ],
+  "diff_sha256": "01935bcdf2cc9ecdb952908772d1b5a1befefdbe89effbf6a146e4a695432a42",
+  "git_sha": "bd64df4ea59f02e0515b858e4dc842cc3258da84",
+  "timeline": false
+ }
+}
