@@ -1,0 +1,105 @@
+{
+ "clock": {
+  "ghz": 1.665,
+  "lock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-lock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ],
+  "unlock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-unlock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ]
+ },
+ "ghz_after": 1.6650713648231033,
+ "ghz_before": 1.664929260612906,
+ "owners": 80,
+ "rows": [
+  {
+   "burst": 1,
+   "cycles_an_op_a_warp": 32.76788456483694,
+   "ghz": 1.664929260612906,
+   "iters": 1270244,
+   "mode": 0,
+   "name": "hmma_1w",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.22510946500005957,
+    0.22178951200021402,
+    0.22499987699939084
+   ],
+   "warps": 4,
+   "what": "the same atom, one warp a scheduler"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 34.59284370245243,
+   "ghz": 1.664929260612906,
+   "iters": 719499,
+   "mode": 22,
+   "name": "hmma_queue_16_1w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.2669095640003434,
+    0.26914367900008074,
+    0.26908728599937604
+   ],
+   "warps": 4,
+   "what": "eighteen HMMAs then one dependent chain of sixteen fp32 fmas, one warp: the pipe's queue depth"
+  },
+  {
+   "burst": 40,
+   "cycles_an_op_a_warp": 35.13718739589814,
+   "ghz": 1.664929260612906,
+   "iters": 706459,
+   "mode": 22,
+   "name": "hmma_queue_40_1w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.2683228709993273,
+    0.2687829200003762,
+    0.26836796699990373
+   ],
+   "warps": 4,
+   "what": "a chain of forty"
+  },
+  {
+   "burst": 80,
+   "cycles_an_op_a_warp": 43.72395920044484,
+   "ghz": 1.664929260612906,
+   "iters": 591374,
+   "mode": 22,
+   "name": "hmma_queue_80_1w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.2795493109997551,
+    0.27634397099973285,
+    0.2814137020004637
+   ],
+   "warps": 4,
+   "what": "a chain of eighty"
+  },
+  {
+   "burst": 40,
+   "cycles_an_op_a_warp": 70.1774151120017,
+   "ghz": 1.664929260612906,
+   "iters": 379765,
+   "mode": 22,
+   "name": "hmma_queue_40_2w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.28863050200016005,
+    0.2881303610001851,
+    0.28731819199947495
+   ],
+   "warps": 8,
+   "what": "a chain of forty, two warps"
+  }
+ ],
+ "utc": "2026-09-18T1904Z"
+}
