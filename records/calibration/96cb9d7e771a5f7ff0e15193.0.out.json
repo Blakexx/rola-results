@@ -1,0 +1,121 @@
+{
+ "clock": {
+  "ghz": 1.665,
+  "lock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-lock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ],
+  "unlock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-unlock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ]
+ },
+ "ghz_after": 1.6649295103518456,
+ "ghz_before": 1.6650688672208014,
+ "owners": 80,
+ "rows": [
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 347.31397396252487,
+   "ghz": 1.6650688672208014,
+   "iters": 337685,
+   "mode": 3,
+   "name": "async_copy",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.28577643199992053,
+    0.2815984329999992,
+    0.28174863299989283
+   ],
+   "warps": 8,
+   "what": "four 16-byte asynchronous runs a group, bank-free, landed each group"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 92.73435287400417,
+   "ghz": 1.6650688672208014,
+   "iters": 1127183,
+   "mode": 4,
+   "name": "async_copy_aliased",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.25320534000002226,
+    0.25110933999997087,
+    0.24996300899999824
+   ],
+   "warps": 8,
+   "what": "the same runs aliased to one bank group"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 502.03874274752025,
+   "ghz": 1.6650688672208014,
+   "iters": 237614,
+   "mode": 16,
+   "name": "async_copy_strided",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.2878455740000163,
+    0.2865741739999521,
+    0.28595667400009006
+   ],
+   "warps": 8,
+   "what": "the bank-free runs fed from a 128-byte line a lane (sixteen lines a run)"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 48.83077194652324,
+   "ghz": 1.6650688672208014,
+   "iters": 1867995,
+   "mode": 17,
+   "name": "async_copy_4",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.21912760399993658,
+    0.2191990030000852,
+    0.2191274040000053
+   ],
+   "warps": 8,
+   "what": "four-byte runs a lane, one contiguous line in and out"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 262.42822486421335,
+   "ghz": 1.6650688672208014,
+   "iters": 446994,
+   "mode": 18,
+   "name": "async_copy_rows",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.2825703749999775,
+    0.28179937599998084,
+    0.28139797599999383
+   ],
+   "warps": 8,
+   "what": "the pool fill's V pattern: sixteen token rows, two adjacent chunks a run, swizzled"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 259.6813220358574,
+   "ghz": 1.6650688672208014,
+   "iters": 447794,
+   "mode": 19,
+   "name": "async_copy_lines",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.2777399770000102,
+    0.28105337700003474,
+    0.2793487769999956
+   ],
+   "warps": 8,
+   "what": "the same rows landed a whole line at a time: eight lanes a row, four rows a run"
+  }
+ ],
+ "utc": "2026-09-18T1807Z"
+}

@@ -1,0 +1,89 @@
+{
+ "clock": {
+  "ghz": 1.665,
+  "lock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-lock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ],
+  "unlock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-unlock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ]
+ },
+ "ghz_after": 1.6649295103518456,
+ "ghz_before": 1.664927928671895,
+ "owners": 80,
+ "rows": [
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 32.70792493337081,
+   "ghz": 1.664927928671895,
+   "iters": 2218598,
+   "mode": 9,
+   "name": "matrix_load_4",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.1743396470001244,
+    0.175156768999841,
+    0.17313761100012925
+   ],
+   "warps": 8,
+   "what": "four two-n-tile ldmatrix.trans loads a unit (the readout's B, the fold's operands)"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 32.25555642057729,
+   "ghz": 1.664927928671895,
+   "iters": 2281872,
+   "mode": 20,
+   "name": "matrix_load_rows_4",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.17683180099993479,
+    0.17567475500027285,
+    0.18072764599992297
+   ],
+   "warps": 8,
+   "what": "four ldmatrix.trans loads a unit as the kernel issues them: a lane its own row, four wavefronts a load"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 32.34156254027096,
+   "ghz": 1.664927928671895,
+   "iters": 806195,
+   "mode": 20,
+   "name": "matrix_load_rows_16",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.2505680209997081,
+    0.25054012800001146,
+    0.2525787810000111
+   ],
+   "warps": 8,
+   "what": "sixteen"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 16.39652608108914,
+   "ghz": 1.664927928671895,
+   "iters": 3103052,
+   "mode": 20,
+   "name": "matrix_load_rows_4_1w",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.12421124599995892,
+    0.12223777899998822,
+    0.12108853199970326
+   ],
+   "warps": 4,
+   "what": "four, one warp a scheduler"
+  }
+ ],
+ "utc": "2026-09-18T1829Z"
+}

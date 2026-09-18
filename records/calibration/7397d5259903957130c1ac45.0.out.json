@@ -1,0 +1,185 @@
+{
+ "clock": {
+  "ghz": 1.665,
+  "lock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-lock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ],
+  "unlock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-unlock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ]
+ },
+ "ghz_after": 1.6650691169810314,
+ "ghz_before": 1.6650690337276215,
+ "owners": 80,
+ "rows": [
+  {
+   "burst": 1,
+   "cycles_an_op_a_warp": 65.4081970345105,
+   "ghz": 1.6650690337276215,
+   "iters": 733030,
+   "mode": 0,
+   "name": "hmma_2w",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.25934040500033007,
+    0.25880642099991746,
+    0.25915774499981126
+   ],
+   "warps": 8,
+   "what": "the kernel's HMMA atom, two warps a scheduler (the kernel's regime)"
+  },
+  {
+   "burst": 1,
+   "cycles_an_op_a_warp": 32.59535893765105,
+   "ghz": 1.6650690337276215,
+   "iters": 1354395,
+   "mode": 0,
+   "name": "hmma_1w",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.2385702029996537,
+    0.2394169160002093,
+    0.23862249100011468
+   ],
+   "warps": 4,
+   "what": "the same atom, one warp a scheduler"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 16.34700558191722,
+   "ghz": 1.6650690337276215,
+   "iters": 1493235,
+   "mode": 2,
+   "name": "shared_store_16",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.2317210090000117,
+    0.2353629090002869,
+    0.23456008499988457
+   ],
+   "warps": 8,
+   "what": "sixteen"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 32.8504623682691,
+   "ghz": 1.6650690337276215,
+   "iters": 2430675,
+   "mode": 9,
+   "name": "matrix_load_4",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.19182098999999653,
+    0.19839954200006105,
+    0.18943271499983894
+   ],
+   "warps": 8,
+   "what": "four two-n-tile ldmatrix.trans loads a unit (the readout's B, the fold's operands)"
+  },
+  {
+   "burst": 1,
+   "cycles_an_op_a_warp": 50.621920313205784,
+   "ghz": 1.6650690337276215,
+   "iters": 3769672,
+   "mode": 6,
+   "name": "cta_barrier",
+   "ops_a_unit": 1,
+   "seconds": [
+    0.11460668099971372,
+    0.11508787499997197,
+    0.11401181099972746
+   ],
+   "warps": 8,
+   "what": "a CTA barrier over every lane"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 32.933839891743006,
+   "ghz": 1.6650690337276215,
+   "iters": 790479,
+   "mode": 10,
+   "name": "hmma_load_4_1w",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.1404201010000179,
+    0.14071583500026463,
+    0.14144007599998076
+   ],
+   "warps": 4,
+   "what": "the same, one warp a scheduler: no partner warp to hide the loads"
+  },
+  {
+   "burst": 18,
+   "cycles_an_op_a_warp": 32.36929027646091,
+   "ghz": 1.6650690337276215,
+   "iters": 457243,
+   "mode": 14,
+   "name": "hmma_frag_1w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.16000019200009774,
+    0.15990331399962088,
+    0.16411428699984754
+   ],
+   "warps": 4,
+   "what": "the fold fragment's burst: eighteen HMMAs into eighteen accumulators, one warp a scheduler"
+  },
+  {
+   "burst": 18,
+   "cycles_an_op_a_warp": 65.21685208494672,
+   "ghz": 1.6650690337276215,
+   "iters": 403966,
+   "mode": 14,
+   "name": "hmma_frag_2w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.28480322799987334,
+    0.28237356399995406,
+    0.2856489429996145
+   ],
+   "warps": 8,
+   "what": "the same, two warps a scheduler"
+  },
+  {
+   "burst": 18,
+   "cycles_an_op_a_warp": 38.268461097737976,
+   "ghz": 1.6650690337276215,
+   "iters": 395656,
+   "mode": 15,
+   "name": "hmma_frag_chain_1w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.1657929170000898,
+    0.16368128099975365,
+    0.1635661070004062
+   ],
+   "warps": 4,
+   "what": "the burst behind the fragment's gather chain (shuffle, ldmatrix, two multiplies), one warp"
+  },
+  {
+   "burst": 18,
+   "cycles_an_op_a_warp": 65.31114572264319,
+   "ghz": 1.6650690337276215,
+   "iters": 398044,
+   "mode": 15,
+   "name": "hmma_frag_chain_2w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.2810338579997733,
+    0.2803410100000292,
+    0.28111414000022705
+   ],
+   "warps": 8,
+   "what": "the same, two warps"
+  }
+ ],
+ "utc": "2026-09-18T1828Z"
+}

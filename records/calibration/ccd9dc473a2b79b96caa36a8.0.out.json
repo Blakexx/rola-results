@@ -1,0 +1,121 @@
+{
+ "clock": {
+  "ghz": 1.665,
+  "lock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-lock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ],
+  "unlock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-unlock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ]
+ },
+ "ghz_after": 1.6650687839673912,
+ "ghz_before": 1.66478718062777,
+ "owners": 80,
+ "rows": [
+  {
+   "burst": 18,
+   "cycles_an_op_a_warp": 32.50470182920635,
+   "ghz": 1.66478718062777,
+   "iters": 730987,
+   "mode": 14,
+   "name": "hmma_frag_1w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.256879666000259,
+    0.2579523449999215,
+    0.25690326399990226
+   ],
+   "warps": 4,
+   "what": "the fold fragment's burst: eighteen HMMAs into eighteen accumulators, one warp a scheduler"
+  },
+  {
+   "burst": 18,
+   "cycles_an_op_a_warp": 65.08696597473993,
+   "ghz": 1.66478718062777,
+   "iters": 392355,
+   "mode": 14,
+   "name": "hmma_frag_2w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.2761130930002764,
+    0.2743780730002072,
+    0.2795179710001321
+   ],
+   "warps": 8,
+   "what": "the same, two warps a scheduler"
+  },
+  {
+   "burst": 32,
+   "cycles_an_op_a_warp": 38.04572560107457,
+   "ghz": 1.66478718062777,
+   "iters": 405011,
+   "mode": 21,
+   "name": "hmma_alu_32_1w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.16552271800037488,
+    0.16664309799989496,
+    0.16660440199984805
+   ],
+   "warps": 4,
+   "what": "eighteen HMMAs with thirty-two fp32 adds after them (four chains), one warp a scheduler"
+  },
+  {
+   "burst": 32,
+   "cycles_an_op_a_warp": 71.28112652291205,
+   "ghz": 1.66478718062777,
+   "iters": 373197,
+   "mode": 21,
+   "name": "hmma_alu_32_2w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.2885887960001128,
+    0.28398309100020924,
+    0.28762490000008256
+   ],
+   "warps": 8,
+   "what": "the same, two warps"
+  },
+  {
+   "burst": 64,
+   "cycles_an_op_a_warp": 43.627032585409786,
+   "ghz": 1.66478718062777,
+   "iters": 567759,
+   "mode": 21,
+   "name": "hmma_alu_64_1w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.2678141280002819,
+    0.26459517400007826,
+    0.2687364290000005
+   ],
+   "warps": 4,
+   "what": "sixty-four adds, one warp"
+  },
+  {
+   "burst": 64,
+   "cycles_an_op_a_warp": 78.90665103658384,
+   "ghz": 1.66478718062777,
+   "iters": 336396,
+   "mode": 21,
+   "name": "hmma_alu_64_2w",
+   "ops_a_unit": 18,
+   "seconds": [
+    0.2869975680000607,
+    0.2857137060000241,
+    0.2897434719998273
+   ],
+   "warps": 8,
+   "what": "sixty-four, two warps"
+  }
+ ],
+ "utc": "2026-09-18T1847Z"
+}

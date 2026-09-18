@@ -1,0 +1,37 @@
+{
+ "format": 1,
+ "key": "96cb9d7e771a5f7ff0e15193",
+ "location": "calibration",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "96cb9d7e771a5f7ff0e15193.0.out.json",
+   "provenance": {
+    "branch": "master",
+    "checkout": "k31-mainline",
+    "diff_sha256": "681a19fe6425cb8c95e7629bb3624aca2d7c8886540cb5115c8fd7a871ef87d1",
+    "git_sha": "7468b88306174a35ce73ce1f2c98d8057b87c73e",
+    "host": "DESKTOP-MKIUJID"
+   },
+   "utc": "2026-09-18T18:07:52Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "binary": "15f82d3badf37b027dcba2c1d297b59409b97253b8f28e3e60376891c72b0044",
+  "clock_ghz": 1.665,
+  "device": "NVIDIA GeForce RTX 3080 Ti",
+  "launches": 3,
+  "only": [
+   "async_copy",
+   "async_copy_4",
+   "async_copy_aliased",
+   "async_copy_lines",
+   "async_copy_rows",
+   "async_copy_strided"
+  ],
+  "owners": 80,
+  "seconds": 0.3
+ }
+}

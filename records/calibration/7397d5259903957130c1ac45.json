@@ -1,0 +1,41 @@
+{
+ "format": 1,
+ "key": "7397d5259903957130c1ac45",
+ "location": "calibration",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "7397d5259903957130c1ac45.0.out.json",
+   "provenance": {
+    "branch": "master",
+    "checkout": "k31-mainline",
+    "diff_sha256": "376d00071da636ed3ed0f8f69638a641fb94d02561979164d7b08716a97af8d4",
+    "git_sha": "7468b88306174a35ce73ce1f2c98d8057b87c73e",
+    "host": "DESKTOP-MKIUJID"
+   },
+   "utc": "2026-09-18T18:28:05Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "binary": "69008044082007a473c3a8520c39968d11b254160c6d9a77ee342d125dd1d3e6",
+  "clock_ghz": 1.665,
+  "device": "NVIDIA GeForce RTX 3080 Ti",
+  "launches": 3,
+  "only": [
+   "cta_barrier",
+   "hmma_1w",
+   "hmma_2w",
+   "hmma_frag_1w",
+   "hmma_frag_2w",
+   "hmma_frag_chain_1w",
+   "hmma_frag_chain_2w",
+   "hmma_load_4_1w",
+   "matrix_load_4",
+   "shared_store_16"
+  ],
+  "owners": 80,
+  "seconds": 0.3
+ }
+}
