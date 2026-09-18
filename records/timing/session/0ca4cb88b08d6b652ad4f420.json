@@ -1,0 +1,189 @@
+{
+ "format": 1,
+ "key": "0ca4cb88b08d6b652ad4f420",
+ "location": "timing/session",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "0ca4cb88b08d6b652ad4f420.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "bench/flash": {
+      "branch": "master",
+      "checkout": "rola-bench",
+      "diff_sha256": null,
+      "git_sha": "a642f62f065bf15e0872a134aa98813a5705681c"
+     },
+     "k31-mainline/carry_forward": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": "dd89d50a8d1739d34ab683cd0a52064fb6b0908d7385547cd3283140f8509ba8",
+      "git_sha": "e056c338735883fe84d5fa25d3cccfa81d0713af"
+     },
+     "p82-mass-ref/carry_forward": {
+      "branch": null,
+      "checkout": "p82-mass-ref",
+      "diff_sha256": null,
+      "git_sha": "e056c338735883fe84d5fa25d3cccfa81d0713af"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260918T044608Z-fb6900"
+   },
+   "run": "20260918T044608Z-fb6900",
+   "summary": {
+    "members": [
+     {
+      "cell": "nl16k-alt-k4",
+      "error": null,
+      "id": "m0",
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "nl16k-dense",
+      "error": null,
+      "id": "m1",
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "nl16k-alt-k4",
+      "error": null,
+      "id": "m2",
+      "owner": "p82-mass-ref/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "nl16k-dense",
+      "error": null,
+      "id": "m3",
+      "owner": "p82-mass-ref/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L16384-dv64",
+      "error": null,
+      "id": "m4",
+      "owner": "bench/flash",
+      "status": "ok"
+     }
+    ],
+    "samples": 440
+   },
+   "utc": "2026-09-18T04:46:15Z",
+   "wall_s": null
+  },
+  {
+   "n": 1,
+   "ok": true,
+   "output": "0ca4cb88b08d6b652ad4f420.1.out.json",
+   "provenance": {
+    "checkouts": {
+     "bench/flash": {
+      "branch": "master",
+      "checkout": "rola-bench",
+      "diff_sha256": null,
+      "git_sha": "a642f62f065bf15e0872a134aa98813a5705681c"
+     },
+     "k31-mainline/carry_forward": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": "dd89d50a8d1739d34ab683cd0a52064fb6b0908d7385547cd3283140f8509ba8",
+      "git_sha": "e056c338735883fe84d5fa25d3cccfa81d0713af"
+     },
+     "p82-mass-ref/carry_forward": {
+      "branch": null,
+      "checkout": "p82-mass-ref",
+      "diff_sha256": null,
+      "git_sha": "e056c338735883fe84d5fa25d3cccfa81d0713af"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260918T175453Z-8d85b8"
+   },
+   "run": "20260918T175453Z-8d85b8",
+   "summary": {
+    "members": [
+     {
+      "cell": "nl16k-alt-k4",
+      "error": null,
+      "id": "m0",
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "nl16k-dense",
+      "error": null,
+      "id": "m1",
+      "owner": "k31-mainline/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "nl16k-alt-k4",
+      "error": null,
+      "id": "m2",
+      "owner": "p82-mass-ref/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "nl16k-dense",
+      "error": null,
+      "id": "m3",
+      "owner": "p82-mass-ref/carry_forward",
+      "status": "ok"
+     },
+     {
+      "cell": "qkv-L16384-dv64",
+      "error": null,
+      "id": "m4",
+      "owner": "bench/flash",
+      "status": "ok"
+     }
+    ],
+    "samples": 440
+   },
+   "utc": "2026-09-18T17:55:02Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": null,
+  "deps": {
+   "clock": {
+    "key": "fa3c7017607ccd834f326afb",
+    "output": "1a64931bdccb48537fa826946bf77cb59ddbd0ee10025a86d9ad5f49c20f2566"
+   },
+   "r0": {
+    "key": "42518a86e710c663b47fe770",
+    "output": "066d8731658bf48ee79ceff8240d7c5bd8433c3653af9321f7a17afed4a513d6"
+   },
+   "r1": {
+    "key": "bbe4f0c914528d9fa213a8cf",
+    "output": "066d8731658bf48ee79ceff8240d7c5bd8433c3653af9321f7a17afed4a513d6"
+   },
+   "r2": {
+    "key": "0e1492fc89f78de5c23db8da",
+    "output": "071b4c07f82319e7a3fc02612e6f62b7b55894b5d7efea20370246ca145ee4d4"
+   },
+   "server": {
+    "key": "80f4ef1870d9ac980315bd6d",
+    "output": "b68df153ac199d71a83eb8ed44361ee25857c308ec050670e1a4008cc6730a92"
+   }
+  },
+  "executor": "rola_devtools.timing.executors:measure",
+  "params": {
+   "cells": [
+    "nl16k-dense",
+    "nl16k-alt-k4",
+    "qkv-L16384-dv64"
+   ],
+   "claim": "",
+   "reps": 11,
+   "rounds": 8,
+   "seed": 0,
+   "warmup": 10
+  }
+ }
+}

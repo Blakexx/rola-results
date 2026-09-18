@@ -1,0 +1,60 @@
+{
+ "format": 1,
+ "key": "65973cfbbb693172f2833394",
+ "location": "rola/purity",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "65973cfbbb693172f2833394.0.out.json",
+   "provenance": {
+    "checkouts": {
+     "rola": {
+      "branch": "master",
+      "checkout": "k31-mainline",
+      "diff_sha256": "e023a02ab44a35cf6a2584f72fe5268f13e5c98d38ab5e74482e3b543db7f307",
+      "git_sha": "97373acbbd35566541c8f5546c31f1658702588e"
+     }
+    },
+    "host": "DESKTOP-MKIUJID",
+    "run": "20260918T040047Z-cbec14"
+   },
+   "run": "20260918T040047Z-cbec14",
+   "summary": {
+    "cells": {
+     "": {
+      "exit": 0,
+      "status": "ok"
+     }
+    }
+   },
+   "utc": "2026-09-18T04:00:59Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "code": "0281595cc055eaf248a3bc671cdabd5cb1bf98f6449b0cc71acddfc05aac7be2",
+  "deps": {
+   "binary": {
+    "key": "d352fb6764fe5ee66bbc9ae3",
+    "output": "d61860c8d9d9237d2c3ed9343be84ab807afafb1cfd7914240330363ec51398b"
+   },
+   "environment": {
+    "key": "012b6cb64a9c98dddab11d1d",
+    "output": "8e4babba64117665d39feeb34ef43dafeeb988d771468765b046376c6de21e38"
+   }
+  },
+  "executor": "measure.executors:run_tool",
+  "params": {
+   "args": [
+    "--arm",
+    "0",
+    "--source",
+    "csrc/rola/src/carry/carry_kernel.cuh"
+   ],
+   "per_cell": false,
+   "timeout": 600,
+   "tool": "tools/burst_purity.py"
+  }
+ }
+}
