@@ -1,0 +1,688 @@
+{
+ "bindings": {
+  "left": {
+   "checkout": "k31-mainline",
+   "executor": "tests.oracle.sides:carry_kernel",
+   "file": "rola/__init__.py",
+   "module": "rola"
+  },
+  "right": {
+   "checkout": "p82-burst-ref",
+   "executor": "tests.oracle.sides:carry_kernel",
+   "file": "rola/__init__.py",
+   "module": "rola"
+  }
+ },
+ "cells": {
+  "corner-anti": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 1024,
+     "worst_ratio": 0.031044085820515953
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 65536,
+     "worst_ratio": 0.3063561100708811
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 266240,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "corner-cold-read": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 1024,
+     "worst_ratio": 0.062088171641031906
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 65536,
+     "worst_ratio": 0.4288985540992335
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 266240,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "corner-concentrated": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 1024,
+     "worst_ratio": 0.27245060038099767
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 65536,
+     "worst_ratio": 0.5753812764028083
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 4259840,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "corner-onehot": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 1024,
+     "worst_ratio": 0.0
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 65536,
+     "worst_ratio": 0.0
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 16640,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "corner-read-only": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 1024,
+     "worst_ratio": 0.062088171641031906
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 65536,
+     "worst_ratio": 0.3676273320850573
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 266240,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "corner-tied-k4": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 1024,
+     "worst_ratio": 0.0
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 65536,
+     "worst_ratio": 0.08486090745671945
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 4259840,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "corner-window-flip": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 1536,
+     "worst_ratio": 0.015522042910257976
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 98304,
+     "worst_ratio": 0.18381366604252866
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 4259840,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flagship-alt-k4-L4096": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 4096,
+     "worst_ratio": 0.023283064365386966
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 262144,
+     "worst_ratio": 0.24508488805670486
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 4259840,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flagship-both-k4": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 1024,
+     "worst_ratio": 0.005820766091346742
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 65536,
+     "worst_ratio": 0.4969722283244388
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 4259840,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flagship-both-k4-L4096": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 4096,
+     "worst_ratio": 0.04656612873077393
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 262144,
+     "worst_ratio": 0.9190683302126432
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 4259840,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flagship-cohort-k4-L4096": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 4096,
+     "worst_ratio": 0.015522042910257976
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 262144,
+     "worst_ratio": 0.12254244402835243
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 4259840,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flagship-dv128-alt-k4": {
+   "left": "RuntimeError: arm_switch, csrc/rola/src/common/arm_switch.cuh:86, this build carries no carry arm for (D, DV, warps_per_cta) = (2, 128, 8); the field that misses is DV. It carries 1 of 1 declared arms: (2, 64, 8)",
+   "right": "RuntimeError: arm_switch, csrc/rola/src/common/arm_switch.cuh:86, this build carries no carry arm for (D, DV, warps_per_cta) = (2, 128, 8); the field that misses is DV. It carries 1 of 1 declared arms: (2, 64, 8)",
+   "status": "refused"
+  },
+  "flagship-dv32-alt-k4": {
+   "left": "RuntimeError: arm_switch, csrc/rola/src/common/arm_switch.cuh:86, this build carries no carry arm for (D, DV, warps_per_cta) = (2, 32, 8); the field that misses is DV. It carries 1 of 1 declared arms: (2, 64, 8)",
+   "right": "RuntimeError: arm_switch, csrc/rola/src/common/arm_switch.cuh:86, this build carries no carry arm for (D, DV, warps_per_cta) = (2, 32, 8); the field that misses is DV. It carries 1 of 1 declared arms: (2, 64, 8)",
+   "status": "refused"
+  },
+  "flagship-paged": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 1024,
+     "worst_ratio": 0.003880510727564494
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 65536,
+     "worst_ratio": 0.09190683302126433
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 4259840,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flagship-partial-window": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 1792,
+     "worst_ratio": 0.011641532182693483
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 114688,
+     "worst_ratio": 0.15317805503544055
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 4259840,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flagship-struct25": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 1024,
+     "worst_ratio": 0.062088171641031906
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 65536,
+     "worst_ratio": 0.24296893164774933
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 4259840,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flagship-struct50": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 1024,
+     "worst_ratio": 0.023283064365386966
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 65536,
+     "worst_ratio": 0.34605769482193455
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 4259840,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flat-small-carried": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 128,
+     "worst_ratio": 0.031044085820515953
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 8192,
+     "worst_ratio": 0.24508488805670486
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 266240,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flat-small-dense": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 256,
+     "worst_ratio": 0.0
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 16384,
+     "worst_ratio": 0.0
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 266240,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flat-small-idle-resident": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 256,
+     "worst_ratio": 0.0
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 16384,
+     "worst_ratio": 0.0
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 266240,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flat-small-multiwindow": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 1024,
+     "worst_ratio": 0.062088171641031906
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 65536,
+     "worst_ratio": 0.2512036738034887
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 266240,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flat-small-struct25": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 256,
+     "worst_ratio": 0.0
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 16384,
+     "worst_ratio": 0.0
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 266240,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "flat-small-struct50": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 256,
+     "worst_ratio": 0.0
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 16384,
+     "worst_ratio": 0.0
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 266240,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "identity-passthrough-dense": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 16,
+     "worst_ratio": 0.0
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 1024,
+     "worst_ratio": 0.0
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 16640,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "identity-passthrough-paged": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 16,
+     "worst_ratio": 0.0
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 1024,
+     "worst_ratio": 0.0
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 16640,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "one-box-multiwindow": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 1024,
+     "worst_ratio": 0.0
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 65536,
+     "worst_ratio": 0.0
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 16640,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "one-box-short": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 64,
+     "worst_ratio": 0.0
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 4096,
+     "worst_ratio": 0.0
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 16640,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "one-box-tiny": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 32,
+     "worst_ratio": 0.0
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 2048,
+     "worst_ratio": 0.0
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 16640,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  },
+  "single-deposit": {
+   "quantities": {
+    "den": {
+     "failed": 0,
+     "same": true,
+     "slots": 16,
+     "worst_ratio": 0.0
+    },
+    "num": {
+     "failed": 0,
+     "same": true,
+     "slots": 1024,
+     "worst_ratio": 0.0
+    },
+    "state": {
+     "failed": 0,
+     "same": true,
+     "slots": 16640,
+     "worst_ratio": 0.0
+    }
+   },
+   "same": true,
+   "status": "ok"
+  }
+ },
+ "compared": 27,
+ "differing": [],
+ "expect": "same",
+ "held": true,
+ "minimum": 29,
+ "quantities": 81,
+ "refused": [
+  "flagship-dv128-alt-k4",
+  "flagship-dv32-alt-k4"
+ ],
+ "strategy": "per-slot",
+ "unusable": []
+}
