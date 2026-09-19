@@ -1,0 +1,56 @@
+{
+ "clock": {
+  "ghz": 1.665,
+  "lock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-lock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ],
+  "unlock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-unlock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ]
+ },
+ "ghz_after": 1.66436150205049,
+ "ghz_before": 1.6642182707055215,
+ "owners": 80,
+ "rows": [
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 118.1875,
+   "iteration_p10_p90": [
+    1414,
+    2319
+   ],
+   "mode": 42,
+   "name": "reduce_spread_2w",
+   "partners_offset_p10_p50_p90": [
+    601,
+    883,
+    1290
+   ],
+   "stamped": true,
+   "warps": 8,
+   "what": "global f32 reductions, each a coalesced line not reduced into again, eight warps"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 55.75,
+   "iteration_p10_p90": [
+    692,
+    1468
+   ],
+   "mode": 42,
+   "name": "reduce_spread_1w",
+   "stamped": true,
+   "warps": 4,
+   "what": "the same, four warps"
+  }
+ ],
+ "utc": "2026-09-19T1937Z"
+}
