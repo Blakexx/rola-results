@@ -1,0 +1,73 @@
+{
+ "clock": {
+  "ghz": 1.665,
+  "lock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-lock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ],
+  "unlock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-unlock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ]
+ },
+ "ghz_after": 1.6645018449324611,
+ "ghz_before": 1.6645015120323419,
+ "owners": 80,
+ "rows": [
+  {
+   "burst": 36,
+   "cycles_an_op_a_warp": 2808.579719967133,
+   "ghz": 1.6645015120323419,
+   "iters": 199857,
+   "mode": 40,
+   "name": "pair_phase_36_2w",
+   "ops_a_unit": 1,
+   "seconds": [
+    0.33896216299990556,
+    0.3372266790001959,
+    0.3361183259999052
+   ],
+   "warps": 8,
+   "what": "36 HMMAs then 48 dependent IMADs, two warps a scheduler: fair keeps the pair in step (two bursts + a stretch), greedy staggers it (two bursts)"
+  },
+  {
+   "burst": 18,
+   "cycles_an_op_a_warp": 1426.0448739934425,
+   "ghz": 1.6645015120323419,
+   "iters": 390225,
+   "mode": 40,
+   "name": "pair_phase_18_2w",
+   "ops_a_unit": 1,
+   "seconds": [
+    0.3346706469997116,
+    0.3342818289997922,
+    0.33432133099995553
+   ],
+   "warps": 8,
+   "what": "the same with 18 HMMAs"
+  },
+  {
+   "burst": 36,
+   "cycles_an_op_a_warp": 1434.371777501796,
+   "ghz": 1.6645015120323419,
+   "iters": 384498,
+   "mode": 40,
+   "name": "pair_phase_36_1w",
+   "ops_a_unit": 1,
+   "seconds": [
+    0.3301844309999069,
+    0.33353259299974525,
+    0.3313382870001078
+   ],
+   "warps": 4,
+   "what": "36 HMMAs then the stretch, one warp a scheduler: a burst plus a stretch"
+  }
+ ],
+ "utc": "2026-09-19T1836Z"
+}

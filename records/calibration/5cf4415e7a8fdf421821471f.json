@@ -1,0 +1,49 @@
+{
+ "format": 1,
+ "key": "5cf4415e7a8fdf421821471f",
+ "location": "calibration",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "5cf4415e7a8fdf421821471f.0.out.json",
+   "provenance": {
+    "branch": "master",
+    "checkout": "k31-mainline",
+    "diff_sha256": "778a717099c149f30c297a4cd0a59267d8734700d0beae6230c3130cd80b54a3",
+    "git_sha": "190e0944b40634ac86cf1861aeeca317c0829a14",
+    "host": "DESKTOP-MKIUJID"
+   },
+   "utc": "2026-09-19T19:05:54Z",
+   "wall_s": null
+  },
+  {
+   "n": 1,
+   "ok": true,
+   "output": "5cf4415e7a8fdf421821471f.1.out.json",
+   "provenance": {
+    "branch": "master",
+    "checkout": "k31-mainline",
+    "diff_sha256": "778a717099c149f30c297a4cd0a59267d8734700d0beae6230c3130cd80b54a3",
+    "git_sha": "190e0944b40634ac86cf1861aeeca317c0829a14",
+    "host": "DESKTOP-MKIUJID"
+   },
+   "utc": "2026-09-19T19:06:48Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "binary": "9b1c96e94f1fa54aef3921e011a7cd7529ec9494cd2638e414770813866347a2",
+  "clock_ghz": 1.665,
+  "device": "NVIDIA GeForce RTX 3080 Ti",
+  "launches": 3,
+  "only": [
+   "pair_phase_18_2w",
+   "pair_phase_36_1w",
+   "pair_phase_36_2w",
+   "redux_chain_1w"
+  ],
+  "owners": 80,
+  "seconds": 0.3
+ }
+}
