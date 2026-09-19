@@ -1,0 +1,137 @@
+{
+ "clock": {
+  "ghz": 1.665,
+  "lock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-lock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ],
+  "unlock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-unlock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ]
+ },
+ "ghz_after": 1.664927512440329,
+ "ghz_before": 1.6649291773665928,
+ "owners": 80,
+ "rows": [
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 48.9890037717256,
+   "ghz": 1.6649291773665928,
+   "iters": 1432702,
+   "mode": 17,
+   "name": "async_copy_4",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.16576250700018136,
+    0.17073928100580815,
+    0.16862373399635544
+   ],
+   "warps": 8,
+   "what": "four-byte runs a lane, one contiguous line in and out"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 262.66100292861523,
+   "ghz": 1.6649291773665928,
+   "iters": 449752,
+   "mode": 18,
+   "name": "async_copy_rows",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.2821205640066182,
+    0.28381342100328766,
+    0.28434560699679423
+   ],
+   "warps": 8,
+   "what": "the pool fill's V pattern: sixteen token rows, two adjacent chunks a run, swizzled"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 261.04340789166906,
+   "ghz": 1.6649291773665928,
+   "iters": 450157,
+   "mode": 19,
+   "name": "async_copy_lines",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.28275964700151235,
+    0.2823195580058382,
+    0.28149217900499934
+   ],
+   "warps": 8,
+   "what": "the same rows landed a whole line at a time: eight lanes a row, four rows a run"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 70.62978694789011,
+   "ghz": 1.6649291773665928,
+   "iters": 1400269,
+   "mode": 27,
+   "name": "async_copy_zfill_sink",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.22937389699654886,
+    0.23760938899795292,
+    0.23774558599689044
+   ],
+   "warps": 8,
+   "what": "zero-size 16-byte copies, every lane's landing one slot: the fill's dead lanes on the zero row"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 69.04012504129228,
+   "ghz": 1.6649291773665928,
+   "iters": 1378711,
+   "mode": 28,
+   "name": "async_copy_zfill_spread",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.21556464699824573,
+    0.2320972280067508,
+    0.22868571499566315
+   ],
+   "warps": 8,
+   "what": "zero-size copies, a slot a lane"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 84.23899848360803,
+   "ghz": 1.6649291773665928,
+   "iters": 1171904,
+   "mode": 29,
+   "name": "async_copy_mixed_sink",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.23717529999703402,
+    0.23760228900209768,
+    0.23601053000311367
+   ],
+   "warps": 8,
+   "what": "four lanes live from their own rows, twenty-eight zero-size to the one slot: a sparse round"
+  },
+  {
+   "burst": 4,
+   "cycles_an_op_a_warp": 226.55126928170012,
+   "ghz": 1.6649291773665928,
+   "iters": 487025,
+   "mode": 30,
+   "name": "async_copy4_zfill_sink",
+   "ops_a_unit": 4,
+   "seconds": [
+    0.26888803499605274,
+    0.26406149100512266,
+    0.2650830640050117
+   ],
+   "warps": 8,
+   "what": "sixteen lanes' zero-size four-byte copies to one word: a dead gain pair"
+  }
+ ],
+ "utc": "2026-09-19T0345Z"
+}

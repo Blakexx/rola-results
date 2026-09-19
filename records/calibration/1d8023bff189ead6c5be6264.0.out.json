@@ -1,0 +1,121 @@
+{
+ "clock": {
+  "ghz": 1.665,
+  "lock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-lock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ],
+  "unlock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-unlock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ]
+ },
+ "ghz_after": 1.665069616501492,
+ "ghz_before": 1.6650699495151322,
+ "owners": 80,
+ "rows": [
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 80.94441317339908,
+   "ghz": 1.6650699495151322,
+   "iters": 361868,
+   "mode": 18,
+   "name": "async_copy_rows_16",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.2804576280032052,
+    0.2843481329982751,
+    0.2814651039952878
+   ],
+   "warps": 8,
+   "what": "the V pattern, sixteen copies a group: the copy's own cost, the group's landing amortized"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 55.33371562400514,
+   "ghz": 1.6650699495151322,
+   "iters": 517968,
+   "mode": 29,
+   "name": "async_copy_mixed_sink_16",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.27429248199769063,
+    0.28087321799830534,
+    0.27541035399917746
+   ],
+   "warps": 8,
+   "what": "the sparse round zero-size, sixteen a group"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 56.94459640001831,
+   "ghz": 1.6650699495151322,
+   "iters": 508832,
+   "mode": 31,
+   "name": "async_copy_lanes_16",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.2784289789997274,
+    0.27852737700595753,
+    0.2763304309992236
+   ],
+   "warps": 8,
+   "what": "the sparse round predicated, sixteen a group"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 36.54436878560491,
+   "ghz": 1.6650699495151322,
+   "iters": 763184,
+   "mode": 17,
+   "name": "async_copy_4_16",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.26938500400137855,
+    0.2670564380023279,
+    0.2680014980069245
+   ],
+   "warps": 8,
+   "what": "four-byte runs, sixteen a group"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 137.27100752716586,
+   "ghz": 1.6650699495151322,
+   "iters": 181624,
+   "mode": 30,
+   "name": "async_copy4_zfill_sink_16",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.2395739300045534,
+    0.24234455799887655,
+    0.23924783899565227
+   ],
+   "warps": 8,
+   "what": "the dead gain pair zero-size, sixteen a group"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 76.26867239307593,
+   "ghz": 1.6650699495151322,
+   "iters": 388611,
+   "mode": 32,
+   "name": "async_copy4_lanes_16",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.2836283949945937,
+    0.2848057650044211,
+    0.28538544999901205
+   ],
+   "warps": 8,
+   "what": "the gain pair with two lanes live, sixteen a group"
+  }
+ ],
+ "utc": "2026-09-19T0351Z"
+}
