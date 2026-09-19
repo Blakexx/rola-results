@@ -1,0 +1,89 @@
+{
+ "clock": {
+  "ghz": 1.665,
+  "lock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-lock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ],
+  "unlock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-unlock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ]
+ },
+ "ghz_after": 1.6650695332480818,
+ "ghz_before": 1.6649277621792686,
+ "owners": 80,
+ "rows": [
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 29.03003357894082,
+   "ghz": 1.6649277621792686,
+   "iters": 897531,
+   "mode": 33,
+   "name": "lds_chain_1w",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.25148425400004726,
+    0.24960015399994973,
+    0.2503926539999384
+   ],
+   "warps": 4,
+   "what": "dependent shared loads (each address the last result), one warp a scheduler: the latency"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 24.387097987114327,
+   "ghz": 1.6649277621792686,
+   "iters": 1064207,
+   "mode": 34,
+   "name": "shfl_chain_1w",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.24999625399993874,
+    0.24731945400003497,
+    0.24940825399994537
+   ],
+   "warps": 4,
+   "what": "dependent shuffles, one warp a scheduler: the latency"
+  },
+  {
+   "burst": 1,
+   "cycles_an_op_a_warp": 324.9286730707984,
+   "ghz": 1.6649277621792686,
+   "iters": 1247660,
+   "mode": 39,
+   "name": "async_copy_latency_1w",
+   "ops_a_unit": 1,
+   "seconds": [
+    0.24349435299996003,
+    0.2401669519999814,
+    0.2446573529999796
+   ],
+   "warps": 4,
+   "what": "one 16-byte cp.async.cg a lane from L2, committed and waited on: the landing latency, one warp a scheduler"
+  },
+  {
+   "burst": 1,
+   "cycles_an_op_a_warp": 358.5961754737934,
+   "ghz": 1.6649277621792686,
+   "iters": 1154290,
+   "mode": 39,
+   "name": "async_copy_latency_2w",
+   "ops_a_unit": 1,
+   "seconds": [
+    0.248605221000048,
+    0.2486137770000596,
+    0.24927797199995894
+   ],
+   "warps": 8,
+   "what": "the same, two warps a scheduler"
+  }
+ ],
+ "utc": "2026-09-19T1757Z"
+}

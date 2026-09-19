@@ -1,0 +1,265 @@
+{
+ "clock": {
+  "ghz": 1.665,
+  "lock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-lock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ],
+  "unlock": [
+   "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+   "-NoProfile",
+   "-NonInteractive",
+   "-Command",
+   "$t = 'gpu-unlock'; Start-ScheduledTask -TaskName $t; $w = [Diagnostics.Stopwatch]::StartNew(); while ((Get-ScheduledTask -TaskName $t).State -ne 'Running' -and $w.ElapsedMilliseconds -lt 3000) { Start-Sleep -Milliseconds 50 }; while ((Get-ScheduledTask -TaskName $t).State -eq 'Running') { Start-Sleep -Milliseconds 50 }; $r = (Get-ScheduledTaskInfo -TaskName $t).LastTaskResult; if ($r -ne 0) { [Console]::Error.WriteLine(\"$t exited $r (nvidia-smi's code)\"); exit 1 }"
+  ]
+ },
+ "ghz_after": 1.6649275956866423,
+ "ghz_before": 1.6649280951645213,
+ "owners": 80,
+ "rows": [
+  {
+   "burst": 1,
+   "cycles_an_op_a_warp": 32.45908453698218,
+   "ghz": 1.6649280951645213,
+   "iters": 1290045,
+   "mode": 0,
+   "name": "hmma_1w",
+   "ops_a_unit": 9,
+   "seconds": [
+    0.2263210779999838,
+    0.2263539900000069,
+    0.22910176300001694
+   ],
+   "warps": 4,
+   "what": "the same atom, one warp a scheduler"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 28.983264972888353,
+   "ghz": 1.6649280951645213,
+   "iters": 847585,
+   "mode": 33,
+   "name": "lds_chain_1w",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.23511040400001093,
+    0.23607775700000388,
+    0.23775372200000788
+   ],
+   "warps": 4,
+   "what": "dependent shared loads (each address the last result), one warp a scheduler: the latency"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 29.201620860516872,
+   "ghz": 1.6649280951645213,
+   "iters": 912825,
+   "mode": 33,
+   "name": "lds_chain_2w",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.252484523000021,
+    0.2561645239999848,
+    0.2562536229999921
+   ],
+   "warps": 8,
+   "what": "the same, two warps a scheduler"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 24.59101837627932,
+   "ghz": 1.6649280951645213,
+   "iters": 1081275,
+   "mode": 34,
+   "name": "shfl_chain_1w",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.25071362200000635,
+    0.25552722399999084,
+    0.2565709229999982
+   ],
+   "warps": 4,
+   "what": "dependent shuffles, one warp a scheduler: the latency"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 29.065423327361433,
+   "ghz": 1.6649280951645213,
+   "iters": 969305,
+   "mode": 35,
+   "name": "ldsm_chain_1w",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.2685864249999952,
+    0.27074572399999397,
+    0.2714675249999914
+   ],
+   "warps": 4,
+   "what": "dependent one-matrix ldmatrix loads, one warp a scheduler: the latency"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 10.893952217275285,
+   "ghz": 1.6649280951645213,
+   "iters": 1777777,
+   "mode": 36,
+   "name": "branch_taken_1w",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.1849261170000034,
+    0.18611751699998536,
+    0.18824781699998994
+   ],
+   "warps": 4,
+   "what": "a taken uniform branch over a skipped block (setp + bra), one warp a scheduler"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 14.01146460922698,
+   "ghz": 1.6649280951645213,
+   "iters": 1501877,
+   "mode": 36,
+   "name": "branch_taken_2w",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.2048049189999972,
+    0.20188541800001758,
+    0.20222851899998773
+   ],
+   "warps": 8,
+   "what": "the same, two warps a scheduler"
+  },
+  {
+   "burst": 16,
+   "cycles_an_op_a_warp": 20.269911804819674,
+   "ghz": 1.6649280951645213,
+   "iters": 1225991,
+   "mode": 37,
+   "name": "branch_divergent_1w",
+   "ops_a_unit": 16,
+   "seconds": [
+    0.2388078220000125,
+    0.2388161220000029,
+    0.23883922100000632
+   ],
+   "warps": 4,
+   "what": "odd and even lanes through different eight-add blocks and reconverge, one warp"
+  },
+  {
+   "burst": 256,
+   "cycles_an_op_a_warp": 4.0769732449481255,
+   "ghz": 1.6649280951645213,
+   "iters": 448396,
+   "mode": 38,
+   "name": "icache_256_2w",
+   "ops_a_unit": 256,
+   "seconds": [
+    0.2811622259999922,
+    0.2788492260000055,
+    0.2810891450000099
+   ],
+   "warps": 8,
+   "what": "a loop body of 256 independent multiply-adds (4 KB of code), two warps a scheduler"
+  },
+  {
+   "burst": 1024,
+   "cycles_an_op_a_warp": 4.044014655785941,
+   "ghz": 1.6649280951645213,
+   "iters": 119381,
+   "mode": 38,
+   "name": "icache_1024_2w",
+   "ops_a_unit": 1024,
+   "seconds": [
+    0.29692885800000113,
+    0.2964013579999971,
+    0.29943345800001
+   ],
+   "warps": 8,
+   "what": "1024 (16 KB)"
+  },
+  {
+   "burst": 2048,
+   "cycles_an_op_a_warp": 4.067483823535092,
+   "ghz": 1.6649280951645213,
+   "iters": 60287,
+   "mode": 38,
+   "name": "icache_2048_2w",
+   "ops_a_unit": 2048,
+   "seconds": [
+    0.2993519590000062,
+    0.3023557589999939,
+    0.3016365590000021
+   ],
+   "warps": 8,
+   "what": "2048 (32 KB)"
+  },
+  {
+   "burst": 4096,
+   "cycles_an_op_a_warp": 4.057694688224463,
+   "ghz": 1.6649280951645213,
+   "iters": 30256,
+   "mode": 38,
+   "name": "icache_4096_2w",
+   "ops_a_unit": 4096,
+   "seconds": [
+    0.3062069600000257,
+    0.30086005900000146,
+    0.3020336589999886
+   ],
+   "warps": 8,
+   "what": "4096 (64 KB)"
+  },
+  {
+   "burst": 8192,
+   "cycles_an_op_a_warp": 4.5516068036654,
+   "ghz": 1.6649280951645213,
+   "iters": 13217,
+   "mode": 38,
+   "name": "icache_8192_2w",
+   "ops_a_unit": 8192,
+   "seconds": [
+    0.2963375580000047,
+    0.2960002580000207,
+    0.2945245580000062
+   ],
+   "warps": 8,
+   "what": "8192 (128 KB)"
+  },
+  {
+   "burst": 1024,
+   "cycles_an_op_a_warp": 2.0398975383984443,
+   "ghz": 1.6649280951645213,
+   "iters": 232000,
+   "mode": 38,
+   "name": "icache_1024_1w",
+   "ops_a_unit": 1024,
+   "seconds": [
+    0.28924415700001305,
+    0.29107225699999617,
+    0.2925354570000138
+   ],
+   "warps": 4,
+   "what": "1024 (16 KB), one warp a scheduler"
+  },
+  {
+   "burst": 8192,
+   "cycles_an_op_a_warp": 3.06061227231636,
+   "ghz": 1.6649280951645213,
+   "iters": 20046,
+   "mode": 38,
+   "name": "icache_8192_1w",
+   "ops_a_unit": 8192,
+   "seconds": [
+    0.3008258589999855,
+    0.30762905600002455,
+    0.30187733200000366
+   ],
+   "warps": 4,
+   "what": "8192 (128 KB), one warp a scheduler"
+  }
+ ],
+ "utc": "2026-09-19T1751Z"
+}

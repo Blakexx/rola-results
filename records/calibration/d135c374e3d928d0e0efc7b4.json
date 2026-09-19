@@ -1,0 +1,46 @@
+{
+ "format": 1,
+ "key": "d135c374e3d928d0e0efc7b4",
+ "location": "calibration",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "d135c374e3d928d0e0efc7b4.0.out.json",
+   "provenance": {
+    "branch": "master",
+    "checkout": "k31-mainline",
+    "diff_sha256": "41d084bab2080af45308a9d7be6a22507ad378c3441e84021f036a528209853b",
+    "git_sha": "abe6f2e992eca9ed032acf378c917677ccb4a5ee",
+    "host": "DESKTOP-MKIUJID"
+   },
+   "utc": "2026-09-19T17:51:51Z",
+   "wall_s": null
+  }
+ ],
+ "semantics": {
+  "binary": "a2e18b7a5a33eb9361c952ce67d62e2b8091d10f29666b81fed8d336b4b56837",
+  "clock_ghz": 1.665,
+  "device": "NVIDIA GeForce RTX 3080 Ti",
+  "launches": 3,
+  "only": [
+   "branch_divergent_1w",
+   "branch_taken_1w",
+   "branch_taken_2w",
+   "hmma_1w",
+   "icache_1024_1w",
+   "icache_1024_2w",
+   "icache_2048_2w",
+   "icache_256_2w",
+   "icache_4096_2w",
+   "icache_8192_1w",
+   "icache_8192_2w",
+   "lds_chain_1w",
+   "lds_chain_2w",
+   "ldsm_chain_1w",
+   "shfl_chain_1w"
+  ],
+  "owners": 80,
+  "seconds": 0.3
+ }
+}
