@@ -1,7 +1,26 @@
 {
   "public": "Blakexx/rola-results",
-  "ships": [".github", ".githooks", ".gitignore", ".pre-commit-config.yaml", "README.md", "pyproject.toml", "records",
-            "rola_results", "views"],
-  "private": [".github/workflows/mirror.yml"],
+  "ships": [
+    ".bazeliskrc",
+    ".bazelrc",
+    ".bazelversion",
+    ".githooks",
+    ".github",
+    ".gitignore",
+    "BUILD.bazel",
+    "MODULE.bazel",
+    "MODULE.bazel.lock",
+    "README.md",
+    "bazel",
+    "pyproject.toml",
+    "records",
+    "requirements.in",
+    "requirements.lock",
+    "rola_results",
+    "views"
+  ],
+  "private": [
+    ".github/workflows/mirror.yml"
+  ],
   "allow": {}
 }

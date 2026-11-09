@@ -1,0 +1,69 @@
+"""rola-results' root package: its checks and gate (the tracked tree beside them: rola_results/, records/ and views/ hold
+no BUILD file, so their files are this package's)."""
+
+load("//bazel:defs.bzl", "results_run", "tree_part", "tree_test")
+
+exports_files(["requirements.lock"])
+
+#: this package's part of the tree, and the whole tree
+tree_part()
+
+filegroup(
+    name = "tree",
+    srcs = [
+        ":tracked",
+        "//bazel:tracked",
+    ],
+)
+
+#: rola's rule set, over the library
+tree_test(
+    name = "ruff",
+    size = "small",
+    cmd = ["ruff", "check", "--select", "E,F,UP,B,SIM,I,C4", "--line-length", "127", "--target-version", "py310",
+           "rola_results"],
+    data = [":tree"],
+)
+
+#: the store's, the index's, the verdict's and the dashboard's contracts
+tree_test(
+    name = "contract",
+    size = "small",
+    cmd = ["python3", "-m", "unittest", "rola_results.test_store", "rola_results.test_index", "rola_results.test_verdict",
+           "rola_results.test_dashboard"],
+    data = [":tree"],
+)
+
+#: every stored record consistent: its key recomputes from its semantics, its location is its directory, its outputs
+#: exist
+tree_test(
+    name = "records",
+    size = "small",
+    cmd = ["python3", "-m", "rola_results", "check"],
+    data = [":tree"],
+)
+
+tree_test(
+    name = "mirror_declarations",
+    size = "small",
+    cmd = ["python3", "-m", "rola_devtools.mirror", "--check"],
+    data = [":tree"],
+    git = True,
+)
+
+#: THE GATE: every check this workspace holds; the commit hook runs it (.githooks/pre-commit)
+test_suite(
+    name = "gate",
+    tests = [
+        ":contract",
+        ":mirror_declarations",
+        ":records",
+        ":ruff",
+    ],
+)
+
+#: the store's command line (README.md): `bazel run //:results -- check|show|index|sql|history|latest|commit|dashboard`
+results_run(
+    name = "results",
+    module = "rola_results",
+)

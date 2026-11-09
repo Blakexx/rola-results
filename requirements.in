@@ -1,0 +1,4 @@
+# rola-results' environment (MODULE.bazel's `environment.python` tag `results_env`): the library is standard library
+# only, so the lock is the gate's linter alone, at rola's version of it. Compiled with `uv pip compile requirements.in
+# --python-version 3.11 --generate-hashes -o requirements.lock`.
+ruff==0.14.10

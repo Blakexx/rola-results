@@ -27,12 +27,12 @@ Nothing derived from two records (a ratio, a baseline) is stored: that is the re
 
 ## Queries
 
-    python -m rola_results index                  # bring index.sqlite up to date (derived; never committed)
-    python -m rola_results sql "SELECT ..."       # any query; the index is brought up to date first
-    python -m rola_results history LOCATION [--where PATH=VALUE]   # every sample of the matching records
-    python -m rola_results latest LOCATION [--where PATH=VALUE]    # each matching record's newest good output
-    python -m rola_results verdict --reference LABEL [--candidate LABEL] [--cell C] [--arm A]   # judged in-session
-    python -m rola_results dashboard --out suite.html [--reference LABEL] [--run RUN]   # one run's sessions as a page
+    bazel run //:results -- index                  # bring index.sqlite up to date (derived; never committed)
+    bazel run //:results -- sql "SELECT ..."       # any query; the index is brought up to date first
+    bazel run //:results -- history LOCATION [--where PATH=VALUE]   # every sample of the matching records
+    bazel run //:results -- latest LOCATION [--where PATH=VALUE]    # each matching record's newest good output
+    bazel run //:results -- verdict --reference LABEL [--candidate LABEL] [--cell C] [--arm A]   # judged in-session
+    bazel run //:results -- dashboard --out suite.html [--reference LABEL] [--run RUN]   # one run's sessions as a page
 
 The tables know no tool: `records(location, key, format, semantics)` and `samples(location, key, n, ok, utc, wall_s,
 provenance, error, output_path, output, extra)`, the JSON fields read with SQLite's JSON functions. A tool's shape is a
@@ -44,7 +44,7 @@ view in `views/`, run after every index:
 | `timing_samples` | `timing_members` | timed call, in the order taken: its member's label, arm and cell, its round, rep and position in the rep's random order, and its milliseconds |
 | `memory_rows` | `timing/memory` (rola-devtools' `measure_memory`) | timing entry alone on a central cell: peak allocated and reserved bytes, what was allocated before the build and after the calls, bytes held outside the caching allocator (a paged state) and the totals with them, label, arm, commit |
 | `instrument_cells` | `rola/<instrument>` (a rola checkout's instrument targets) | cell of an instrument run: the run, whether the tool ran on it, and its exit and error when it could not |
-| `instrument_metrics` | `rola/<instrument>` | every NUMBER an instrument recorded, one row each, in long form: the run, the cell (NULL for the whole-binary `sass` and `registers`), a dotted `metric` (`phase.fold`, `counter.dram__bytes_read.sum`, `census.FoldStream.hmma_per_unit`, `timeline.tensor_mean_full`, `roofline.fraction`, `registers.<region>.peak`, `sass.<cubin>.<function>.hmma`) and its value -- so a reading across runs is a join, never a parser per tool (`python -m rola_results instruments --baseline RUN`) |
+| `instrument_metrics` | `rola/<instrument>` | every NUMBER an instrument recorded, one row each, in long form: the run, the cell (NULL for the whole-binary `sass` and `registers`), a dotted `metric` (`phase.fold`, `counter.dram__bytes_read.sum`, `census.FoldStream.hmma_per_unit`, `timeline.tensor_mean_full`, `roofline.fraction`, `registers.<region>.peak`, `sass.<cubin>.<function>.hmma`) and its value -- so a reading across runs is a join, never a parser per tool (`bazel run //:results -- instruments --baseline RUN`) |
 | `diff_cells` | `rola/<name>` and `diff/<surface>` (rola-devtools' diff targets) | cell and quantity of a stored diff: the claim (`expect`) and whether the diff as a whole `held`, the cell's status (a side that could not produce it, and why), and the quantity's verdict under the strategy with its worst slot (`ratio`, `at`, `bound_by`) |
 | `null_gates` | `timing/null` (rola-devtools' `measure_null_gate`) | cell of a null gate: the run, whether the entry's two workers agree (the per-rep ratios' interquartile range holds one), the ratio's median and quartiles |
 | `cells` | fleet and local grids | stored grid cell: bench, config, cell, image or local checkouts, row |
@@ -73,15 +73,19 @@ reads a unit's sessions oldest first and judges the newest: a regression needs t
 three sigmas of its own per-round ratio spread, a significant paired test, and a second session at the same code over its
 own limit; anything less says what it is. Host drift between sessions moves both members of a pair and cancels.
 
-The rola tree names this checkout as `store.root` in its dev config, and `tools/dev.py init` makes the package importable
-from every interpreter it provisions.
+The rola tree names this checkout as `store.root` in its dev config, and each rola checkout's venv
+(`bazel run //:dev_env` there) imports the package from it. Here, the command line is a run target, in the checkout,
+on this workspace's environment:
 
-    python -m rola_results check              every key recomputes, every location is its directory, every output exists
-    python -m rola_results show [LOCATION]
-    python -m rola_results commit -m MESSAGE  commits records/ only; the library goes through its gated commits
+    bazel run //:results -- check              every key recomputes, every location is its directory, every output exists
+    bazel run //:results -- show [LOCATION]
+    bazel run //:results -- commit -m MESSAGE  commits records/ only; the library goes through its gated commits
 
-The commit gate (`.githooks/pre-commit`, `core.hooksPath`): ruff and the contract tests on the library (the verdict's
-needs rola-devtools, which `tools/dev.py init` links beside this package), `check` on the records.
+The gate is `bazel test //:gate`: ruff with rola's rule set and the contract tests on the library (the verdict's need
+rola-devtools, which the environment carries), and `check` on the records. The commit hook (`.githooks/pre-commit` ->
+`bazel/bazel --commit-gate`, rola-devtools' commit gate) runs it on the commit as git will write it, a records commit
+included. Bazel is rola's pinned bazelisk (a rola checkout's `python3 tools/bootstrap.py` links it), run through this
+checkout's front door (`bazel/bazel`), which runs rola-devtools' from the machine's rola-devtools checkout.
 
 ## Publishing
 

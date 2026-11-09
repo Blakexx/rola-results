@@ -1,5 +1,6 @@
-*.lock
-*.tmp
+# a record's write lock and its write in progress (the store's), never the repository's own locks
+records/**/*.lock
+records/**/*.tmp
 __pycache__/
 .ruff_cache/
 index.sqlite
