@@ -1,0 +1,36 @@
+{
+ "built": {
+  "backend": "flash",
+  "batch": 1,
+  "causal": true,
+  "cell": "qkv-L65536-dv64",
+  "context": 0,
+  "d_v": 64,
+  "device": "NVIDIA H100 80GB HBM3",
+  "dtype": "bfloat16",
+  "heads": 1,
+  "hidden": 0,
+  "implementation": "FA3",
+  "level": "layer",
+  "library": "torch",
+  "mask": "full",
+  "projection": null,
+  "tokens": 65536,
+  "torch": "2.14.0+cu130"
+ },
+ "median_ms": 1.7747199535369873,
+ "milliseconds": [
+  1.7867200374603271,
+  1.7785600423812866,
+  1.7878719568252563,
+  1.7747199535369873,
+  1.7788159847259521,
+  1.783519983291626,
+  1.7672319412231445,
+  1.6941759586334229,
+  1.6855679750442505,
+  1.6902719736099243,
+  1.6840319633483887
+ ],
+ "warmup": 10
+}

@@ -1,0 +1,32 @@
+{
+ "format": 1,
+ "key": "e9a49cd99c2b1ffed626b655",
+ "location": "flash/reference",
+ "samples": [
+  {
+   "n": 0,
+   "ok": true,
+   "output": "e9a49cd99c2b1ffed626b655.0.out.json",
+   "provenance": {
+    "fa3": "Dao-AILab/flash-attention f63c472c, hopper/, fwd+hdim64+bf16 only",
+    "host": "DESKTOP-MKIUJID",
+    "stage": "stage 1 close-out, the carry and the flash references in one session"
+   },
+   "utc": "2026-11-13T04:58:04Z",
+   "wall_s": 0.034
+  }
+ ],
+ "semantics": {
+  "bench": "flash-reference",
+  "causal": true,
+  "cell": "qkv-L65536-dv64",
+  "host": {
+   "instance": "60450651",
+   "kind": "vast.ai H100 SXM",
+   "machine_offer": "58968817"
+  },
+  "impl": "FA2",
+  "instrument": "cuda_events",
+  "torch": "2.14.0+cu130"
+ }
+}
